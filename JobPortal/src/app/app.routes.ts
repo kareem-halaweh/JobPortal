@@ -31,11 +31,11 @@ export const routes: Routes = [
 
   {path : 'find-job' , component : FindJobComponent},
   {path : 'job-details' , component : CardDetailsComponent},
-  { path: 'login', component:LoginComponent },
+  {path: 'login', component:LoginComponent },
   {path: 'changePassword', component:ChangePasswordComponent },
   {path: 'changePasswordSuccess', component: ChangePasswordSuccessComponent },
   {path: 'resetPassword' ,component:ResetPasswordComponent},
-  { path:'resetPasswordCode',component:ResetPasswordCodeComponent},
+  {path:'resetPasswordCode',component:ResetPasswordCodeComponent},
   {path:'newPasswordResetPassword',component:NewPasswordResetPasswordComponent},
   {path:'resetPasswordSuccess',component:ResetPassswordSuccessComponent},
   {path: 'signup', component:SignupComponent },
