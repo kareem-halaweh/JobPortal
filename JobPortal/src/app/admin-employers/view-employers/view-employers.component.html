@@ -1,0 +1,44 @@
+<div class="container table-container">
+    <h3 class="MY mt-3 text-white p-3 rounded mb-4 text-center">All Candidates</h3>
+
+    <table class="table table-bordered">
+    <thead class="table-primary">
+        <tr>
+        <th>Name</th>
+        <th>🏢 Company</th>
+        <th>👔 Role</th>
+        <th>📧 Email</th>
+        <th>📅 Date of registration</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let candidate of allEmployers">
+        <td>{{ candidate.name }}</td>
+        <td>{{ candidate.company }}</td>
+        <td>{{ candidate.role }}</td>
+        <td><a href=" ">
+            <i> {{ candidate.email }}</i>
+        </a></td>
+        <td> {{ candidate.DateOfRegistration }}</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        </ul>
+    </nav>
+</div>

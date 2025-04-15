@@ -1,0 +1,45 @@
+<div class="container table-container">
+    <h3 class="Hestory p-3 mb-4 text-center rounded text-white mt-3 ">All Canditates Hestory</h3>
+    <table class="table table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let candidate of allCandidates, let i = index">
+                <td>{{candidate.name}}</td>
+                <td>{{candidate.Role}}</td>
+                <td>📧
+                    <a href=" ">
+                        <i > {{ candidate.Email }}</i></a></td>
+                <td>📞 {{candidate.Number}}</td>
+                <td class="text-center">
+                    <button *ngIf="i % 2 === 0" class="btn  btn-sm">✔️</button>
+                    <button *ngIf="i % 2 !== 0" class="btn  btn-sm">❌</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        </ul>
+    </nav>
+</div>

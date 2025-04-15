@@ -1,0 +1,49 @@
+<div class="container my-4">
+    <h3 class="manage text-white p-3 rounded text-center mb-3">Manage All Candidates</h3>
+  
+    <table class="table table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Number</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of allCandidates">
+          <td>{{ candidate.name }}</td>
+          <td>{{ candidate.Role }}</td>
+          <td>📧
+            <a href=" ">
+                <i > {{ candidate.Email }}</i>
+            </a></td>
+          <td>📞 {{ candidate.Number }}</td>
+          <td class="text-center">
+            <button class="btn  btn-sm me-2">✔️</button>
+            <button class="btn btn-sm">❌</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+      <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          </a>
+      </li>
+      </ul>
+  </nav>
+  </div>
+  

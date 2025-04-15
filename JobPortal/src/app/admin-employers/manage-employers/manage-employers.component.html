@@ -1,0 +1,81 @@
+<div class="container table-container">
+
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-primary text-center">
+      <tr>
+        <th> Name</th>
+        <th> Company</th>
+        <th> Role</th>
+        <th style="min-width: 200px;"> Email</th>
+        <th> Date</th>
+        <th style="min-width: 150px;">Status</th>
+        <th style="min-width: 160px;">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let employers of allEmployers">
+        <td>
+          <input class="form-control" [value]="employers.name" >
+        </td>
+        <td>
+          <div class="input-group">
+            
+            <input class="form-control" [value]="employers.company">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input class="form-control" [value]="employers.role" >
+          </div>
+        </td>
+        <td>
+
+            <a href="">
+              <i>
+            <input class="form-control" [value]="employers.email">
+          </i>
+        </a>
+        </td>
+        <td>
+          <div class="input-group">
+
+            <input class="form-control" [value]="employers.DateOfRegistration" readonly>
+          </div>
+        </td>
+        <td>
+          <select class="form-select">
+            <option value="Accepted">Accepted</option>
+            <option value="Pending">Pending</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </td>
+        <td>
+          <div class="d-flex gap-2 justify-content-center">
+            <button class="btn btn-success btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
