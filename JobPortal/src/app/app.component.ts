@@ -6,11 +6,13 @@ import {
   ChangePasswordSuccessComponent
 } from './User Roles & Authentication/change-password/change-password-success/change-password-success.component';
 import {ChangePasswordComponent} from './User Roles & Authentication/change-password/change-password.component';
+import {LogoutSuccessComponent} from './User Roles & Authentication/logout/logout-success/logout-success.component';
+import {LogoutComponent} from './User Roles & Authentication/logout/logout.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent],
+  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
