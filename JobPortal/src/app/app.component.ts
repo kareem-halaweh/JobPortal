@@ -8,11 +8,21 @@ import {
 import {ChangePasswordComponent} from './User Roles & Authentication/change-password/change-password.component';
 import {LogoutSuccessComponent} from './User Roles & Authentication/logout/logout-success/logout-success.component';
 import {LogoutComponent} from './User Roles & Authentication/logout/logout.component';
+import {
+  NewPasswordResetPasswordComponent
+} from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
+import {
+  ResetPassswordSuccessComponent
+} from './User Roles & Authentication/reset-password/reset-passsword-success/reset-passsword-success.component';
+import {
+  ResetPasswordCodeComponent
+} from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
+import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent],
+  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
