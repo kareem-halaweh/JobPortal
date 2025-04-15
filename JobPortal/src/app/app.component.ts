@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+
+import { Router } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import {NgIf} from '@angular/common';
+
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import {LoginComponent} from './User Roles & Authentication/login/login.component';
@@ -28,10 +33,13 @@ import {CreateAccountComponent} from './User Roles & Authentication/signup/creat
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent, SignupJobSeekerComponent, SignupComponent, SignupEmployerComponent, CreateAccountComponent],
+  imports: [ RouterLink, NgIf ,RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent, SignupJobSeekerComponent, SignupComponent, SignupEmployerComponent, CreateAccountComponent],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'JobPortal';
+
+  constructor(public router: Router) {}
 }

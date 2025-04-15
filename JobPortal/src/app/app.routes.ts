@@ -1,3 +1,7 @@
+
+import { Routes } from '@angular/router';
+import { SeekerLayoutComponent } from './seeker-pages/seeker-layout/seeker-layout.component';
+import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import {RouterModule, Routes} from '@angular/router';
 import { FindJobComponent } from './find-job/find-job.component';
 import { CardDetailsComponent } from './find-job/card-details/card-details.component';
@@ -46,12 +50,23 @@ export const routes: Routes = [
   {path:'logoutSuccess' ,component:LogoutSuccessComponent},
   {path:'home' ,component: HomeComponent},
   {path:'' ,component: HomeComponent},
-
-
-
+    {
+    path: 'seeker',
+    component: SeekerLayoutComponent,
+    children: [
+       { path: 'profile', component: SeekerProfileComponent }
+     ,
+      // { path: 'applications', component: ApplicationsComponent },
+      // { path: 'uploaded-resume', component: UploadedResumeComponent },
+      // { path: 'saved-jobs', component: SavedJobsComponent },
+      // { path: 'view-applied-jobs', component: ViewAppliedJobsComponent },
+      // { path: 'notifications', component: NotificationsComponent }
+    ]
+  }];
 
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })export class AppRoutingModule { }
+
