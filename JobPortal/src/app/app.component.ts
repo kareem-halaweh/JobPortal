@@ -18,11 +18,17 @@ import {
   ResetPasswordCodeComponent
 } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
+import {
+  SignupJobSeekerComponent
+} from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
+import {SignupComponent} from './User Roles & Authentication/signup/signup.component';
+import {SignupEmployerComponent} from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
+import {CreateAccountComponent} from './User Roles & Authentication/signup/create-account/create-account.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent],
+  imports: [RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent, SignupJobSeekerComponent, SignupComponent, SignupEmployerComponent, CreateAccountComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
