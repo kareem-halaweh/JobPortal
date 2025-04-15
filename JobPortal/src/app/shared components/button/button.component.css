@@ -1,0 +1,30 @@
+button {
+  background-color: #3659A2;
+  color: white;
+  width: fit-content;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
+}
+
+
+button:hover {
+  background-color: rgba(54, 89, 162, 0.95);
+  transform: scale(1.03);
+}
+
+@media (max-width: 640px) {
+  button{
+    width: fit-content;
+    padding: 10px 40px;
+  }
+}
