@@ -1,0 +1,54 @@
+<main class=" rounded-3">
+  <div class="  rounded-3">
+    <div  class="d-flex justify-content-center align-items-center" >
+
+      <app-header-text [headerText]= "'Create your account'"></app-header-text>
+    </div>
+    <div class=" mt-4 mx-5" >
+
+      <div class="d-flex row">
+        <div class="my-3 col-6">
+          <app-label [labelText]="'Company name'" ></app-label>
+          <app-input [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
+        </div>
+        <div class="my-3 col-6">
+          <app-label [labelText]="'Founded Date'"  ></app-label>
+          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
+        </div>
+
+      </div>
+      <div class="d-flex row">
+        <div class="my-3 col-6">
+          <app-label [labelText]="'Company Logo (Optional)'" ></app-label>
+          <app-input [submitted]="submitted" [type]="'url'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
+        </div>
+        <div class="my-3 col-6">
+          <app-label [labelText]="' Company Industry'"  ></app-label>
+          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
+        </div>
+      </div>
+      <div class="d-flex row">
+        <div class="my-3 col-6">
+          <app-label [labelText]="'Location/online'" ></app-label>
+          <app-input [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
+        </div>
+        <div class="my-3 col-6">
+          <app-label [labelText]="'Phone number'"  ></app-label>
+          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
+        </div>
+
+      </div>
+      <div class="d-flex " >
+        <div class="my-3 col-10">
+          <app-label [labelText]="'Description'"  ></app-label>
+          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
+        </div>
+        <app-button class=" p-3 mt-5" text="Next" [linkTo]="'createAccount'" ></app-button>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</main>
