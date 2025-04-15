@@ -1,0 +1,46 @@
+<div class="container mt-2">
+  <div class="text-center mb-3">
+    <h2 class="fw-bold px-3 py-2" style="background: #C9DBFF; color: #3E61A6; border-radius: 8px; min-height: 100px; display: flex; align-items: center; justify-content: center;">
+      Monthly Report <i class="fas fa-chart-line ms-2"></i>
+    </h2>
+  </div>
+
+  <!-- المحتوى -->
+  <div class=" row g-3 justify-content-center align-items-stretch">
+
+    <!-- Jobs Posted -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex" style="min-height: 140px;">
+      <div class="w-100">
+        <app-total-card icon="fas fa-briefcase" text="Jobs Posted" ></app-total-card>
+      </div>
+    </div>
+
+    <!-- Jobs Details -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column justify-content-between" style="gap: 0.5rem;">
+      <app-card icon="fas fa-flag" text="Reported Jobs" bg="#C9DBFF" colortext="#3E61A6" number="345" class="flex-fill"></app-card>
+      <app-card icon="fas fa-chart-line" text="Applications Jobs" bg="#C9DBFF" colortext="#3E61A6" number="345" class="flex-fill"></app-card>
+    </div>
+
+    <!-- Total Applications -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex" style="min-height: 140px;">
+      <div class="w-100">
+        <app-total-card icon="fas fa-file-alt" text="Applications" number="265"></app-total-card>
+      </div>
+    </div>
+
+    <!-- Application Status -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column justify-content-between" style="gap: 0.5rem;">
+      <app-card icon="fas fa-times-circle" text="Rejected Applications" bg="#C9DBFF" colortext="#3E61A6" number="80" class="flex-fill"></app-card>
+      <app-card icon="fas fa-check-circle" text="Accepted Applications" bg="#C9DBFF" colortext="#3E61A6" number="185" class="flex-fill"></app-card>
+    </div>
+
+    <!-- Job Seekers -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column justify-content-between" style="gap: 0.5rem;">
+      <app-card icon="fas fa-users" text="Job Seekers" bg="#3E61A6" colortext="#fff" number="300" class="flex-fill"></app-card>
+      <app-card icon="fas fa-user-check" text="Employed Job Seekers" bg="#C9DBFF" colortext="#3E61A6" number="90" class="flex-fill"></app-card>
+    </div>
+
+  </div>
+</div>
+
+
