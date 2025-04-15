@@ -1,8 +1,6 @@
-
-import { Routes } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { SeekerLayoutComponent } from './seeker-pages/seeker-layout/seeker-layout.component';
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
-import {RouterModule, Routes} from '@angular/router';
 import { FindJobComponent } from './find-job/find-job.component';
 import { CardDetailsComponent } from './find-job/card-details/card-details.component';
 import {LoginComponent} from './User Roles & Authentication/login/login.component';
@@ -33,16 +31,16 @@ import {HomeComponent} from './home/home.component';
 
 export const routes: Routes = [
 
-  {path : 'find-job' , component : FindJobComponent},
-  {path : 'job-details' , component : CardDetailsComponent},
-  {path: 'login', component:LoginComponent },
-  {path: 'changePassword', component:ChangePasswordComponent },
-  {path: 'changePasswordSuccess', component: ChangePasswordSuccessComponent },
-  {path: 'resetPassword' ,component:ResetPasswordComponent},
+  {path:'find-job' , component : FindJobComponent},
+  {path:'job-details' , component : CardDetailsComponent},
+  {path:'login', component:LoginComponent },
+  {path:'changePassword', component:ChangePasswordComponent },
+  {path:'changePasswordSuccess', component: ChangePasswordSuccessComponent },
+  {path:'resetPassword' ,component:ResetPasswordComponent},
   {path:'resetPasswordCode',component:ResetPasswordCodeComponent},
   {path:'newPasswordResetPassword',component:NewPasswordResetPasswordComponent},
   {path:'resetPasswordSuccess',component:ResetPassswordSuccessComponent},
-  {path: 'signup', component:SignupComponent },
+  {path:'signup', component:SignupComponent },
   {path:'signupJobSeeker' ,component:SignupJobSeekerComponent},
   {path:'signupEmployer' ,component:SignupEmployerComponent },
   {path:'createAccount' ,component:CreateAccountComponent},
@@ -51,8 +49,7 @@ export const routes: Routes = [
   {path:'home' ,component: HomeComponent},
   {path:'' ,component: HomeComponent},
     {
-    path: 'seeker',
-    component: SeekerLayoutComponent,
+    path: 'seeker', component: SeekerLayoutComponent,
     children: [
        { path: 'profile', component: SeekerProfileComponent }
      ,
@@ -64,7 +61,7 @@ export const routes: Routes = [
     ]
   }];
 
-];
+;
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

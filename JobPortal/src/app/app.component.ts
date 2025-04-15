@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import {NgIf} from '@angular/common';
 
-import { RouterOutlet } from '@angular/router';
+
 import { HeaderComponent } from './header/header.component';
 import {LoginComponent} from './User Roles & Authentication/login/login.component';
 import {
