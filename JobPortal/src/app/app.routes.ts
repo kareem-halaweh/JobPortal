@@ -34,7 +34,7 @@ export const routes: Routes = [
   {path:'jobs' , component : FindJobComponent , children : []},
   {
     path:'jobs/:id' ,
-     component : CardDetailsComponent,
+    component : CardDetailsComponent,
 
   },
   {path:'login', component:LoginComponent },
@@ -52,20 +52,17 @@ export const routes: Routes = [
   {path:'logoutSuccess' ,component:LogoutSuccessComponent},
   {path:'home' ,component: HomeComponent},
   {path:'' ,component: HomeComponent},
-  {
+    {
     path: 'seeker', component: SeekerLayoutComponent,
     children: [
-      { path: '', redirectTo: 'profile', pathMatch: 'full' },
-      { path: 'profile', component: SeekerProfileComponent }
-    ]
-
-
-  // { path: 'applications', component: ApplicationsComponent },
+       { path: 'profile', component: SeekerProfileComponent }
+     ,
+      // { path: 'applications', component: ApplicationsComponent },
       // { path: 'uploaded-resume', component: UploadedResumeComponent },
       // { path: 'saved-jobs', component: SavedJobsComponent },
       // { path: 'view-applied-jobs', component: ViewAppliedJobsComponent },
       // { path: 'notifications', component: NotificationsComponent }
-
+    ]
   }];
 
 ;
@@ -73,3 +70,4 @@ export const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })export class AppRoutingModule { }
+

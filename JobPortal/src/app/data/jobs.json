@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Data Engineering Associate",
+    "companyName": "Norstella",
+    "location": "New York, USA",
+    "salary": "$110,000",
+    "description": "Job description goes here...",
+    "benefits": "Health, Dental, Vision"
+  },
+  {
+    "id": 2,
+    "title": "Software Engineer",
+    "companyName": "Microsoft",
+    "location": "Redmond, USA",
+    "salary": "$120,000",
+    "description": "Job description goes here...",
+    "benefits": "401k, Health Insurance"
+  },
+  {
+    "id": 3,
+    "title": "Software Engineer",
+    "companyName": "Microsoft",
+    "location": "Redmond, USA",
+    "salary": "$130,000",
+    "description": "Job description goes here...",
+    "benefits": "401k, Health Insurance"
+  },
+  {
+    "id": 4,
+    "title": "Software Engineer",
+    "companyName": "Microsoft",
+    "location": "Redmond, USA",
+    "salary": "$140,000",
+    "description": "Job description goes here...",
+    "benefits": "401k, Health Insurance"
+  },
+  {
+    "id": 5,
+    "title": "Software Engineer",
+    "companyName": "Microsoft",
+    "location": "Redmond, USA",
+    "salary": "$150,000",
+    "description": "Job description goes here...",
+    "benefits": "401k, Health Insurance"
+  },
+  {
+    "id": 6,
+    "title": "Software Engineer",
+    "companyName": "Microsoft",
+    "location": "Redmond, USA",
+    "salary": "$160,000",
+    "description": "Job description goes here...",
+    "benefits": "401k, Health Insurance"
+  }
+
+]
