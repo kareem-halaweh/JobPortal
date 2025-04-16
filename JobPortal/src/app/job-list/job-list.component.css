@@ -1,0 +1,14 @@
+.my-button{
+    display: flex;
+    justify-content:start;
+    width: 150px;
+    align-items: end;
+}
+.card-btn{
+    background-color: #3E61A6 ;
+    width: 70px;
+    height: 30px;
+    font-size: 10px;
+    padding: 0;
+}
+
