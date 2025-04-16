@@ -1,0 +1,12 @@
+.footer-link {
+  color: #3659A2 !important;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #3659A2 !important;
+
+
+}

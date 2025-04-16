@@ -29,11 +29,12 @@ import {
 import {SignupComponent} from './User Roles & Authentication/signup/signup.component';
 import {SignupEmployerComponent} from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import {CreateAccountComponent} from './User Roles & Authentication/signup/create-account/create-account.component';
+import {FooterComponent} from './footer/footer.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [ RouterLink, NgIf ,RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent, SignupJobSeekerComponent, SignupComponent, SignupEmployerComponent, CreateAccountComponent],
+  imports: [RouterLink, NgIf, RouterOutlet, HeaderComponent, LoginComponent, ChangePasswordSuccessComponent, ChangePasswordComponent, LogoutSuccessComponent, LogoutComponent, NewPasswordResetPasswordComponent, ResetPassswordSuccessComponent, ResetPasswordCodeComponent, ResetPasswordComponent, SignupJobSeekerComponent, SignupComponent, SignupEmployerComponent, CreateAccountComponent, FooterComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

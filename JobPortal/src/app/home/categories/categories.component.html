@@ -1,0 +1,32 @@
+<div class="container mb-3">
+  <div class="row  justify-content-center">
+    <div class="col-lg-6">
+      <div class="text-center mb-5 mt-5 rounded-4 shadow-sm" style=" background-color: #f6f7f8">
+        <h2 class="text-capitalize lh-base  py-1">Explore Jobs by category</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div  class="col-6  col-lg-3"  >
+      <app-category-card [title]="'Graphic Design'" [link]="'#'">
+        <i card-icon class="bi bi-palette-fill fs-1 text-white"></i>
+      </app-category-card>
+    </div>
+    <div class=" col-6 col-lg-3">
+      <app-category-card [title]="'Finance'" [link]="'#'">
+        <i card-icon class="bi bi-currency-exchange fs-1 text-white"></i>
+      </app-category-card>
+    </div>
+    <div class= "col-6 col-lg-3">
+      <app-category-card [title]="'IT'" [link]="'#'">
+        <i card-icon class="bi bi-file-earmark-code-fill fs-1 text-white"></i>
+      </app-category-card>
+    </div>
+    <div class=" col-6 col-lg-3">
+      <app-category-card [title]="'Marketing'" [link]="'#'">
+        <i card-icon class="bi bi-bank2 fs-1 text-white"></i>
+      </app-category-card>
+    </div>
+
+  </div>
+</div>
