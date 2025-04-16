@@ -1,10 +1,8 @@
-
 <div
   class="sidebar-overlay"
   *ngIf="sidebarVisible && isMobileScreen"
   (click)="toggleSidebar()">
 </div>
-
 
 <button
   class="toggle-sidebar-btn"
@@ -12,7 +10,6 @@
   (click)="toggleSidebar()">
   <i class="bi" [ngClass]="sidebarVisible ? 'bi-arrow-left-circle' : 'bi-arrow-right-circle'"></i>
 </button>
-
 
 <div class="container-fluid">
   <div class="row min-vh-100 flex-column flex-md-row">
@@ -22,43 +19,42 @@
       class="col-12 col-md-3 p-3 d-flex flex-column align-items-center sidebar"
       [ngClass]="{ 'show-sidebar': sidebarVisible }">
 
-      <div class="text-center mb-3">
-        <i class="bi bi-person-fill profile-pic" style="font-size: 4rem; color: #3659A2;"></i>
-        <h5 class="fw-bold mt-3">JOB SEEKER</h5>
+      <!-- 🔽 Sidebar nav pushed lower -->
+      <div class="d-flex flex-column w-100 flex-grow-1 justify-content-start mt-auto mb-4">
+        <ul class="nav flex-column w-100">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/profile']" routerLinkActive="active-tab">
+              <i class="bi bi-person me-2"></i> Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/applications']" routerLinkActive="active-tab">
+              <i class="bi bi-card-list me-2"></i> Applications
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/uploaded-resume']" routerLinkActive="active-tab">
+              <i class="bi bi-upload me-2"></i> Uploaded Resume
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/saved-jobs']" routerLinkActive="active-tab">
+              <i class="bi bi-bookmark me-2"></i> Saved Jobs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/view-applied-jobs']" routerLinkActive="active-tab">
+              <i class="bi bi-clock-history me-2"></i> View Applied Jobs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/seeker/notifications']" routerLinkActive="active-tab">
+              <i class="bi bi-bell me-2"></i> Notifications
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <ul class="nav flex-column w-100">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/profile']" routerLinkActive="active-tab">
-            <i class="bi bi-person me-2"></i> Profile
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/applications']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
-            <i class="bi bi-card-list me-2"></i> Applications
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/uploaded-resume']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
-            <i class="bi bi-upload me-2"></i> Uploaded Resume
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/saved-jobs']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
-            <i class="bi bi-bookmark me-2"></i> Saved Jobs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/view-applied-jobs']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
-            <i class="bi bi-clock-history me-2"></i> View Applied Jobs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/seeker/notifications']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
-            <i class="bi bi-bell me-2"></i> Notifications
-          </a>
-        </li>
-      </ul>
 
       <div class="mt-auto w-100">
         <ul class="nav flex-column w-100">
@@ -69,7 +65,9 @@
           </li>
         </ul>
       </div>
+
     </div>
+
 
     <div class="col-12 col-md-9 p-4">
       <router-outlet></router-outlet>
