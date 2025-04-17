@@ -19,7 +19,6 @@
       class="col-12 col-md-3 p-3 d-flex flex-column align-items-center sidebar"
       [ngClass]="{ 'show-sidebar': sidebarVisible }">
 
-      <!-- 🔽 Sidebar nav pushed lower -->
       <div class="d-flex flex-column w-100 flex-grow-1 justify-content-start mt-auto mb-4">
         <ul class="nav flex-column w-100">
           <li class="nav-item">
@@ -33,7 +32,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/seeker/uploaded-resume']" routerLinkActive="active-tab">
+            <a class="nav-link" [routerLink]="['/seeker/uploadResume']" routerLinkActive="active-tab">
               <i class="bi bi-upload me-2"></i> Uploaded Resume
             </a>
           </li>

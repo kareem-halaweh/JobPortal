@@ -1,0 +1,52 @@
+<div class="card resume-tips-box mb-4">
+    <div class="card-body">
+        <h5 class="fw-bold mb-3">Resume Guidelines</h5>
+        <ul class="ps-3 mb-2">
+            <li>Submit your resume in <strong>PDF format</strong> only.</li>
+            <li>Limit to <strong>1–2 pages</strong> for easy reading.</li>
+            <li>Use section headings like <em>Education, Skills, Experience</em>.</li>
+            <li>No typos, selfies, or irrelevant info.</li>
+            <li>Show achievements, not just duties. Use action verbs!</li>
+            <li>Important: about section after uploading is optional. </li>
+        </ul>
+        <p class="mb-0">Need help? <a href="#">Download a sample CV</a>.</p>
+    </div>
+</div>
+
+<div class="upload-container">
+    <input
+            type="file"
+            class="form-control"
+            accept=".pdf"
+            (change)="onFileSelected($event)"
+    />
+
+    <div *ngIf="uploadedFile" class="mt-3 align-items-start">
+        <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-file-earmark-pdf me-1"></i>
+                {{ uploadedFile?.name }}
+                <button class="btn btn-outline-danger btn-icon ms-2" (click)="removeFile(0)">
+                   -
+                </button>
+
+            </div>
+
+            <input
+                    type="text"
+                    class="form-control desc-input"
+                    [(ngModel)]="descriptionInput"
+                    (keyup.enter)="saveDescription()"
+                    placeholder="Add description"
+            />
+        </div>
+
+        <div *ngIf="savedDescription" class="mt-2">
+            <small class="text-muted">About: {{ savedDescription }}</small>
+        </div>
+    </div>
+
+    <div class="mt-4" *ngIf="isBrowser && pdfSrc">
+        <ng-template #pdfContainer></ng-template>
+    </div>
+</div>
