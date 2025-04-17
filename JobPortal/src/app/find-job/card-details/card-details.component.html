@@ -1,5 +1,41 @@
 <div class="container mt-4">
-  <!-- Header Banner with Gradient -->
+
+
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="applyModalLabel">Apply for this job</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- File Upload -->
+          <div class="mb-3">
+            <label for="resume" class="form-label">Upload your Resume (PDF)</label>
+            <input type="file" class="form-control" id="resume" accept=".pdf" (change)="onFileSelected($event)">
+          </div>
+
+          <!-- Cover Letter -->
+          <div class="mb-3">
+            <label for="coverLetter" class="form-label">Cover Letter</label>
+            <textarea id="coverLetter" class="form-control" rows="5" [(ngModel)]="coverLetter"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="submitApplication()">Submit Application</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
   <div class="row mb-4">
     <div class="col-12">
       <div class="card">
@@ -12,7 +48,7 @@
     </div>
   </div>
 
-  <!-- Job Title and Action Buttons -->
+
   <div class="row mb-4">
     <div class="col-md-8">
       <h3 class="fw-bold">Associate Project Manager</h3>
@@ -21,15 +57,15 @@
     </div>
     <div class="col-md-4 text-end d-flex justify-content-end align-items-start">
       <button class="btn btn-outline-secondary me-2">Save</button>
-      <button class="btn btn-success">Apply</button>
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#applyModal" >Apply</button>
     </div>
   </div>
 
-  <!-- Main Content Two-Column Layout with Mobile First Right Column -->
+
   <div class="row">
-    <!-- Right Column: Job Attributes (Order is modified for mobile view) -->
-    <div class="col-md-4 order-md-last order-first">
-      <!-- Salary -->
+
+    <div class="col-md-4 order-md-last order-first ">
+
       <div class="card">
         <div class="card-body">
           <h4 class="fw-bold">$135,700</h4>
@@ -66,15 +102,13 @@
               <p class="text-muted small mb-0">Contact Email</p>
             </div>
           </div>
-
-          <p class="text-muted small mt-3">My new car is sexy. Metalwood Red color, interior is nice.</p>
         </div>
       </div>
     </div>
 
-    <!-- Left Column: Job Details (Order is modified for mobile view) -->
+
     <div class="col-md-8 order-md-first order-last mt-4 mt-md-0">
-      <!-- About the Job -->
+
       <div class="card mb-4">
         <div class="card-body">
           <h5 class="fw-bold mb-3">About the job</h5>
@@ -89,25 +123,16 @@
           </ul>
 
           <h5 class="fw-bold mt-4 mb-3">Skills:</h5>
-          <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light text-dark border">Business</span>
-            <span class="badge bg-light text-dark border">Marketing</span>
-            <span class="badge bg-light text-dark border">Development</span>
-          </div>
+          <ul class="d-flex flex-wrap gap-2">
+            <li class="badge bg-light text-dark border">Business</li>
+            <li class="badge bg-light text-dark border">Marketing</li>
+            <li class="badge bg-light text-dark border">Development</li>
+          </ul>
         </div>
       </div>
 
-      <!-- About Company -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-3">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/768px-Microsoft_logo.svg.png" alt="Microsoft Logo" class="me-2" width="24">
-            <h5 class="fw-bold mb-0">Microsoft</h5>
-          </div>
-          <p class="text-muted small company-followers">14,500,752 followers</p>
-          <p>All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave...</p>
-        </div>
-      </div>
+
+
     </div>
   </div>
 </div>

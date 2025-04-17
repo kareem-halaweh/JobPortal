@@ -1,0 +1,36 @@
+
+.no-link-style {
+  text-decoration: none;
+  color: #3659A2;
+  display: block;
+  height: 100%;
+
+}
+
+
+.card-container {
+  background-color: #3658a1;
+  border: solid;
+  border-color: #d9d9d9;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+
+.title-text {
+  white-space: nowrap;
+  word-break: break-word;
+  font-weight: 500;
+  color:white;
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}

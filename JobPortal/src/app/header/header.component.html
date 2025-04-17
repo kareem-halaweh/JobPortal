@@ -1,40 +1,41 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary  shadow-sm ">
+<nav class="navbar navbar-expand-md bg-body-tertiary rounded-bottom-4  shadow-sm ">
   <div class="container-fluid ">
 
-    <!-- Logo -->
-    <a class="navbar-brand ms-2 fs-2" href="#">Logo</a>
-
-    <!-- Toggler + login + profile (always top right) -->
+    <img src="logo.png" style= "width:100px; height:80px;" class="navbar-brand ms-2 fs-2 " alt="logo">
     <div class="d-flex align-items-center ms-auto d-md-none">
       <app-button text="log in" [linkTo]="'login'"></app-button>
-      <svg  style="color: #3659A2 "  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle me-2 ms-2" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-      </svg>
+      <a [routerLink]="'seeker/profile'" class="nav-link p-0 m-0 active ms-2">
+        <svg style="color: #3659A2" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
+      </a>
+
       <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
 
-    <!-- Desktop right side (login + profile) -->
-
-    <!-- Collapsible nav links -->
     <div class="collapse navbar-collapse mt-2 mt-md-0" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" style=" font-size: 1.2rem;" aria-current="page" href="">Home</a>
+          <a class="nav-link active ms-3" style=" font-size: 1.2rem;" aria-current="page" href="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active  " style=" font-size: 1.2rem;" href="#" [routerLink]="'find-job'" routerLinkActive="active" >Find job</a>
+
+          <a class="nav-link active  " style=" font-size: 1.2rem;" href="#" [routerLink]="'jobs'" routerLinkActive="active" >Find job</a>
+
         </li>
       </ul>
     </div>
     <div class="d-none d-md-flex align-items-center gap-3 ms-auto">
       <app-button text="log in" [linkTo]="'login'"></app-button>
-      <svg style="color: #3659A2 " xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class=" bi bi-person-circle me-2" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-      </svg>
+      <a [routerLink]="'seeker/profile'" class="nav-link p-0 m-0">
+        <svg style="color: #3659A2" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
+      </a>
     </div>
 
   </div>

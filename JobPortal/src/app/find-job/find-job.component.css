@@ -5,3 +5,25 @@
   gap: 20px;
   padding: 20px;
 }
+
+.container h1{
+  font-size: 1.5rem;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  position: relative;
+  right: -93px;
+
+}
+
+.jobs-number{
+  background-color: rgb(117, 117, 117);
+  width: fit-content;
+  height: fit-content;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+
+}

@@ -35,8 +35,12 @@ import { SeekerUploadResumeComponent } from './seeker-pages/seeker-upload-resume
 
 export const routes: Routes = [
 
-  {path:'find-job' , component : FindJobComponent},
-  {path:'job-details' , component : CardDetailsComponent},
+  {path:'jobs' , component : FindJobComponent , children : []},
+  {
+    path:'jobs/:id' ,
+     component : CardDetailsComponent,
+
+  },
   {path:'login', component:LoginComponent },
   {path:'changePassword', component:ChangePasswordComponent },
   {path:'changePasswordSuccess', component: ChangePasswordSuccessComponent },
