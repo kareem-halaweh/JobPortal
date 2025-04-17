@@ -1,0 +1,28 @@
+.filters {
+  gap: 10px;
+  border: 2px solid  #3E61A6;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #E6EEFF;
+}
+
+.filters label {
+  color: #3E61A6;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.filters select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  background-color: #5d7dc1;
+  color: #FFFFFF;
+  font-weight: bold;
+  box-shadow: 0 2px 4px #FFFFFF;
+}
+
+.filters select:hover {
+  background-color: #4a6e99;
+}

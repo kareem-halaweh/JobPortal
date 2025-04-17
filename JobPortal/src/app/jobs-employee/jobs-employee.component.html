@@ -1,0 +1,65 @@
+<div class="container mt-1">
+  <div class="header py-3" style=" color:#3E61A6; min-width: 600px;">
+    <div class="container " style=" color:#3E61A6; ">
+      <div class="bg-white p-4 rounded shadow-lg">
+
+        <h4 class="mb-4">Let's find job</h4>
+
+        <form class="row g-3 align-items-end"style=" color:#3E61A6; ">
+
+
+          <div class="col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              id="jobTitle"
+              placeholder="Job title or company"
+            >
+          </div>
+
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="location" placeholder="Location">
+          </div>
+
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="salaryRange" placeholder="Salary">
+          </div>
+
+          <div class="col-md-2 d-flex justify-content-between">
+            <button type="reset" class="btn btn-outline-secondary w-100 me-2" style="color: #3E61A6;">
+              Reset
+            </button>
+            <button
+              type="submit"
+              class="btn w-100"
+              style="background: #3E61A6; color: #FFFFFF;"
+            >
+              Search
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <div class="row">
+      <div *ngFor="let job of jobs" class="col-12 col-md-4 mb-4">
+        <app-card-jobsemployee
+          [title]="job.job_title"
+          [company]="job.company"
+          [location]="job.location"
+          [type]="job.type"
+          [Date]="job.date"
+          [salary]="job.salary"
+          [imageUrl]="job.imageUrl"
+        [routerLink]="">
+        </app-card-jobsemployee>
+      </div>
+    </div>
+  </div>
+
