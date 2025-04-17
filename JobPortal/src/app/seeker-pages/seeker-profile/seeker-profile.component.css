@@ -1,52 +1,151 @@
+body {
+  background-color: #f6f7f8;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3659A2;
+}
+
+.profile-page-wrapper {
+  background-color: #f6f7f8;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 16px rgba(54, 89, 162, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 2px solid #3659A2;
+}
+
+
+.profile-pic-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3659A2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h4,
+h5,
+strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3659A2;
+  font-weight: bold;
+}
+
+.profile-summary-card {
+  background-color: black;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.description-box {
+  background-color: #f6f7f8;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
 .form-label {
-  font-family: Georgia, 'Times New Roman', serif !important;
-  color: #3659A2 !important;
+  color: #3659A2;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 2px !important;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
-.form-control.custom-input {
-  border: 1px solid #3659A2 !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-  color: #000;
-  font-weight:100;
-  font-size: 12px;
-  font-family: Georgia, 'Times New Roman', serif !important;
-
+.form-control.custom-input,
+textarea.custom-input {
+  border: 1px solid #3659A2;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1a1a1a;
+  background-color: white;
+  box-shadow: none;
 }
 
-.form-control.custom-input:focus {
-  border-color: #3659A2 !important;
-  outline: none !important;
-  box-shadow: 0 0 0 0.1rem rgba(54, 89, 162, 0.25) !important;
+.form-control.custom-input:focus,
+textarea.custom-input:focus {
+  border-color: #3659A2;
+  box-shadow: 0 0 0 0.15rem rgba(54, 89, 162, 0.25);
+  outline: none;
 }
 
 .input-group-text {
-  border: 1px solid #3659A2 !important;
-  border-left: none !important;
-  color: #3659A2 !important;
-  background-color: transparent !important;
-  font-weight: 100 !important;
-  font-size: 0.8rem !important;
+  background-color: #d9d9d9;
+  border: 1px solid #3659A2;
+  color: #3659A2;
+  font-size: 0.9rem;
 }
 
 button.btn.btn-outline-primary {
-  border-color: #3659A2 !important;
-  color: #3659A2 !important;
+  border-color: #3659A2;
+  color: #3659A2;
+  font-weight: 600;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 button.btn.btn-outline-primary:hover {
-  background-color: #3659A2 !important;
-  color: white !important;
+  background-color: #3659A2;
+  color: white;
+}
+.profile-info-view-mode {
+  background-color: #dee2e6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.description-box {
+  background-color:#f0f2f4;
+   border:2px solid #3659A2;
+
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
+  margin-top: 1.5rem;
+}
+.bi {
+  color: #3659A2;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+.profile-info-view-mode div {
+  font-weight: 400;
+  color: #3659A2;
 }
 
-a, p {
-  color: #3659A2 !important;
-  text-decoration: none;
+.profile-info-view-mode strong {
+  font-weight: 600;
 }
-
-a:hover {
-  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+.info-data {
+  font-weight: 400;
+  color: #3659A2;
+  font-size: 0.96rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  opacity: 0.95;
+}
+strong + .info-data {
+  margin-left: 0.4rem;
+  display: inline-block;
+}
+.form-control.custom-input,
+textarea.custom-input {
+  border: 1px solid #3659A2;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  color: #495057; /* Neutral dark gray for input text */
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.password-actions a {
+  color: #3659A2;
+  text-decoration: underline;
+  font-weight: 400;
+  font-size: 0.85rem;
+  font-family: Georgia, 'Times New Roman', serif;
 }

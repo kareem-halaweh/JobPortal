@@ -1,0 +1,98 @@
+.resume-tips-box {
+  background-color: #F1F4F9;
+  border: 1px solid #3659A2;
+  border-radius: 20px;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3659A2;
+}
+
+.resume-tips-box h5,
+.upload-container label {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  color: #3659A2;
+}
+
+.resume-tips-box ul {
+  padding-left: 1rem;
+}
+
+.resume-tips-box li::marker {
+  color: #3659A2;
+}
+
+.upload-container {
+  background-color: #F1F4F9;
+  border: 1px solid #3659A2;
+  border-radius: 20px;
+  padding: 20px;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3659A2;
+}
+
+.upload-container input[type="file"],
+.upload-container input[type="text"] {
+  border: 1px solid #3659A2;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #3659A2;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.upload-container .mt-3 {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.upload-container .mt-3 > .d-flex {
+  align-items: center;
+}
+
+.upload-container i.bi {
+  font-size: 1.2rem;
+  color: #dc3545;
+}
+
+.upload-container .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.upload-container .btn-danger:hover {
+  background-color: #c82333;
+}
+
+.upload-container .mt-4 {
+  margin-top: 1.5rem;
+}
+
+.desc-input {
+  max-width: 240px;
+  border: 1px solid #3659A2;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #3659A2;
+  background-color: #fff;
+}
+
+.plain-remove-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.plain-remove-btn:hover {
+  color: #a71d2a;
+}

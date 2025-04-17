@@ -2,18 +2,6 @@ body {
   font-family: Georgia, 'Times New Roman', serif;
 }
 
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #3659A2;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: transparent;
-  padding: 0;
-  display: inline-block;
-}
-
 h5.fw-bold {
   font-family: Georgia, 'Times New Roman', serif;
   color: #3659A2;
@@ -45,7 +33,8 @@ h5.fw-bold {
 }
 
 .sidebar {
-  background-color: #DDE5F4;
+  width: 270px;
+  background-color: #f8f9fa;
   border-radius: 0 20px 20px 0;
   color: #000;
   border: 2px solid #3659A2;
@@ -56,9 +45,10 @@ h5.fw-bold {
 }
 
 .toggle-sidebar-btn {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
   position: fixed;
-  top: 1rem;
+  top: 5rem;
   left: 0;
   z-index: 1051;
   background: none;
@@ -71,7 +61,7 @@ h5.fw-bold {
 }
 
 .toggle-sidebar-btn.arrow-shifted {
-  transform: translateX(250px);
+  transform: translateX(200px);
 }
 
 @keyframes bob {
@@ -106,7 +96,7 @@ h5.fw-bold {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 200px;
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
@@ -117,11 +107,12 @@ h5.fw-bold {
   }
 
   .main-wrapper.sidebar-open {
-    transform: translateX(250px);
+    transform: translateX(200px);
   }
 
   .toggle-sidebar-btn {
-    display: block;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .main-content {
@@ -144,4 +135,8 @@ h5.fw-bold {
   .toggle-sidebar-btn {
     display: none;
   }
+}
+
+.sidebar .nav {
+  margin-top: 2rem;
 }
