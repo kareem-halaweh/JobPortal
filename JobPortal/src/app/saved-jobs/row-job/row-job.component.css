@@ -1,0 +1,63 @@
+th, td {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #3E61A6;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #E6EEFF;
+}
+
+tr:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+.actions button {
+  margin: 5px 3px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+
+
+
+.reject {
+  background-color: #3E61A6;
+  color: white;
+}
+
+.reject:hover {
+  background-color: #5d7dc1;
+}
+
+.header h2 {
+  font-size: 18px;
+}
+
+.filters label {
+  font-size: 12px;
+}
+
+.filters select {
+  font-size: 12px;
+}
+
+th, td {
+  font-size: 12px;
+  padding: 10px 6px;
+}
+
+.actions button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
