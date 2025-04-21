@@ -28,6 +28,10 @@ import {LogoutSuccessComponent} from './User Roles & Authentication/logout/logou
 import {NgModule} from '@angular/core';
 import {SignupEmployerComponent} from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import {HomeComponent} from './home/home.component';
+import { SeekerUploadResumeComponent } from './seeker-pages/seeker-upload-resume/seeker-upload-resume.component';
+
+
+
 
 export const routes: Routes = [
 
@@ -65,9 +69,10 @@ export const routes: Routes = [
     ]
   }];
 
-;
 @NgModule({
+
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule]
 })export class AppRoutingModule { }
 

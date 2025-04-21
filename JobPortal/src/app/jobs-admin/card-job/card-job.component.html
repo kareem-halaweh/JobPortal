@@ -1,0 +1,36 @@
+<div class="card-hover shadow-lg me-3 position-relative mb-1 d-flex flex-column justify-content-between"
+     style="transition: all 0.5s ease;   color: #3E61A6; border-radius: 16px; font-size: 1.1rem; padding: 20px; height: 100%; min-height: 350px; width: 100%;"
+>
+
+
+  <div class="d-flex justify-content-between align-items-start mb-3">
+    <img [src]="imageUrl" alt="logo" class="img-fluid" style="max-width: 80px; height: auto;">
+    <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4>
+    <i class="fas fa-heart" style="color: #C9DBFF; font-size: 1.6rem; "></i>
+  </div>
+
+
+  <div class="mb-3">
+    <div class="mb-2 d-flex align-items-center"><i class="fas fa-building me-2"></i> <span>{{ company }}</span></div>
+    <div class="mb-2 d-flex align-items-center"><i class="fas fa-map-marker-alt me-2"></i> {{ location }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="fas fa-clock me-2"></i> {{ type }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="fas fa-calendar-alt me-2"></i> {{ Date }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="fas fa-money-bill-wave me-2"></i>{{ salary }}</div>
+  </div>
+
+
+  <div class="d-flex justify-content-start gap-2">
+    <button class="btn btn-md flex-fill" style="background:#3E61A6; color:#FFFFFF; min-width: 100px;">delete job</button>
+
+    <button class="btn btn-md flex-fill" style="background:#3E61A6; color:#FFFFFF; min-width: 100px;">view</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

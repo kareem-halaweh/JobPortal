@@ -1,0 +1,28 @@
+<div class="container-md rounded-4 p-3 mb-5 border-1 shadow-md" style="background-color: rgba(233,233,233,0.41);">
+  <h2 class="d-flex justify-content-center align-items-center m-4" style="color:#3659A2">Real Stories</h2>
+  <div id="carouselExampleInterval" class="carousel slide m-3 mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        *ngFor="let t of data; let i = index"
+        [class.active]="i === 0"
+        [attr.data-bs-interval]="10000"
+      >
+        <div class="d-flex justify-content-center">
+          <div class="w-75">
+            <app-carousel-card [data]="t"></app-carousel-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
