@@ -1,0 +1,25 @@
+
+
+.enen{
+  background-color: #E6EEFF;
+  color: #3E61A6;
+
+}
+.odd{
+  background-color: #FFFFFF;
+}
+th, td {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #3E61A6;
+  color: white;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #FFFFFF;
+}
