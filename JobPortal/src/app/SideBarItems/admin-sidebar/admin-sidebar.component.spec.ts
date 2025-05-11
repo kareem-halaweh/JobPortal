@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeekerProfileComponent } from './seeker-profile.component';
+import { AdminSidebarComponent } from './admin-sidebar.component';
 
-describe('SeekerProfileComponent', () => {
-  let component: SeekerProfileComponent;
-  let fixture: ComponentFixture<SeekerProfileComponent>;
+describe('AdminSidebarComponent', () => {
+  let component: AdminSidebarComponent;
+  let fixture: ComponentFixture<AdminSidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SeekerProfileComponent]
+      imports: [AdminSidebarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeekerProfileComponent);
+    fixture = TestBed.createComponent(AdminSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

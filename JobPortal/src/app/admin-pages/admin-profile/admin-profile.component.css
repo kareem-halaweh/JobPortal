@@ -3,6 +3,7 @@
   overflow: hidden;
   position: relative;
   background-color: #ccc;
+  z-index: 2;
 }
 
 .profile-banner img {
@@ -23,11 +24,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.edit-icon-right i {
-  font-size: 1.4rem;
-  color: #1B2A41;
-}
-
 .edit-banner-icon {
   position: absolute;
   top: 12px;
@@ -38,10 +34,6 @@
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-}
-
-.edit-banner-icon i {
-  color: #1B2A41;
 }
 
 .profile-img {
@@ -68,10 +60,6 @@
   z-index: 5;
 }
 
-.edit-profile-img-icon i {
-  color: #1B2A41;
-}
-
 .section-title {
   font-weight: bold;
   color: #1B2A41;
@@ -92,7 +80,6 @@
 
 .main-profile-card,
 .famous-jobs-card {
-  margin-top: -100px;
   z-index: 2;
   position: relative;
 }
@@ -103,19 +90,11 @@
   z-index: 1;
 }
 
-.uploaded-file {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.4rem;
-  font-size: 0.92rem;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 6px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.uploaded-file i {
-  color: #d9534f;
-  margin-right: 6px;
+.employer-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .form-control {
@@ -153,16 +132,8 @@ img {
   height: auto;
 }
 
-@media (max-width: 767px) {
-  .main-profile-card,
-  .bordered-card {
-    margin-top: 1rem;
-  }
-}
-
 body,
 p,
-h1, h2, h3, h4, h5, h6,
 label,
 span,
 input,
@@ -170,76 +141,6 @@ textarea {
   color: #1B2A41 !important;
 }
 
-.bi-plus-circle {
-  transition: 0.2s ease;
-}
-
-.bi-plus-circle:hover {
-  transform: scale(1.1);
-}
-
-.plus-icon {
-  font-size: 1.3rem;
-  color: #1B2A41;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.plus-icon:hover {
-  transform: scale(1.1);
-}
-
-.remove-icon {
-  color: #dc3545;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-right: 6px;
-  transition: 0.2s ease;
-}
-
-.remove-icon:hover {
-  color: #b02a37;
-}
-
-.upload-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.upload-modal-content {
-  background: white;
-  padding: 24px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-.small-link:link {
-  color: #0000EE; /* Unvisited standard blue */
-}
-
-.small-link:visited {
-  color: #551A8B; /* Visited standard purple */
-}
-
-.small-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.small-link:hover {
-  text-decoration: underline;
-}
 .small-link:link,
 .small-link:visited {
   color: #0000EE;
@@ -291,7 +192,6 @@ textarea {
 }
 @media (max-width: 768px) {
   .main-profile-card {
-    margin-top: -70px !important;
   }
 
   .profile-banner {

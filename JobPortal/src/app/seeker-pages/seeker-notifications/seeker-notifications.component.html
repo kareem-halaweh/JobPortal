@@ -1,0 +1,23 @@
+<div class="notifications-wrapper">
+  <div *ngFor="let note of visibleNotifications; let i = index" class="notification-row">
+    <div class="notification-card" [ngClass]="note.type">
+      <div class="sender-initial">{{ note.sender[0] }}</div>
+      <div class="content">
+        <p class="message"><strong>{{ note.sender }}:</strong> {{ note.message }}</p>
+        <div class="actions" *ngIf="note.actions.length > 0">
+          <button *ngFor="let action of note.actions" class="btn btn-sm">{{ action }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-right" [class.hide-line]="i === visibleNotifications.length - 1">
+      <div class="dot"></div>
+      <div class="date">{{ note.date }}</div>
+    </div>
+  </div>
+
+  <div class="load-more" *ngIf="hasMore">
+    <button class="btn btn-outline-secondary btn-sm" (click)="loadMore()">Load more</button>
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="sidebar-overlay" *ngIf="sidebarVisible && isMobileScreen" (click)="toggleSidebar()"></div>
+
+<div class="sidebar" [ngClass]="{ 'show-sidebar': sidebarVisible || !isMobileScreen, 'expanded': !isMobileScreen }">
+  <ul class="sidebar-menu">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['SeekerProfile']" routerLinkActive="active-tab">
+        <i class="bi bi-person"></i><span class="link-text">Profile</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['applications']" routerLinkActive="active-tab">
+        <i class="bi bi-card-list"></i><span class="link-text">Applications</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['saved-jobs']" routerLinkActive="active-tab">
+        <i class="bi bi-bookmark"></i><span class="link-text">Saved Jobs</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['view-applied-jobs']" routerLinkActive="active-tab">
+        <i class="bi bi-clock-history"></i><span class="link-text">View Applied Jobs</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['SNotifications']" routerLinkActive="active-tab">
+        <i class="bi bi-bell"></i><span class="link-text">Notifications</span>
+      </a>
+    </li>
+    <li class="nav-item logout">
+      <a class="nav-link" routerLink="/logout">
+        <i class="bi bi-box-arrow-right"></i><span class="link-text">Log Out</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<button class="toggle-sidebar-btn" (click)="toggleSidebar()">
+  <i class="bi" [ngClass]="sidebarVisible ? 'bi-x-lg' : 'bi-list'"></i>
+</button>

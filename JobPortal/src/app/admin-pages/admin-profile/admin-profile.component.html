@@ -1,0 +1,72 @@
+<div class="profile-banner position-relative">
+  <img [src]="bannerUrl" alt="Banner" class="w-100 h-100" />
+
+  <div *ngIf="isOwner && !isEditMode" class="edit-icon-right" (click)="toggleEdit()">
+    <i class="bi bi-gear-fill"></i>
+  </div>
+
+  <div *ngIf="isOwner && isEditMode" class="edit-banner-icon">
+    <label for="bannerInput"><i class="bi bi-pencil-fill"></i></label>
+    <input type="file" id="bannerInput" hidden (change)="onBannerImageChange($event)" />
+  </div>
+</div>
+
+<div class="container mt-0">
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-lg-8">
+      <div class="main-profile-card bordered-card shadow">
+        <div class="text-center position-relative">
+          <img [src]="profileImageUrl" class="profile-img" alt="Profile" />
+          <div *ngIf="isOwner && isEditMode" class="edit-profile-img-icon">
+            <label for="profileInput"><i class="bi bi-pencil-fill"></i></label>
+            <input type="file" id="profileInput" hidden (change)="onProfileImageChange($event)" />
+          </div>
+          <h4 class="mt-3">Admin Admin</h4>
+          <p class="text-muted">Admin</p>
+        </div>
+
+        <div *ngIf="!isEditMode" class="mt-4">
+          <p><i class="bi bi-envelope me-2"></i>{{ email }}</p>
+          <p><i class="bi bi-telephone me-2"></i>{{ phone }}</p>
+        </div>
+
+        <div *ngIf="isEditMode" class="mt-4">
+          <input class="form-control mb-2" [(ngModel)]="email" placeholder="Email" />
+          <input class="form-control mb-2" [(ngModel)]="phone" placeholder="Phone" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="bordered-card shadow p-3 mb-4 famous-jobs-card">
+        <h6 class="section-title">Most Reported Jobs</h6>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-flag-fill me-2"></i> Crypto Promoter</li>
+          <li><i class="bi bi-flag-fill me-2"></i> Fake Marketing Lead</li>
+          <li><i class="bi bi-flag-fill me-2"></i> Remote Entry Clerk</li>
+          <li><i class="bi bi-flag-fill me-2"></i> Unreal Software Tester</li>
+        </ul>
+      </div>
+
+      <div class="bordered-card shadow p-3 famous-companies-card">
+        <h6 class="section-title">Most Reported Employers</h6>
+        <div *ngFor="let emp of reportedEmployers" class="d-flex align-items-center mb-2">
+          <img [src]="emp.avatar" class="employer-avatar me-2" />
+          <span>{{ emp.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-between mt-2 px-1" *ngIf="isEditMode && isOwner">
+      <a routerLink="/changePassword" class="small-link">Change Password</a>
+      <a routerLink="/resetPassword" class="small-link">Forgot Password?</a>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2 mt-2" *ngIf="isEditMode && isOwner">
+      <button class="btn btn-primary" (click)="saveChanges()">Save</button>
+      <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
+    </div>
+
+  </div>
+</div>
