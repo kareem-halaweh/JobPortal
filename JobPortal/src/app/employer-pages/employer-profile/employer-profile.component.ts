@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class EmployerProfileComponent {
   isEditMode = false;
-  isOwner = true;
+  isOwner = false;
 
   companyName = 'Tech Easy Life Inc.';
   industry = 'Software Development';
@@ -21,8 +21,8 @@ export class EmployerProfileComponent {
   location = 'Ramallah, Palestine';
   description = 'Our company is made to make your life easier, join us and become on of us. ';
 
-  bannerUrl = 'logo.jpg';
-  profileImageUrl = 'pfp.jpg';
+  bannerUrl = 'banner.jpg';
+  profileImageUrl = 'logo1.png';
 
   topEmployers = [
     {name: 'Ahmad Yasin', avatar: 'pfp1.jpg'},

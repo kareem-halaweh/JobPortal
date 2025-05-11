@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-employer-notifications',
@@ -7,7 +7,8 @@ import { NgClass, NgForOf, NgIf } from '@angular/common';
   templateUrl: './employer-notifications.component.html',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    NgStyle
   ],
   styleUrls: ['./employer-notifications.component.css']
 })

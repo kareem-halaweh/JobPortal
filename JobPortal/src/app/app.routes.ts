@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import { SeekerNotificationsComponent } from './seeker-pages/seeker-notifications/seeker-notifications.component';
+
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';
+
+import { AdminProfileComponent } from './admin-pages/admin-profile/admin-profile.component';
+import { AdminNotificationsComponent } from './admin-pages/admin-notifications/admin-notifications.component';
 
 import { LoginComponent } from './User Roles & Authentication/login/login.component';
 import { ChangePasswordComponent } from './User Roles & Authentication/change-password/change-password.component';
@@ -13,27 +17,23 @@ import { ResetPasswordComponent } from './User Roles & Authentication/reset-pass
 import { ResetPasswordCodeComponent } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 import { ResetPassswordSuccessComponent } from './User Roles & Authentication/reset-password/reset-passsword-success/reset-passsword-success.component';
+
 import { SignupComponent } from './User Roles & Authentication/signup/signup.component';
 import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
+
 import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
 import { LogoutSuccessComponent } from './User Roles & Authentication/logout/logout-success/logout-success.component';
 
 import { FindJobComponent } from './find-job/find-job.component';
 import { CardDetailsComponent } from './find-job/card-details/card-details.component';
 
-import { HomeComponent } from './home/home.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
-
-import { SeekerSidebarComponent } from './SideBarItems/seeker-sidebar/seeker-sidebar.component';
-import { EmployerSidebarComponent } from './SideBarItems/employer-sidebar/employer-sidebar.component';
-import { AdminSidebarComponent } from './SideBarItems/admin-sidebar/admin-sidebar.component';
-import{AdminNotificationsComponent} from './admin-pages/admin-notifications/admin-notifications.component';
-import {AdminProfileComponent} from './admin-pages/admin-profile/admin-profile.component';
+import {HomeComponent} from './home/home.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
@@ -51,39 +51,37 @@ export const routes: Routes = [
 
   { path: 'jobs', component: FindJobComponent },
   { path: 'jobs/:id', component: CardDetailsComponent },
-
   {
-    path: 'home',
+    path: 'Seeker',
     component: HomeLayoutComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'SeekerProfile', component: SeekerProfileComponent },
-      { path: 'SNotifications', component: SeekerNotificationsComponent }
+      { path: '', component: HomeComponent}, // This loads on /Seeker
+      { path: 'Profile', component: SeekerProfileComponent },
+      { path: 'Notifications', component: SeekerNotificationsComponent }
     ]
   },
   {
     path: 'Employer',
-    component: HomeLayoutComponent,
-    children: [
-      { path: 'Profile', component: EmployerProfileComponent },
-      { path: 'Notifications', component: EmployerNotificationsComponent },
 
+    component: HomeLayoutComponent,
+
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'Profile', component: EmployerProfileComponent },
+      { path: 'Notifications', component: EmployerNotificationsComponent }
     ]
   },
   {
-    path: 'home',
+    path: 'Admin',
     component: HomeLayoutComponent,
     children: [
-      { path: 'AdminProfile', component: AdminProfileComponent },
-      { path: 'ANotifications', component: AdminNotificationsComponent },
-
+      { path: '', component: HomeComponent}, // This loads on /Admin
+      { path: 'Profile', component: AdminProfileComponent },
+      { path: 'Notifications', component: AdminNotificationsComponent }
     ]
-  },
-  { path: 'seeker-sidebar', component: SeekerSidebarComponent },
-  { path: 'employer-sidebar', component: EmployerSidebarComponent },
-  { path: 'admin-sidebar', component: AdminSidebarComponent },
 
-  { path: '**', redirectTo: 'home' }
+  }
+
 ];
 
 @NgModule({
@@ -91,3 +89,5 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+

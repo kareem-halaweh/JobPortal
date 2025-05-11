@@ -14,13 +14,15 @@ export class AdminProfileComponent {
   isEditMode = false;
   isOwner = true;
 
+  fullName = 'admin admin';
+  role = 'admin';
   email = 'admin@example.com';
   phone = '+1111111111';
 
   bannerUrl = 'banner.jpg';
-  profileImageUrl = 'admin.jpg';
+  profileImageUrl = 'pfp1.jpg';
 
-  reportedEmployers = [
+  topEmployers = [
     { name: 'Crypto Inc.', avatar: 'assets/avatars/avatar1.png' },
     { name: 'Scamify LLC', avatar: 'assets/avatars/avatar2.png' },
     { name: 'GhostJobs', avatar: 'assets/avatars/avatar3.png' }

@@ -3,6 +3,9 @@
   overflow: hidden;
   position: relative;
   background-color: #ccc;
+  z-index: 2;
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
 }
 
 .profile-banner img {
@@ -11,7 +14,8 @@
   object-fit: cover;
 }
 
-.edit-icon-right {
+.edit-icon-right,
+.edit-banner-icon {
   position: absolute;
   top: 12px;
   right: 16px;
@@ -23,24 +27,9 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.edit-icon-right i {
-  font-size: 1.4rem;
-  color: #1B2A41;
-}
-
-.edit-banner-icon {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  font-size: 1.2rem;
-  background-color: #ffffffd8;
-  padding: 6px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-}
-
+.edit-icon-right i,
 .edit-banner-icon i {
+  font-size: 1.4rem;
   color: #1B2A41;
 }
 
@@ -53,6 +42,9 @@
   margin-top: -60px;
   background-color: #f0f0f0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeSlideUp 0.7s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
 }
 
 .edit-profile-img-icon {
@@ -68,15 +60,35 @@
   z-index: 5;
 }
 
-.edit-profile-img-icon i {
-  color: #1B2A41;
-}
-
 .section-title {
   font-weight: bold;
   color: #1B2A41;
   margin-bottom: 1rem;
   font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  padding-bottom: 6px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.section-title:hover {
+  color: #3659A2;
+  letter-spacing: 0.3px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #3659A2;
+  transition: width 0.4s ease;
+}
+
+.section-title:hover::after {
+  width: 40%;
 }
 
 .bordered-card {
@@ -95,12 +107,17 @@
   margin-top: -100px;
   z-index: 2;
   position: relative;
+  animation: fadeSlideUp 0.6s ease forwards;
+  opacity: 0;
 }
 
 .famous-companies-card {
   margin-top: 10px;
   position: relative;
   z-index: 1;
+  animation: fadeSlideUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
 }
 
 .uploaded-file {
@@ -118,83 +135,61 @@
   margin-right: 6px;
 }
 
-.form-control {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 0.95rem;
+.clickable-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 10px;
+  position: relative;
+  backdrop-filter: blur(0px);
 }
 
-textarea {
-  resize: vertical;
+.clickable-item:hover {
+  background: rgba(27, 42, 65, 0.08);
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(3px);
 }
 
-.btn {
-  font-family: 'Segoe UI', sans-serif;
+.clickable-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  height: 2px;
+  width: 0;
+  background-color: #F5A623;
+  transition: width 0.3s ease;
 }
 
-.card ul {
-  padding-left: 0;
-  list-style: none;
+.clickable-item:hover::after {
+  width: 80%;
 }
 
-.card li {
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-}
-
-.card li i {
-  margin-right: 8px;
+.clickable-item i {
   color: #1B2A41;
-  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.clickable-item:hover i {
+  color: #F5A623;
 }
 
-@media (max-width: 767px) {
-  .main-profile-card,
-  .bordered-card {
-    margin-top: 1rem;
-  }
-}
-
-body,
-p,
-h1, h2, h3, h4, h5, h6,
-label,
-span,
-input,
-textarea {
-  color: #1B2A41 !important;
-}
-
-.bi-plus-circle {
-  transition: 0.2s ease;
-}
-
-.bi-plus-circle:hover {
-  transform: scale(1.1);
-}
-
-.plus-icon {
+.plus-icon,
+.remove-icon {
   font-size: 1.3rem;
-  color: #1B2A41;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
-.plus-icon:hover {
+.plus-icon:hover,
+.remove-icon:hover {
   transform: scale(1.1);
 }
 
 .remove-icon {
   color: #dc3545;
-  font-size: 1.2rem;
-  cursor: pointer;
   margin-right: 6px;
-  transition: 0.2s ease;
 }
 
 .remove-icon:hover {
@@ -223,38 +218,29 @@ textarea {
   max-width: 500px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
-.small-link:link {
-  color: #0000EE; /* Unvisited standard blue */
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.small-link:visited {
-  color: #551A8B; /* Visited standard purple */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.small-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.small-link:hover {
-  text-decoration: underline;
-}
-.small-link:link,
-.small-link:visited {
-  color: #0000EE;
-}
-
-.small-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.small-link:hover {
-  text-decoration: underline;
-  color: #0033cc;
-}
 @media (max-width: 768px) {
   .main-profile-card,
   .famous-jobs-card,
@@ -282,30 +268,147 @@ textarea {
     padding: 0 8px;
   }
 }
-
-@media (min-width: 769px) {
-  .main-profile-card,
-  .famous-jobs-card {
-    margin-top: -100px;
+@keyframes shineText {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
   }
 }
-@media (max-width: 768px) {
-  .main-profile-card {
-    margin-top: -70px !important;
-  }
 
-  .profile-banner {
-    height: 180px;
-  }
 
-  .profile-img {
-    width: 80px;
-    height: 80px;
-    margin-top: -50px;
-  }
+.seeker-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1B2A41;
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
 
-  .edit-profile-img-icon {
-    right: calc(50% - 40px);
-    top: -5px;
+.seeker-name:hover {
+  animation: shineText 1.2s linear infinite;
+  transform: scale(1.05);
+  letter-spacing: 0.5px;
+}
+
+
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
   }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+
+.clickable-item span {
+  color: #1B2A41;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.clickable-item span:hover {
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: shineText 1.2s linear infinite;
+}
+
+
+.profile-info-block i,
+.profile-info i {
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.shiny-hover-on-hover {
+  color: #1B2A41;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.shiny-hover-on-hover:hover {
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: shineText 1.2s linear infinite;
+}
+.gradient-icon {
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.shiny-hover {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #3659A2;
+  transition: all 0.3s ease;
+}
+
+.shiny-hover:hover {
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: shineText 1.2s linear infinite;
+}
+
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+.static-gradient {
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.static-gradient {
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #1B2A41, #F5A623, #1B2A41);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.shiny-hover-on-hover:hover {
+  animation: shineText 1.2s linear infinite;
+}
+
+@keyframes shineText {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }

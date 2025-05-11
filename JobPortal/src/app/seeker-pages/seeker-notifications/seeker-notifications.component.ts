@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-seeker-notifications',
@@ -7,7 +7,8 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
   imports: [
     NgClass,
     NgIf,
-    NgForOf
+    NgForOf,
+    NgStyle
   ],
   styleUrls: ['./seeker-notifications.component.css']
 })
