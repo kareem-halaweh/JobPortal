@@ -1,0 +1,16 @@
+<div class="container mb-4">
+  <div class="row align-items-center text-center text-md-start">
+    <div class="col-12 col-md-4 mb-2 mb-md-0">
+      <h4 class="m-0">Favorite Jobs</h4>
+    </div>
+
+    <div class="col-12 col-md-8 d-flex justify-content-center justify-content-md-start flex-wrap gap-2">
+      <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
+      <button class="filter-btn" (click)="setFilter('part time')" [ngClass]="{ 'active': currentFilter === 'part time' }">Part Time</button>
+      <button class="filter-btn" (click)="setFilter('Full time')" [ngClass]="{ 'active': currentFilter === 'Full time' }">Full Time</button>
+    </div>
+  </div>
+</div>
+
+
+
