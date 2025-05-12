@@ -1,0 +1,112 @@
+<div class="profile-banner position-relative">
+  <img [src]="bannerUrl" alt="Banner" class="w-100 h-100" />
+
+  <div *ngIf="isOwner && !isEditMode" class="edit-icon-right" (click)="toggleEdit()">
+    <i class="bi bi-gear-fill"></i>
+  </div>
+
+  <div *ngIf="isOwner && isEditMode" class="edit-banner-icon">
+    <label for="bannerInput"><i class="bi bi-pencil-fill"></i></label>
+    <input type="file" id="bannerInput" hidden (change)="onBannerImageChange($event)" />
+  </div>
+</div>
+
+<div class="container mt-0">
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-lg-8">
+      <div class="main-profile-card bordered-card shadow profile-animate delay-1" style="height: 300px;">
+        <div class="text-center position-relative">
+          <img [src]="profileImageUrl" class="profile-img mb-2" alt="Profile" />
+          <div *ngIf="isOwner && isEditMode" class="edit-profile-img-icon">
+            <label for="profileInput"><i class="bi bi-pencil-fill"></i></label>
+            <input type="file" id="profileInput" hidden (change)="onProfileImageChange($event)" />
+          </div>
+          <h4 class="company-name mt-2">{{ fullName }}</h4>
+          <p class="text-muted">{{ role }}</p>
+        </div>
+
+        <div *ngIf="!isEditMode" class="mt-3">
+          <p><i class="bi bi-envelope gradient-icon"></i> {{ email }}</p>
+          <p><i class="bi bi-telephone gradient-icon"></i> {{ phone }}</p>
+        </div>
+
+        <div *ngIf="isEditMode" class="mt-3">
+          <input class="form-control mb-2" [(ngModel)]="fullName" placeholder="Full Name" />
+          <input class="form-control mb-2" [(ngModel)]="role" placeholder="Role" />
+          <input class="form-control mb-2" [(ngModel)]="email" placeholder="Email" />
+          <input class="form-control mb-2" [(ngModel)]="phone" placeholder="Phone" />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between" style="margin-top: 3px;">
+        <div class="side-card me-1 flex-fill">
+          <h6 class="section-title">Famous Jobs</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="clickable-item"><i class="bi bi-code-slash me-2"></i><span class="shiny-hover">Software Engineer</span></li>
+            <li class="clickable-item"><i class="bi bi-brush me-2"></i><span class="shiny-hover">Graphic Designer</span></li>
+            <li class="clickable-item"><i class="bi bi-heart-pulse me-2"></i><span class="shiny-hover">Nurse</span></li>
+            <li class="clickable-item"><i class="bi bi-briefcase me-2"></i><span class="shiny-hover">Business Analyst</span></li>
+          </ul>
+        </div>
+        <div class="side-card ms-1 flex-fill">
+          <h6 class="section-title">Famous Companies</h6>
+          <div class="d-flex align-items-center mb-2 clickable-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" style="height: 24px; margin-right: 8px;" />
+            <span class="shiny-hover">Google</span>
+          </div>
+          <div class="d-flex align-items-center mb-2 clickable-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" style="height: 24px; margin-right: 8px;" />
+            <span class="shiny-hover">Amazon</span>
+          </div>
+          <div class="d-flex align-items-center clickable-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" style="height: 24px; margin-right: 8px;" />
+            <span class="shiny-hover">Meta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="most-applied-card bordered-card shadow p-3 profile-animate delay-1" style="height: 300px;">
+        <h6 class="section-title">Most Applied Jobs</h6>
+        <ul class="list-unstyled">
+          <li class="clickable-item"><i class="bi bi-laptop me-2"></i><span class="shiny-hover">Web Developer</span></li>
+          <li class="clickable-item"><i class="bi bi-hospital me-2"></i><span class="shiny-hover">Medical Assistant</span></li>
+          <li class="clickable-item"><i class="bi bi-pencil me-2"></i><span class="shiny-hover">Content Writer</span></li>
+          <li class="clickable-item"><i class="bi bi-briefcase me-2"></i><span class="shiny-hover">Project Manager</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card mt-1 profile-animate delay-2">
+        <h6 class="section-title">Employers of the Month</h6>
+        <div class="d-flex align-items-center mb-2 clickable-item">
+          <img src="pfp1.jpg" class="employer-avatar me-2" />
+          <span class="shiny-hover">Ahmad Yasin</span>
+        </div>
+        <div class="d-flex align-items-center mb-2 clickable-item">
+          <img src="pfp2.jpg" class="employer-avatar me-2" />
+          <span class="shiny-hover">Ola Radi</span>
+        </div>
+        <div class="d-flex align-items-center mb-2 clickable-item">
+          <img src="pfp3.jpg" class="employer-avatar me-2" />
+          <span class="shiny-hover">Zena Ali</span>
+        </div>
+        <div class="d-flex align-items-center clickable-item">
+          <img src="pfp4.jpg" class="employer-avatar me-2" />
+          <span class="shiny-hover">Ali Yusuf</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-between mt-3 px-1 profile-animate delay-3" *ngIf="isEditMode && isOwner">
+      <a routerLink="/changePassword" class="small-link">Change Password</a>
+      <a routerLink="/resetPassword" class="small-link">Forgot Password?</a>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2 mt-2 profile-animate delay-3" *ngIf="isEditMode && isOwner">
+      <button class="btn btn-primary" (click)="saveChanges()">Save</button>
+      <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
+    </div>
+  </div>
+</div>

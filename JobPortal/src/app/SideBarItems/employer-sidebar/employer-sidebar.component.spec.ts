@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeekerProfileComponent } from './seeker-profile.component';
+import { EmployerSidebarComponent } from './employer-sidebar.component';
 
-describe('SeekerProfileComponent', () => {
-  let component: SeekerProfileComponent;
-  let fixture: ComponentFixture<SeekerProfileComponent>;
+describe('EmployerSidebarComponent', () => {
+  let component: EmployerSidebarComponent;
+  let fixture: ComponentFixture<EmployerSidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SeekerProfileComponent]
+      imports: [EmployerSidebarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeekerProfileComponent);
+    fixture = TestBed.createComponent(EmployerSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
