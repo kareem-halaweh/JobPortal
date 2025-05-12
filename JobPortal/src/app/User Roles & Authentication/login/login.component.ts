@@ -1,29 +1,45 @@
-import { Component } from '@angular/core';import {NgClass} from '@angular/common';
-import {RouterLink} from '@angular/router';
-import {LabelComponent} from '../../shared components/label/label.component';
-import {InputComponent} from '../../shared components/input/input.component';
-import {ButtonComponent} from '../../shared components/button/button.component';
-import {HeaderTextComponent} from '../../shared components/header-text/header.component';
+import {Component, OnInit} from '@angular/core';import {NgClass, NgIf} from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   imports: [
-    LabelComponent,
-    InputComponent,
-    NgClass,
-    ButtonComponent,
+
     RouterLink,
-    LabelComponent,
-    InputComponent,
-    ButtonComponent,
-    HeaderTextComponent,
-    HeaderTextComponent
+    NgIf,
+    ReactiveFormsModule,
+
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  loginForm!: FormGroup;
   submitted = false;
+
+  constructor(private fb: FormBuilder, private router: Router) {}
+
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['',[Validators.required, Validators.minLength(4)]]
+    });
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    if (this.loginForm.valid) {
+
+      this.router.navigate(['/home']);
+
+    }
+  }
 
 
 
