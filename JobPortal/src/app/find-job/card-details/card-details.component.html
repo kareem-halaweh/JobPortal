@@ -11,7 +11,7 @@
         </div>
 
         <div class="modal-body">
-          <!-- File Upload -->
+
           <div class="mb-3">
             <label for="resume" class="form-label">Upload your Resume (PDF)</label>
             <input type="file" class="form-control" id="resume" accept=".pdf" (change)="onFileSelected($event)">
@@ -56,6 +56,7 @@
       <p class="text-muted small mb-0">Los Angeles, USA • 14 hours ago</p>
     </div>
     <div class="col-md-4 text-end d-flex justify-content-end align-items-start">
+      <button class="btn btn-outline-secondary me-2">Report</button>
       <button class="btn btn-outline-secondary me-2">Save</button>
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#applyModal" >Apply</button>
     </div>
