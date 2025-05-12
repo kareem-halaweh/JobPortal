@@ -1,7 +1,7 @@
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-image: none; /* remove default white arrow */
-  color: #3659A2;          /* set text color (won't work alone without adding content) */
+  background-image: none;
+  color: #1B2A41;
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -10,14 +10,14 @@
 
 .carousel-control-prev-icon::after,
 .carousel-control-next-icon::after {
-  content: '‹'; /* left arrow */
+  content: '‹';
   font-size: 2.5rem;
-  color: #3659A2;
+  color: #1B2A41;
 }
 
 .carousel-control-next-icon::after {
-  content: '›'; /* right arrow */
+  content: '›';
 }
 h2{
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.12);
 }
