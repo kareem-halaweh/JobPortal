@@ -1,13 +1,7 @@
-<div class="profile-banner position-relative">
-  <img [src]="bannerUrl" alt="Banner" class="w-100 h-100" />
-
+<div class="position-relative">
+  <div class="profile-banner static-banner"></div>
   <div *ngIf="isOwner && !isEditMode" class="edit-icon-right" (click)="toggleEdit()">
     <i class="bi bi-gear-fill"></i>
-  </div>
-
-  <div *ngIf="isOwner && isEditMode" class="edit-banner-icon">
-    <label for="bannerInput"><i class="bi bi-pencil-fill"></i></label>
-    <input type="file" id="bannerInput" hidden (change)="onBannerImageChange($event)" />
   </div>
 </div>
 
