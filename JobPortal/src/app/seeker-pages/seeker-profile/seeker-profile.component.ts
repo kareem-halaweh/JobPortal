@@ -15,7 +15,7 @@ export class SeekerProfileComponent {
   isOwner: boolean =true;
   showUploadModal: boolean = false;
 
-  firstName = 'Wafaa';
+  firstName = 'Ahmad';
   lastName = 'Adham';
   title = 'Engineer';
   email = 'wafaa@example.com';
@@ -26,7 +26,6 @@ export class SeekerProfileComponent {
   dob = '1996-04-10';
   description = 'Passionate about innovation and software engineering.';
 
-  bannerUrl: string = 'banner.jpg';
   profileImageUrl: string = 'pfp.jpg';
 
   uploadedFiles: { title: string; file: File }[] = [];
@@ -80,14 +79,6 @@ export class SeekerProfileComponent {
     this.uploadedFiles.splice(index, 1);
   }
 
-  onBannerImageChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files?.[0]) {
-      const reader = new FileReader();
-      reader.onload = e => this.bannerUrl = e.target?.result as string;
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
 
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;
