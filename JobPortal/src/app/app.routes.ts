@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import { SeekerNotificationsComponent } from './seeker-pages/seeker-notifications/seeker-notifications.component';
+import {FavoriteJobsComponent} from './seeker-pages/favorite-jobs/favorite-jobs.component';
 
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';
@@ -30,6 +31,8 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
+import {AppliedJobsComponent} from './applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './application-status/application-status.component';
 
 
 export const routes: Routes = [
@@ -54,7 +57,10 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent},
       { path: 'Profile', component: SeekerProfileComponent },
-      { path: 'Notifications', component: SeekerNotificationsComponent }
+      { path: 'Notifications', component: SeekerNotificationsComponent },
+      { path: 'favorite-jobs', component: FavoriteJobsComponent },
+      {path: 'applied-jobs', component:AppliedJobsComponent},
+      {path: 'application-status', component:ApplicationStatusComponent}
     ]
   },
   {
@@ -74,7 +80,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent}, // This loads on /Admin
       { path: 'Profile', component: AdminProfileComponent },
-      { path: 'Notifications', component: AdminNotificationsComponent }
+      { path: 'Notifications', component: AdminNotificationsComponent },
+      { path: 'admin-jobs', component: AdminNotificationsComponent }
     ]
 
   }

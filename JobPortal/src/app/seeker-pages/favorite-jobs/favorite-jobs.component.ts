@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { NgForOf, NgIf} from '@angular/common';
-import { savedJob } from '../models/savedjobs.model';
-import {savejobsService} from '../services/savedjobs.service';
+import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
+import { savedJob } from '../../models/savedjobs.model';
+import {savejobsService} from '../../services/savedjobs.service';
 import {FiltersFavoriteJobsComponent} from './filters-favorite-jobs/filters-favorite-jobs.component';
 
 
@@ -11,7 +11,8 @@ import {FiltersFavoriteJobsComponent} from './filters-favorite-jobs/filters-favo
   imports: [
     NgIf,
     NgForOf,
-    FiltersFavoriteJobsComponent
+    FiltersFavoriteJobsComponent,
+    NgOptimizedImage
   ],
   templateUrl: './favorite-jobs.component.html',
   styleUrl: './favorite-jobs.component.css'

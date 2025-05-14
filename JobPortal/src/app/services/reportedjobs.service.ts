@@ -12,7 +12,7 @@ export class reportejobsService{
       company:'goole',
       reason:'Fraud',
       date: '20/04/2024',
-      imageUrl: 'assets/download.jpeg'
+      imageUrl: 'download.jpeg'
     },{
       id: 2,
       job_title: 'Digital Marketing Executive',
