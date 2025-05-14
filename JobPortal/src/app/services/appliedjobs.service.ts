@@ -10,7 +10,7 @@ export class jobAppliedService {
 
       jobTitle: 'Digital Marketing Executive',
       companyName: 'Google',
-      imageUrl: 'assets/download.jpeg',
+      imageUrl: 'download.jpeg',
       status: 'pending',
       date: '2025-05-02'
     },
@@ -20,7 +20,7 @@ export class jobAppliedService {
       jobTitle: 'Frontend Developer',
       companyName: 'Meta',
       type:'part time',
-      imageUrl: 'assets/download.jpeg',
+      imageUrl: 'download.jpeg',
       status: 'accepted',
       date: '2025-04-28'
     },
@@ -29,7 +29,7 @@ export class jobAppliedService {
       type: 'Full Time',
       jobTitle: 'Digital Marketing Executive',
       companyName: 'Google',
-      imageUrl: 'assets/download.jpeg',
+      imageUrl: 'download.jpeg',
       status: 'rejected',
       date: '2025-05-02'
     },
@@ -38,7 +38,7 @@ export class jobAppliedService {
       jobTitle: 'Frontend Developer',
       companyName: 'Meta',
       type:'part time',
-      imageUrl: 'assets/download.jpeg',
+      imageUrl: 'download.jpeg',
       status: 'accepted',
       date: '2025-04-28'
     },{
@@ -47,7 +47,7 @@ export class jobAppliedService {
       type: 'Full Time',
       jobTitle: 'Digital Marketing Executive',
       companyName: 'Google',
-      imageUrl: 'assets/download.jpeg',
+      imageUrl: 'download.jpeg',
       status: 'pending',
       date: '2025-05-02'
     }];

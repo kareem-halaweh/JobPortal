@@ -11,7 +11,7 @@ export class savejobsService{
       link:'',
       type: 'Full time',
       position: 'nablus',
-      imageUrl: 'assets/download.jpeg'
+      imageUrl: 'download.jpeg'
 
     }];
 
