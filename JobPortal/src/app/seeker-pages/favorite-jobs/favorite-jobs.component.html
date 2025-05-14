@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <app-filters-favorite-jobs
+    [currentFilter]="filter"
+    (filterChanged)="Changestatus($event)">
+  </app-filters-favorite-jobs>
+
+
+
+  <div *ngIf="savedJobs.length === 0" class="mb-3 rounded shadow-sm p-3 border-light">
+    You haven't saved any jobs yet.
+  </div>
+
+  <div *ngFor="let job of filteredJobs" class="card mb-3 rounded shadow-sm p-3 border-light">
+    <div class="d-flex">
+      <img [ngSrc]="job.imageUrl" alt="Company Image"   width="90" height="90"
+           class="me-3"
+           style=" object-fit: contain; border-radius: 8px;">
+
+      <div>
+        <h5 class="mb-2">{{ job.job_title }}</h5>
+        <div class="d-flex flex-column flex-sm-row gap-3 text-muted">
+          <p class="mb-0"><i class="bi bi-building me-1"></i>{{ job.company }}</p>
+          <p class="mb-0"><i class="bi bi-geo-alt me-1"></i>{{ job.position }}</p>
+          <p class="mb-0"><i class="bi bi-clock me-1"></i>{{ job.type }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 d-flex justify-content-end">
+      <button class="btn btn-sm "
+              (click)="removeJob(job.id)">
+        Remove
+      </button>
+    </div>
+  </div>
+
+
+</div>

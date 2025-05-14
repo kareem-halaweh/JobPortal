@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import { SeekerNotificationsComponent } from './seeker-pages/seeker-notifications/seeker-notifications.component';
-import {FavoriteJobsComponent} from './favorite-jobs/favorite-jobs.component';
+import {FavoriteJobsComponent} from './seeker-pages/favorite-jobs/favorite-jobs.component';
 
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';

@@ -1,16 +1,15 @@
-<div class="container mb-4">
-  <div class="row align-items-center text-center text-md-start">
-    <div class="col-12 col-md-4 mb-2 mb-md-0">
-      <h4 class="m-0">saved Jobs</h4>
+<div class="container mb-2">
+  <div class="d-flex flex-row align-items-center justify-content-between flex-nowrap gap-2">
+    <div class="text-start">
+      <h4 class="fw-bold m-0">Saved Jobs</h4>
     </div>
-
-    <div class="col-12 col-md-8 d-flex justify-content-center justify-content-md-start flex-wrap gap-2">
+    <div class="d-flex justify-content-center flex-nowrap gap-2" style="flex-grow: 1; justify-content: center;">
       <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
       <button class="filter-btn" (click)="setFilter('part time')" [ngClass]="{ 'active': currentFilter === 'part time' }">Part Time</button>
       <button class="filter-btn" (click)="setFilter('Full time')" [ngClass]="{ 'active': currentFilter === 'Full time' }">Full Time</button>
     </div>
+
   </div>
 </div>
-
 
 
