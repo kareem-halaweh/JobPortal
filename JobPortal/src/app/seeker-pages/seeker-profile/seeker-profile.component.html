@@ -1,127 +1,117 @@
-<div class="profile-page-wrapper mx-auto" style="max-width: 800px;">
-
-
-  <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-    <div class="d-flex align-items-center">
-      <img src="" class="profile-pic-large me-3">
-      <h4 class="fw-bold mt-2 mb-0">{{ firstName }} {{ lastName }}</h4>
-    </div>
-
-    <ng-container *ngIf="!isEditMode">
-      <button type="button" class="btn btn-outline-primary px-4" (click)="toggleEdit()">EDIT</button>
-    </ng-container>
+<div class="profile-banner static-banner">
+  <div *ngIf="isOwner && !isEditMode" class="edit-icon-right" (click)="toggleEdit()">
+    <i class="bi bi-gear-fill"></i>
   </div>
+</div>
 
+<div class="container mt-0">
+  <div class="row g-4 justify-content-center">
+    <div class="col-lg-8">
+      <div class="main-profile-card bordered-card shadow profile-animate delay-1">
+        <div class="text-center position-relative">
+          <img [src]="profileImageUrl" class="profile-img" alt="Profile" />
+          <div *ngIf="isOwner && isEditMode" class="edit-profile-img-icon">
+            <label for="profileInput"><i class="bi bi-pencil-fill"></i></label>
+            <input type="file" id="profileInput" hidden (change)="onProfileImageChange($event)" />
+          </div>
+          <h4 class="mt-3 seeker-name shine-hover">{{ firstName }} {{ lastName }}</h4>
+          <p class="text-muted">{{ title }}</p>
+        </div>
 
-  <ng-container *ngIf="!isEditMode">
-    <div class="row g-3 mb-4">
-      <div class="col-md-6">
-        <i class="bi bi-envelope me-1"></i>
-        <strong>Email:</strong>
-        <span class="info-data">{{ email }}</span>
-      </div>
-      <div class="col-md-6">
-        <i class="bi bi-telephone me-1"></i>
-        <strong>Phone:</strong>
-        <span class="info-data">{{ phone }}</span>
-      </div>
-      <div class="col-md-6">
-        <i class="bi bi-person me-1"></i>
-        <strong>Gender:</strong>
-        <span class="info-data">{{ gender }}</span>
-      </div>
-      <div class="col-md-6">
-        <i class="bi bi-hourglass-split me-1"></i>
-        <strong>Age:</strong>
-        <span class="info-data">{{ age }}</span>
-      </div>
-      <div class="col-md-6">
-        <i class="bi bi-geo-alt me-1"></i>
-        <strong>Location:</strong>
-        <span class="info-data">{{ location }}</span>
-      </div>
-      <div class="col-md-6">
-        <i class="bi bi-calendar-date me-1"></i>
-        <strong>Date of Birth:</strong>
-        <span class="info-data">{{ dob }}</span>
+        <div *ngIf="!isEditMode" class="mt-4 profile-info-block">
+          <p><i class="bi bi-envelope" style="color: #F5A623;"></i> {{ email }}</p>
+          <p><i class="bi bi-telephone" style="color: #F5A623;"></i> {{ phone }}</p>
+          <p><i class="bi bi-gender-ambiguous"></i> {{ gender }}</p>
+          <p><i class="bi bi-calendar3"></i> {{ age }}</p>
+          <p><i class="bi bi-geo-alt"></i> {{ location }}</p>
+          <p><i class="bi bi-cake"></i> {{ dob }}</p>
+          <p><i class="bi bi-info-circle"></i> {{ description }}</p>
+        </div>
+
+        <div *ngIf="isEditMode" class="mt-4">
+          <input class="form-control mb-2" [(ngModel)]="firstName" placeholder="First Name" />
+          <input class="form-control mb-2" [(ngModel)]="lastName" placeholder="Last Name" />
+          <input class="form-control mb-2" [(ngModel)]="title" placeholder="Title" />
+          <input class="form-control mb-2" [(ngModel)]="email" placeholder="Email" />
+          <input class="form-control mb-2" [(ngModel)]="phone" placeholder="Phone" />
+          <input class="form-control mb-2" [(ngModel)]="gender" placeholder="Gender" />
+          <input class="form-control mb-2" type="number" [(ngModel)]="age" placeholder="Age" />
+          <input class="form-control mb-2" [(ngModel)]="location" placeholder="Location" />
+          <input class="form-control mb-2" type="date" [(ngModel)]="dob" />
+          <textarea rows="3" class="form-control" [(ngModel)]="description" placeholder="About you..."></textarea>
+        </div>
       </div>
     </div>
 
-    <div class="description-box">
-      <strong>About:</strong>
-      <p class="mt-1 info-data">{{ description }}</p>
-    </div>
-  </ng-container>
+    <div class="col-lg-4">
+      <div class="bordered-card shadow p-3 mb-4 famous-jobs-card profile-animate delay-2">
+        <h6 class="section-title">Famous Jobs</h6>
+        <ul class="list-unstyled">
+          <li class="clickable-item"><i class="bi bi-code-slash me-2"></i><span class="static-gradient shiny-hover-on-hover">Software Engineer</span></li>
+          <li class="clickable-item"><i class="bi bi-brush me-2"></i><span class="static-gradient shiny-hover-on-hover">Graphic Designer</span></li>
+          <li class="clickable-item"><i class="bi bi-heart-pulse me-2"></i><span class="static-gradient shiny-hover-on-hover">Nurse</span></li>
+          <li class="clickable-item"><i class="bi bi-briefcase me-2"></i><span class="static-gradient shiny-hover-on-hover">Business Analyst</span></li>
+        </ul>
+      </div>
 
-
-  <ng-container *ngIf="isEditMode">
-    <form class="w-100">
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label class="form-label">First Name</label>
-          <input type="text" class="form-control custom-input" [(ngModel)]="firstName" name="firstName">
+      <div class="bordered-card shadow p-3 famous-companies-card profile-animate delay-3">
+        <h6 class="section-title">Famous Companies</h6>
+        <div class="d-flex align-items-center mb-2 clickable-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" style="height: 24px; margin-right: 8px;" />
+          <span class="static-gradient shiny-hover-on-hover">Google</span>
         </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Last Name</label>
-          <input type="text" class="form-control custom-input" [(ngModel)]="lastName" name="lastName">
+        <div class="d-flex align-items-center mb-2 clickable-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" style="height: 24px; margin-right: 8px;" />
+          <span class="static-gradient shiny-hover-on-hover">Amazon</span>
         </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Gender</label>
-          <input type="text" class="form-control custom-input" [(ngModel)]="gender" name="gender">
-        </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Age</label>
-          <input type="number" class="form-control custom-input" [(ngModel)]="age" name="age">
-        </div>
-        <div class="col-12 mb-3">
-          <label class="form-label">Registered Email</label>
-          <input type="email" class="form-control custom-input" [(ngModel)]="email" name="email">
-        </div>
-        <div class="col-12 mb-3">
-          <label class="form-label">Phone Number</label>
-          <input type="tel" class="form-control custom-input" [(ngModel)]="phone" name="phone">
-        </div>
-
-
-
-        <div class="col-12 mb-3">
-          <label class="form-label">Registered Password</label>
-          <div class="input-group">
-            <input [type]="showPassword ? 'text' : 'password'" class="form-control custom-input" [(ngModel)]="password" name="password">
-            <span class="input-group-text" style="cursor: pointer;" (click)="togglePasswordVisibility()">
-  <i class="bi" [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'"></i>
-</span>
-
-          </div>
-
-          <div class="d-flex justify-content-between mt-1 password-actions" >
-            <a routerLink="/changePassword"><small style="cursor: pointer;">Change Password</small></a>
-            <a routerLink="/resetPassword"><small style="cursor: pointer;">Forgot Password?</small></a>
-          </div>
-        </div>
-        <div class="col-12 mb-3">
-          <label class="form-label">Location</label>
-          <div class="input-group">
-            <input type="text" class="form-control custom-input" [(ngModel)]="location" name="location">
-            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
-          </div>
-        </div>
-        <div class="col-12 mb-3">
-          <label class="form-label">Date of Birth</label>
-          <div class="input-group">
-            <input type="text" class="form-control custom-input" [(ngModel)]="dob" name="dob">
-            <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
-          </div>
-        </div>
-        <div class="col-12 mb-3">
-          <label class="form-label">Description</label>
-          <textarea class="form-control custom-input info-data" rows="3" [(ngModel)]="description" name="description" placeholder="Add a short description..."></textarea>
-        </div>
-        <div class="col-12 text-start">
-          <button type="button" class="btn btn-outline-primary px-4" (click)="toggleEdit()">SAVE</button>
+        <div class="d-flex align-items-center clickable-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" style="height: 24px; margin-right: 8px;" />
+          <span class="static-gradient shiny-hover-on-hover">Meta</span>
         </div>
       </div>
-    </form>
-  </ng-container>
+    </div>
 
+    <div class="col-lg-12" *ngIf="isOwner || uploadedFiles.length > 0">
+      <div class="bordered-card shadow p-3 position-relative profile-animate delay-3">
+        <h6 class="section-title d-flex justify-content-between align-items-center">
+          Uploaded Documents
+          <i *ngIf="isOwner && !isEditMode" class="bi bi-plus-circle plus-icon" (click)="toggleUploadModal()"></i>
+        </h6>
+        <div *ngIf="uploadedFiles.length > 0; else noDocs">
+          <div *ngFor="let file of uploadedFiles; let i = index" class="uploaded-file">
+            <ng-container *ngIf="isEditMode && isOwner">
+              <i class="bi bi-dash-circle-fill remove-icon me-2" (click)="removeFile(i)"></i>
+            </ng-container>
+            <i class="bi bi-file-earmark-pdf me-2 text-danger"></i>
+            <a [href]="getFileUrl(file.file)" target="_blank" rel="noopener noreferrer" class="text-danger">{{ file.title }}</a>
+          </div>
+        </div>
+        <ng-template #noDocs>
+          <p *ngIf="isOwner" class="text-muted">No documents uploaded.</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="showUploadModal" class="upload-modal-overlay">
+      <div class="upload-modal-content">
+        <h6 class="section-title">Upload New Files</h6>
+        <input type="file" class="form-control mb-2" (change)="onFileSelected($event)" />
+        <input type="text" class="form-control mb-2" placeholder="Enter file title (e.g., CV)" [(ngModel)]="newFileTitle" />
+        <div class="d-flex justify-content-end gap-2">
+          <button class="btn btn-primary btn-sm" (click)="addFileFromModal()">Add File</button>
+          <button class="btn btn-secondary btn-sm" (click)="toggleUploadModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-between mt-2 px-1" *ngIf="isEditMode && isOwner">
+      <a routerLink="/changePassword" class="small-link">Change Password</a>
+      <a routerLink="/resetPassword" class="small-link">Forgot Password?</a>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2 mt-2" *ngIf="isEditMode && isOwner">
+      <button class="btn btn-primary" (click)="saveChanges()">Save</button>
+      <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
+    </div>
+  </div>
 </div>

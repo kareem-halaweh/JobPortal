@@ -1,0 +1,12 @@
+.filter-btn {
+  border-radius: 30px;
+  padding: 6px 20px;
+  border: none;
+  background-color: #e5e7eb;
+  color:#232945;
+  transition: all 0.3s;
+}
+.filter-btn.active {
+  background-color:#F4B400 ;
+  color: #FFFFFF;
+}

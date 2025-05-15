@@ -15,7 +15,7 @@ export class CarouselComponent {
   data = [
     {
       name: 'Mohammed Shamsuddin',
-      quote: 'I got selected by Said Bawazeer Trading as a Product Sales Supervisor. This platform really helped me reach that goal—smooth and rewarding experience!',
+      quote: 'I got selected by Said Bawazeer Trading as a Product Sales Supervisor. This platform really helped me reach that goal smooth and rewarding experience!',
       company: 'SAID BAWAZIR · Sales',
 
     },

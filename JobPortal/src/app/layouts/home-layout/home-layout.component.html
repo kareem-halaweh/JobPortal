@@ -1,0 +1,13 @@
+<div class="container-fluid p-0" style="background-color: #f8f9fa; min-height: 100vh;">
+  <div class="d-flex">
+
+    <ng-container [ngSwitch]="currentRole">
+      <app-seeker-sidebar *ngSwitchCase="'Seeker'"></app-seeker-sidebar>
+      <app-employer-sidebar *ngSwitchCase="'Employer'"></app-employer-sidebar>
+      <app-admin-sidebar *ngSwitchCase="'Admin'"></app-admin-sidebar>
+    </ng-container>
+
+    <div class="flex-grow-1" style="padding: 2rem 2rem 2rem 3.5rem;">
+      <router-outlet></router-outlet>
+    </div>
+  </div></div>

@@ -1,11 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {NgClass, NgIf} from '@angular/common';
+import { NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-input',
   imports: [
-    NgIf,
-    NgClass
+    NgIf
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'

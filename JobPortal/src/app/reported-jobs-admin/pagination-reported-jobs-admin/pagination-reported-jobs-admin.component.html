@@ -1,0 +1,14 @@
+<nav class="custom-pagination mt-1">
+  <ul class="pagination">
+    <li *ngFor="let page of pages"
+        [ngClass]="{ 'active': page === currentPage }">
+      <a class="page-link"
+         (click)="goToPage(page)"
+         [ngClass]="{ 'active-page': page === currentPage }">
+        {{ page }}
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
