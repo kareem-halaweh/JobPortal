@@ -1,5 +1,4 @@
-<div class="container shadow rounded mt-3 table-responsive" style="background: #FFFFFF; ">
-  <table class="table rounded align-middle text-center" style="color:#1F2F44;">
+  <table class="table shadow-sm rounded align-middle text-center gap-2" style="color:#1F2F44;background: #EDEDEE;">
     <thead >
     <tr>
       <th>Job Title</th>
@@ -14,27 +13,32 @@
     <tr *ngFor="let JobApplied of displayedApplied">
 
       <td >
-        <a href="#" class="text-dark text-decoration-none">{{ JobApplied.jobTitle }}</a>
+        <a href="#" class="text-dark justify-content-start text-decoration-none">{{ JobApplied.jobTitle }}</a>
       </td>
 
       <td >{{ JobApplied.type }}</td>
 
       <td >
         <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center" style="color:#1F2F44;">
-          <img [src]="JobApplied.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" />
+          <img [ngSrc]="JobApplied.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" />
           {{ JobApplied.companyName}}
         </a>
       </td>
       <td >{{ JobApplied.date }}</td>
+    <td>  <span
+      [ngClass]="{
+    'badge-pending  shadow-sm px-3 py-2 fw-medium': JobApplied.status === 'pending',
+    'badge-accepted  shadow-sm px-3 py-2 fw-medium': JobApplied.status === 'accepted',
+    'badge-rejected  shadow-sm px-3 py-2 fw-medium': JobApplied.status === 'rejected'
+  }"
+    >
+  {{ JobApplied.status }}
+</span>
 
-      <td>
-      <span class="badge px-3 py-2" [ngClass]="getStatus(JobApplied.status)">
-        {{ JobApplied.status }}
-      </span>
-      </td>
+    </td>
       <td><button (click)="removeJob(JobApplied.id)"
                   class="btn btn-sm " style="background: #F4B400;color: #FFFFFF;">
-        <i class="fas fa-trash"></i>
+        <i class="bi bi-trash"></i>
       </button>
        </td>
     </tr>
@@ -42,4 +46,4 @@
     </tbody>
 
   </table>
-</div>
+

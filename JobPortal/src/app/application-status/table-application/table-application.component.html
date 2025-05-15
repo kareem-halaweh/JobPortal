@@ -1,6 +1,6 @@
-<div class="container shadow rounded mt-3 table-responsive" style="background: #FFFFFF; ">
-  <table class="table rounded align-middle text-center" style="color:#1F2F44;">
-    <thead >
+<div class="container shadow rounded mt-3 table-responsive" >
+  <table class="table rounded align-middle text-center" style="background: #f3f3f3; color:#1F2F44;">
+    <thead style="background: #f3f3f3; color:#1F2F44;"  >
     <tr>
       <th>Job Title</th>
       <th>Job Type</th>
@@ -9,7 +9,7 @@
       <th>Status</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody style="background: #f3f3f3; color:#1F2F44;">
     <tr *ngFor="let JobApplication of applications">
 
       <td >
@@ -20,7 +20,7 @@
 
       <td >
         <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center" style="color:#1F2F44;">
-          <img [src]="JobApplication.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" />
+          <img [ngSrc]="JobApplication.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" />
           {{ JobApplication.companyName }}
         </a>
       </td>

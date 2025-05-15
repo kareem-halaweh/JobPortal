@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
-import {Job} from '../models/job.model';
-import {JobService} from '../services/job.service';
+
 import {NgForOf} from '@angular/common';
 import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
 import {SearchEmployerJobsComponent} from '../employer-jobs/search-employer-jobs/search-employer-jobs.component';
+import {Job} from '../models/job.model';
+import { JobService } from '../services/jobs.service';
 
 
 
@@ -21,6 +22,7 @@ import {SearchEmployerJobsComponent} from '../employer-jobs/search-employer-jobs
 })
 export class AdminJobsComponent implements OnInit{
 jobs: Job[] = [];
+
 displayedJob:Job[]=[];
   filter: string = 'all';
   sortMethod: string = '';

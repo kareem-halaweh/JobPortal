@@ -1,11 +1,12 @@
 import {Component,  Input} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-table-application',
   imports: [
     NgForOf,
-    NgClass
+    NgClass,
+    NgOptimizedImage
   ],
   templateUrl: './table-application.component.html',
   styleUrl: './table-application.component.css'

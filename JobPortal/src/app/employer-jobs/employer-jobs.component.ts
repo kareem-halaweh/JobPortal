@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job.model';
-import { JobService } from '../services/job.service';
 import { NgForOf } from '@angular/common';
 import { CardEmployerJobsComponent } from './card-employer-jobs/card-employer-jobs.component';
 import { FilterEmployerJobsComponent } from './filter-employer-jobs/filter-employer-jobs.component';
 import {SearchEmployerJobsComponent} from './search-employer-jobs/search-employer-jobs.component';
+import {JobService} from '../services/jobs.service';
 
 @Component({
   selector: 'app-employer-jobs',

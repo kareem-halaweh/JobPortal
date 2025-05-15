@@ -11,12 +11,11 @@
 }
 
 .badge-rejected {
-
   background-color: #F4B400;
   color:#1F2F44;
 }
 
 .badge-pending {
-  background-color:#87AFC5 ;
-  color:#1F2F44 ;
+  background-color:#1F2F44 ;
+  color:#FFFFFF ;
 }

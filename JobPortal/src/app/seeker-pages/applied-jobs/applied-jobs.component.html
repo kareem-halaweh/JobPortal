@@ -1,21 +1,27 @@
-<div style="height:600px;background: #f3f3f3;">
-<div class ="container ">
+<div class=" table-responsive">
+
   <app-filters-applied-job
     [currentFilter]="filter"
     (filterChanged)="Changestatus($event)"
-    (sortChanged)="SortChange($event)">
+    (sortChanged)="SortChange($event)"
+    [sortLabel]="sortLabel"
+     [dropdownOpen]="dropdownOpen"
+    (toggleDropdown)="toggleDropdown()"
+    >
   </app-filters-applied-job>
 
   <app-table-applied-jobs  [displayedApplied]="paginated"
                            (jobRemoved)="removeJob($event)">
 
-  </app-table-applied-jobs>
-  <div class="d-flex justify-content-center">
+  </app-table-applied-jobs><div class="d-flex justify-content-center">
     <app-pagination-applied-jobs
-      [pages]="totalPages()"
       [currentPage]="currentPage"
-      (pageChanged)="onPageChange($event)">
+      [totalPages]="totalPages()"
+      (pageChange)="onPageChange($event)">
     </app-pagination-applied-jobs>
+
+
   </div>
+
 </div>
-</div>
+
