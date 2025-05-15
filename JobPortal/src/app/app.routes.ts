@@ -31,8 +31,12 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
-import {AppliedJobsComponent} from './applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './application-status/application-status.component';
+import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
+import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
+import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
+import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
+
 
 
 export const routes: Routes = [
@@ -71,7 +75,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'Profile', component: EmployerProfileComponent },
-      { path: 'Notifications', component: EmployerNotificationsComponent }
+      { path: 'Notifications', component: EmployerNotificationsComponent },
+      { path: 'employer-jobs', component: EmployerJobsComponent }
     ]
   },
   {
@@ -81,7 +86,8 @@ export const routes: Routes = [
       { path: '', component: HomeComponent}, // This loads on /Admin
       { path: 'Profile', component: AdminProfileComponent },
       { path: 'Notifications', component: AdminNotificationsComponent },
-      { path: 'admin-jobs', component: AdminNotificationsComponent }
+      { path: 'admin-jobs', component: AdminJobsComponent },
+      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
     ]
 
   }

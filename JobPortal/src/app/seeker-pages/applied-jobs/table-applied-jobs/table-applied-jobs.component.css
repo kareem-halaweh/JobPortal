@@ -1,0 +1,31 @@
+.badge-pending {
+  background-color: #F4B400;
+  color: #ffffff;
+  border-radius: 1rem;
+  min-width: 80px;
+  text-align: center;
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+.badge-accepted {
+  background-color: #EDEDEE;
+  color:#232945 ;
+  border-radius: 1rem;
+  min-width: 70px;
+  text-align: center;
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+.badge-rejected {
+  background-color: #232945;
+  color: white;
+  border-radius: 1rem;
+  min-width: 80px;
+  text-align: center;
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JobApplication } from '../models/application.model';
+import {JobApplication} from '../models/application.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationsService {

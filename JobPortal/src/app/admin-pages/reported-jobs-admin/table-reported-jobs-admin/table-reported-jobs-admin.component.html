@@ -1,0 +1,38 @@
+<div class="container shadow rounded mt-3 table-responsive" style="background: #FFFFFF; ">
+  <table class="table rounded align-middle text-center" style="color:#1F2F44;">
+    <thead >
+    <tr>
+      <th> Title </th>
+      <th>Type</th>
+      <th>Employer</th>
+      <th>Reason</th>
+      <th>Report Date</th>
+      <th >Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let Job of displayedreportedjobs">
+
+      <td >
+        <a href="{{Job.link}}" class="text-dark text-decoration-none">{{ Job.job_title}}</a>
+      </td>
+      <td >{{ Job.type }}</td>
+      <td >
+        <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center" style="color:#1F2F44;">
+          <img [ngSrc]="Job.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" /><p>{{ Job.company}}</p></a>
+      </td>
+      <td >{{ Job.reason}}</td>
+
+      <td >{{ Job.date }}</td>
+
+      <td>
+        <div class=" d-inline-flex  gap-2">
+          <button class="btn btn-sm " style="background:#F4B400; color:#FFFFFF; min-width:70px;">Approved</button>
+          <button class="btn btn-sm " style="background:#F4B400; color:#FFFFFF; min-width: 70px;">Rejected</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>

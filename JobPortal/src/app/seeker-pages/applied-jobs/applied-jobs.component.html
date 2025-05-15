@@ -1,0 +1,26 @@
+<div class="container table-responsive" style="background: #FFFFFF; ">
+  <div class ="container ">
+  <app-filters-applied-job
+    (sortChanged)=" SortChange($event)"
+    [currentFilter]="filter"
+    (filterChanged)="Changestatus($event)"
+    >
+  </app-filters-applied-job>
+
+  <app-table-applied-jobs  [displayedApplied]="paginated"
+                           (jobRemoved)="removeJob($event)">
+
+  </app-table-applied-jobs>
+    <div class="d-flex justify-content-center">
+      <app-pagination
+        [currentPage]="currentPage"
+        [totalPages]="totalPages()"
+        (pageChange)="onPageChange($event)">
+      </app-pagination>
+
+
+
+  </div>
+
+</div>
+</div>
