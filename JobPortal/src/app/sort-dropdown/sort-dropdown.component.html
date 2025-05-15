@@ -1,0 +1,21 @@
+  <button class="btn sort-btn d-flex align-items-center justify-content-between gap-2"
+          (click)="toggleDropdown()"
+          type="button">
+    <i class="fas fa-sort-amount-down-alt icon-left"></i>
+    {{ sortLabel }}
+    <i class="fas" [ngClass]="dropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+  </button>
+
+  <ul class="dropdown-menu-custom shadow-sm mt-2" *ngIf="dropdownOpen">
+    <li>
+      <button class="dropdown-item" (click)="selectSort('newest')">
+        <i class="fas fa-arrow-down me-2"></i>Newest
+      </button>
+    </li>
+    <li>
+      <button class="dropdown-item" (click)="selectSort('oldest')">
+        <i class="fas fa-arrow-up me-2"></i>Oldest
+      </button>
+    </li>
+  </ul>
+

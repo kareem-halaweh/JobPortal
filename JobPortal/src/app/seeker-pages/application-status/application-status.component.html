@@ -1,0 +1,23 @@
+<div style="height:600px;background: #f3f3f3;">
+<div class ="container ">
+<app-filters-application
+  (sortChanged)=" SortChange($event)"
+  [currentFilter]="filter"
+  (filterChanged)="Changestatus($event)"
+>
+</app-filters-application>
+
+<app-table-application
+  [displayedApplication]="paginatedApplicants"></app-table-application>
+<div class="d-flex justify-content-center">
+
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages()"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+
+</div>
+</div>
+
+
