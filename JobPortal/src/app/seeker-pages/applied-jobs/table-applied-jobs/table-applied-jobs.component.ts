@@ -2,6 +2,7 @@ import {Component, Input,Output,EventEmitter} from '@angular/core';
 import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
 import {JobApplied} from '../../../models/jobApplied.model';
 
+
 @Component({
   selector: 'app-table-applied-jobs',
   imports: [
@@ -10,6 +11,7 @@ import {JobApplied} from '../../../models/jobApplied.model';
     NgClass
   ],
   templateUrl: './table-applied-jobs.component.html',
+  standalone: true,
   styleUrl: './table-applied-jobs.component.css'
 })
 export class TableAppliedJobsComponent {

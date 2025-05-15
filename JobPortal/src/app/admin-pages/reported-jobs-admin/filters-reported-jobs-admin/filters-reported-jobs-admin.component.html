@@ -1,0 +1,13 @@
+
+    <div class="d-flex justify-content-between align-items-center w-100 w-md-auto order-0">
+      <h4 class="fw-bold mb-0">Rported Jobs</h4>
+
+      <div class="dropdown position-relative">
+        <app-sort-dropdown
+          [sortLabel]="sortLabel"
+          (sortBy)="onSortChange($event)">
+        </app-sort-dropdown>
+      </div>
+    </div>
+
+

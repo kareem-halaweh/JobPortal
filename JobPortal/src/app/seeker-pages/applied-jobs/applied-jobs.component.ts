@@ -1,18 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {FiltersAppliedJobComponent} from './filters-applied-job/filters-applied-job.component';
-import {PaginationAppliedJobsComponent} from './pagination-applied-jobs/pagination-applied-jobs.component';
 import {TableAppliedJobsComponent} from './table-applied-jobs/table-applied-jobs.component';
 import { JobApplied } from '../../models/jobApplied.model';
 import {jobAppliedService} from '../../services/appliedjobs.service';
+import {PaginationComponent} from '../../pagination/pagination.component';
 
 @Component({
   selector: 'app-applied-jobs',
   imports: [
     FiltersAppliedJobComponent,
-    PaginationAppliedJobsComponent,
     TableAppliedJobsComponent,
+    PaginationComponent
+
   ],
   templateUrl: './applied-jobs.component.html',
+  standalone: true,
   styleUrl: './applied-jobs.component.css'
 })
 export class AppliedJobsComponent implements OnInit{
@@ -33,11 +35,9 @@ export class AppliedJobsComponent implements OnInit{
     this.JobApplied = this.appService.getjobApplied();
     this.Filters();
   }
-  dropdownOpen=false;
 
-  toggleDropdown(){
-    this.dropdownOpen=!this.dropdownOpen;
-  }
+
+
   Filters() {
     let apps = [...this.JobApplied];
     if (this.filter !== 'all') {
@@ -77,17 +77,7 @@ export class AppliedJobsComponent implements OnInit{
 
   SortChange(method: string) {
     this.sortMethod = method;
-    switch (method) {
-      case 'newest':
-        this.sortLabel = 'Newest';
-        break;
-      case 'oldest':
-        this.sortLabel = 'oldest';
-        break;
-      default:
-        this.sortLabel = 'all';
-    }
-    this.dropdownOpen=false;
+    this.sortLabel = method === 'newest' ? 'Newest' : 'Oldest';
     this.Filters();
   }
 

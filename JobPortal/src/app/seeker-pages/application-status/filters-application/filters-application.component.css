@@ -5,11 +5,12 @@
   padding: 6px 20px;
   border: none;
   background-color: #e5e7eb;
-  color:#232945;
+  color:#1F2F44;
   transition: all 0.3s;
 }
 .filter-btn.active {
-  background-color:#87AFC5 ;
-  color: #232945;
+  background-color:#F4B400;
+  color: #FFFFFF;
 }
+
 

@@ -1,0 +1,15 @@
+<div style="height:600px; background: #f3f3f3;">
+  <div class ="container"  >
+    <app-filters-reported-jobs-admin
+      (sortChanged)=" SortChange($event)">
+    </app-filters-reported-jobs-admin>
+
+    <app-table-reported-jobs-admin [displayedreportedjobs]="paginatedreportedjobs"></app-table-reported-jobs-admin>
+    <div class="d-flex justify-content-center">
+      <app-pagination
+        [currentPage]="currentPage"
+        [totalPages]="totalPages()"
+        (pageChange)="onPageChange($event)">
+      </app-pagination></div>
+  </div>
+</div>
