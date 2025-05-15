@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-1 gap-3">
+
+    <div class="d-flex justify-content-between align-items-center w-100 w-md-auto order-0">
+      <h4 class="fw-bold mb-0">Applied Jobs</h4>
+
+      <div class="dropdown position-relative d-md-none">
+        <button class="btn sort-btn d-flex align-items-center justify-content-between gap-2"
+                (click)="toggleDropdown.emit()"
+                [attr.aria-expanded]="dropdownOpen"
+                type="button">
+          <i class="fas fa-sort-amount-down-alt icon-left"></i>
+          {{ sortLabel }}
+          <i class="fas" [ngClass]="dropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+        <ul class="dropdown-menu-custom shadow-sm mt-2" *ngIf="dropdownOpen">
+          <li>
+            <button class="dropdown-item" (click)="sortBy('newest')">
+              <i class="fas fa-arrow-down me-2"></i>Newest
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="sortBy('oldest')">
+              <i class="fas fa-arrow-up me-2"></i>Oldest
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="d-flex flex-nowrap justify-content-lg-center me-5 justify-content-md-center text-end text-md-center flex-row-reverse flex-md-row flex-wrap gap-2 w-100 order-2 order-md-1">
+      <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
+      <button class="filter-btn" (click)="setFilter('pending')" [ngClass]="{ 'active': currentFilter === 'pending' }">Pending</button>
+      <button class="filter-btn" (click)="setFilter('rejected')" [ngClass]="{ 'active': currentFilter === 'rejected' }">Rejected</button>
+      <button class="filter-btn" (click)="setFilter('accepted')" [ngClass]="{ 'active': currentFilter === 'accepted' }">Accepted</button>
+    </div>
+
+    <div class="dropdown position-relative d-none d-md-block order-md-2">
+      <button class="btn sort-btn d-flex align-items-center justify-content-between gap-2"
+              (click)="toggleDropdown.emit()"
+              [attr.aria-expanded]="dropdownOpen"
+              type="button">
+        <i class="bi bi-sort-amount-down-alt icon-left"></i>
+        {{ sortLabel }}
+        <i class="bi" [ngClass]="dropdownOpen ? 'bi-chevron-up' : 'bi-chevron-down' "></i>
+      </button>
+      <ul class="dropdown-menu-custom shadow-sm mt-2" *ngIf="dropdownOpen">
+        <li>
+          <button class="dropdown-item" (click)="sortBy('newest')">
+            <i class="bi bi-arrow-down me-2"></i>Newest
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" (click)="sortBy('oldest')">
+            <i class="bi bi-arrow-up me-2"></i>Oldest
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

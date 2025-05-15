@@ -1,18 +1,18 @@
 import {Component,  Input} from '@angular/core';
-import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
+import {JobApplication} from '../../../models/application.model';
 
 @Component({
   selector: 'app-table-application',
   imports: [
     NgForOf,
-    NgClass,
-    NgOptimizedImage
+    NgClass
   ],
   templateUrl: './table-application.component.html',
   styleUrl: './table-application.component.css'
 })
 export class TableApplicationComponent {
-  @Input() applications: any[] = [];
+  @Input() displayedApplication: JobApplication[] = [];
   getStatus(status: string): string {
     switch (status) {
       case 'accepted':

@@ -1,18 +1,24 @@
 import { Component } from '@angular/core';
-import {NgClass} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import { Input , Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-filters-application',
   imports: [
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './filters-application.component.html',
   styleUrl: './filters-application.component.css'
 })
 export class FiltersApplicationComponent {
   @Input() currentFilter: string = 'all';
+  @Input() sortLabel:string='all';
+  @Input()  dropdownOpen=  false;
+
   @Output() filterChanged = new EventEmitter<string>();
-  @Output() sortChanged = new EventEmitter<string>();
+  @Output ()sortChanged = new EventEmitter<string>();
+
+  @Output ()toggleDropdown=new EventEmitter<string>();
 
   setFilter(filter: string) {
     this.filterChanged.emit(filter.toLowerCase());
@@ -20,5 +26,6 @@ export class FiltersApplicationComponent {
 
   sortBy(method: string) {
     this.sortChanged.emit(method);
+    this.dropdownOpen = false;
   }
 }

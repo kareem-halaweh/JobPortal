@@ -32,8 +32,8 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
-import {ApplicationStatusComponent} from './application-status/application-status.component';
 import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
