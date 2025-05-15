@@ -1,3 +1,4 @@
+
 export interface Job{
   id:number;
   job_title: string,
@@ -11,3 +12,4 @@ export interface Job{
   linkjob:string,
   category:'Graphic Design'|'IT'|'Marketing'|'Finance',
 }
+

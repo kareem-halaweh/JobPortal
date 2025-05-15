@@ -1,0 +1,10 @@
+.custom-pagination .page-link {
+  color: #0d47a1 !important; /* أزرق غامق */
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #F7C600 !important;
+  border-color: #f7b733 !important;
+  color:#232945 !important;
+}
+

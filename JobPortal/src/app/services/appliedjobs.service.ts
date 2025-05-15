@@ -50,6 +50,7 @@ export class jobAppliedService {
       imageUrl: 'download.jpeg',
       status: 'pending',
       date: '2025-05-02'
+
     },{
       id: 5,
 
@@ -86,6 +87,7 @@ export class jobAppliedService {
       imageUrl: 'download.jpeg',
       status: 'rejected',
       date: '2025-05-02'
+
     }];
   getjobApplied(): JobApplied[] {
     return this.jobApplied;
