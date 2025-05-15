@@ -10,6 +10,7 @@
 <div class="row">
   <div *ngFor="let job of displayedJob" class="col-12 col-md-4 mb-4">
     <app-cards-admin-jobs
+      [id]="job.id"
       [title]="job.job_title"
       [company]="job.company"
       [location]="job.location"
@@ -17,8 +18,7 @@
       [Date]="job.date"
       [salary]="job.salary"
       [imageUrl]="job.imageUrl"
-      [linkjob]="job.linkjob"
-      [linkcompany]="job.linkcompany"
+
      >
     </app-cards-admin-jobs>
   </div>

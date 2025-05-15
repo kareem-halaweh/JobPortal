@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import { SeekerNotificationsComponent } from './seeker-pages/seeker-notifications/seeker-notifications.component';
 import {FavoriteJobsComponent} from './seeker-pages/favorite-jobs/favorite-jobs.component';
+import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';
+import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
 
 import { AdminProfileComponent } from './admin-pages/admin-profile/admin-profile.component';
 import { AdminNotificationsComponent } from './admin-pages/admin-notifications/admin-notifications.component';
+import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
+import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
 
 import { LoginComponent } from './User Roles & Authentication/login/login.component';
 import { ChangePasswordComponent } from './User Roles & Authentication/change-password/change-password.component';
@@ -32,11 +37,7 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
-import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
-import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
-import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
-import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
+
 
 
 export const routes: Routes = [

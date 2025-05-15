@@ -5,6 +5,9 @@ import {NgForOf} from '@angular/common';
 import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
 import {Job} from '../../models/job.model';
 import {JobService} from '../../services/jobs.service';
+import {
+  SearchEmployerJobsComponent
+} from '../../employer-pages/employer-jobs/search-employer-jobs/search-employer-jobs.component';
 
 
 
@@ -14,6 +17,7 @@ import {JobService} from '../../services/jobs.service';
     FiltersAdminJobsComponent,
     NgForOf,
     CardsAdminJobsComponent,
+    SearchEmployerJobsComponent,
 
 
   ],
@@ -33,9 +37,14 @@ sortLabel:string='sort By';
   constructor(private appService: JobService) {}
 
   ngOnInit() {
-    this.jobs = this.appService. getJob();
-    this.Filters();
+    this.loadJobs();
   }
+  loadJobs() {
+
+      this.jobs = this.appService.getJob();
+      this.displayedJob = [...this.jobs];
+    this.Filters();
+    }
 
 
   Filters() {

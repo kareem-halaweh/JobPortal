@@ -13,8 +13,6 @@ export class JobService {
       date: "2025-05-11",
       category: "Marketing",
       imageUrl: "download.jpeg",
-      linkcompany: "https://smartmarketing.ps",
-      linkjob: "https://smartmarketing.ps/jobs/digital-marketing-executive"
     },
     {
       id: 2,
@@ -26,8 +24,6 @@ export class JobService {
       date: "2025-05-11",
       category: "IT",
       imageUrl: "download.jpeg",
-      linkcompany: "https://creativetech.ps",
-      linkjob: "https://creativetech.ps/careers/frontend-developer"
     },
     {
       id: 3,
@@ -39,8 +35,7 @@ export class JobService {
       date: "2025-05-11",
       category: "Graphic Design",
       imageUrl: "download.jpeg",
-      linkcompany: "https://rozzadesigns.com",
-      linkjob: "https://rozzadesigns.com/jobs/graphic-designer"
+
     },
     {
       id: 4,
@@ -52,8 +47,8 @@ export class JobService {
       date: "2025-05-11",
       category: "Marketing",
       imageUrl: "download.jpeg",
-      linkcompany: "https://zoom.ps",
-      linkjob: "https://zoom.ps/careers/marketing-specialist"
+
+
     },
     {
       id: 5,
@@ -65,8 +60,7 @@ export class JobService {
       date: "2025-05-11",
       category: "IT",
       imageUrl: "download.jpeg",
-      linkcompany: "https://asaltech.com",
-      linkjob: "https://asaltech.com/careers/it-support-engineer"
+
     },
     {
       id: 6,
@@ -78,8 +72,7 @@ export class JobService {
       date: "2025-05-11",
       category: "IT",
       imageUrl: "download.jpeg",
-      linkcompany: "",
-      linkjob: ""
+
     },
     {
       id: 7,
@@ -91,8 +84,7 @@ export class JobService {
       date: "2025-05-11",
       category: "Finance",
       imageUrl: "download.jpeg",
-      linkcompany: "",
-      linkjob: ""
+
     },
     {
       id: 8,
@@ -104,8 +96,7 @@ export class JobService {
       date: "2025-04-11",
       category: "Finance",
       imageUrl: "download.jpeg",
-      linkcompany: "",
-      linkjob: ""
+
     }
   ];
 

@@ -3,9 +3,11 @@
 
 
   <div class="d-flex align-items-start mb-0">
-    <img [ngSrc]="imageUrl" alt="logo" style="max-width: 80px; height: auto; margin-right: 15px;" >
+    <img [ngSrc]="imageUrl"
+         alt="logo"
+         style="max-width: 80px; height: auto; margin-right: 15px;">
     <div>
-      <a href="{{linkjob}}" style=" color: #1F2F44;text-decoration: none;"> <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4></a>
+      <a [routerLink]="['/jobs', id]" style=" color: #1F2F44;text-decoration: none;"> <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4></a>
       <a href="{{linkcompany}}" class=" text-muted" style=" text-decoration: none;" > <p class="text-muted mb-1">{{ company }}</p></a>
     </div>
   </div>
