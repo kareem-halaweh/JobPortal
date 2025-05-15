@@ -50,6 +50,44 @@ export class jobAppliedService {
       imageUrl: 'download.jpeg',
       status: 'pending',
       date: '2025-05-02'
+
+    },{
+      id: 5,
+
+      type: 'Full Time',
+      jobTitle: 'Digital Marketing Executive',
+      companyName: 'Google',
+      imageUrl: 'download.jpeg',
+      status: 'pending',
+      date: '2025-05-02'
+    },{
+      id: 6,
+
+      type: 'Full Time',
+      jobTitle: 'Digital Marketing Executive',
+      companyName: 'Google',
+      imageUrl: 'download.jpeg',
+      status: 'pending',
+      date: '2025-05-02'
+    },{
+      id: 7,
+
+      type: 'Full Time',
+      jobTitle: 'Digital Marketing Executive',
+      companyName: 'Google',
+      imageUrl: 'download.jpeg',
+      status: 'pending',
+      date: '2025-05-02'
+    },
+    {
+      id: 8,
+      type: 'Full Time',
+      jobTitle: 'Digital Marketing Executive',
+      companyName: 'Google',
+      imageUrl: 'download.jpeg',
+      status: 'rejected',
+      date: '2025-05-02'
+
     }];
   getjobApplied(): JobApplied[] {
     return this.jobApplied;

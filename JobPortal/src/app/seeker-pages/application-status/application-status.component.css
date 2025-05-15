@@ -1,0 +1,14 @@
+
+
+.status {
+  border-radius: 30px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+}
+
+.status.pending {
+  background-color: #f3f3f3;
+  color: #6b7280;
+}
+
+

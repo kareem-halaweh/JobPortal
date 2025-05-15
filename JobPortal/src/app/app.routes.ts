@@ -19,10 +19,25 @@ import {ResetPasswordComponent} from './User Roles & Authentication/reset-passwo
 import { ResetPasswordCodeComponent } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 
+
 import { SignupComponent } from './User Roles & Authentication/signup/signup.component';
 import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
+
+import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
+
+import { FindJobComponent } from './find-job/find-job.component';
+import { CardDetailsComponent } from './find-job/card-details/card-details.component';
+
+import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
+import {HomeComponent} from './home/home.component';
+import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
+import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
+import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
+import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
+
 
 import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
 
@@ -39,6 +54,11 @@ import {
 
 
 export const routes: Routes = [
+
+  { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
+
+
+
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
@@ -50,6 +70,7 @@ export const routes: Routes = [
   { path: 'createAccountEmployer', component: CreateAccountComponent },
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
+
 
   { path: 'jobs', component: FindJobComponent },
   { path: 'jobs/:id', component: CardDetailsComponent },
@@ -75,7 +96,10 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
-      { path: 'Notifications', component: EmployerNotificationsComponent }
+
+      { path: 'Notifications', component: EmployerNotificationsComponent },
+      { path: 'employer-jobs', component: EmployerJobsComponent }
+
     ]
   },
   {
@@ -87,7 +111,7 @@ export const routes: Routes = [
       { path: 'Profile', component: AdminProfileComponent },
       { path: 'Notifications', component: AdminNotificationsComponent },
 
-    ]
+
 
   },{
     path: 'Guest',
@@ -97,6 +121,11 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'jobs', component: FindJobComponent },
       { path: 'jobs/:id', component: CardDetailsComponent },
+
+      { path: 'admin-jobs', component: AdminJobsComponent },
+      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
+
+
     ]
 
   }
