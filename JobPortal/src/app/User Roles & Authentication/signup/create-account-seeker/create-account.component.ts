@@ -13,7 +13,7 @@ import {NgIf} from '@angular/common';
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.css'
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponentSeeker implements OnInit {
   accountForm!: FormGroup;
   submitted = false;
 
@@ -40,7 +40,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     if (this.accountForm.valid) {
-      this.router.navigate(['/Employer']);
+      this.router.navigate(['/Seeker']);
     }
   }
 }

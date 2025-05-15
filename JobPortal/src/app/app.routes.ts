@@ -48,10 +48,15 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import {HomeComponent} from './home/home.component';
 import {AppliedJobsComponent} from './applied-jobs/applied-jobs.component';
 import {ApplicationStatusComponent} from './application-status/application-status.component';
+import {
+  CreateAccountComponentSeeker
+} from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
 
 
 export const routes: Routes = [
+
   { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
+
 
 
   { path: 'login', component: LoginComponent },
@@ -62,7 +67,8 @@ export const routes: Routes = [
  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
   { path: 'signupEmployer', component: SignupEmployerComponent },
-  { path: 'createAccount', component: CreateAccountComponent },
+  { path: 'createAccountEmployer', component: CreateAccountComponent },
+  { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
 
 
@@ -73,20 +79,22 @@ export const routes: Routes = [
     component: HomeLayoutComponent,
     children: [
       { path: '', component: HomeComponent},
+      { path: 'home', component: HomeComponent},
       { path: 'Profile', component: SeekerProfileComponent },
       { path: 'Notifications', component: SeekerNotificationsComponent },
       { path: 'favorite-jobs', component: FavoriteJobsComponent },
       {path: 'applied-jobs', component:AppliedJobsComponent},
-      {path: 'application-status', component:ApplicationStatusComponent}
+      {path: 'application-status', component:ApplicationStatusComponent},
+      { path: 'jobs', component: FindJobComponent },
+      { path: 'jobs/:id', component: CardDetailsComponent },
     ]
   },
   {
     path: 'Employer',
-
     component: HomeLayoutComponent,
-
     children: [
       { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
 
       { path: 'Notifications', component: EmployerNotificationsComponent },
@@ -98,16 +106,30 @@ export const routes: Routes = [
     path: 'Admin',
     component: HomeLayoutComponent,
     children: [
-      { path: '', component: HomeComponent}, // This loads on /Admin
+      { path: '', component: HomeComponent},
+      { path: 'home', component: HomeComponent},
       { path: 'Profile', component: AdminProfileComponent },
       { path: 'Notifications', component: AdminNotificationsComponent },
+
+
+
+  },{
+    path: 'Guest',
+    component: HomeLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent},
+      { path: 'home', component: HomeComponent},
+      { path: 'jobs', component: FindJobComponent },
+      { path: 'jobs/:id', component: CardDetailsComponent },
 
       { path: 'admin-jobs', component: AdminJobsComponent },
       { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
 
+
     ]
 
   }
+
 
 ];
 

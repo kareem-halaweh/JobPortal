@@ -1,0 +1,15 @@
+
+*:focus {
+  outline: none;
+  border-color: rgba(27, 35, 67, 0.83);
+  box-shadow: none !important;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.1s ease-in-out;
+  cursor: pointer;
+}
+a:hover{
+  font-size: 1.02rem;text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}

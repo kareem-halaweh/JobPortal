@@ -39,7 +39,7 @@ export class SignupJobSeekerComponent implements OnInit {
     this.seekerForm.updateValueAndValidity();
 
     if (this.seekerForm.invalid) return;
-      this.router.navigate(['/createAccount']);
+      this.router.navigate(['/createAccountSeeker']);
   }
 
   onLogoSelected(event: Event): void {
