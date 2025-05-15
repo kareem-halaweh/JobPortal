@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminSidebarComponent } from '../../SideBarItems/admin-sidebar/admin-sidebar.component';
-import { NgSwitch, NgSwitchCase } from '@angular/common';
+import {NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import { SeekerSidebarComponent } from '../../SideBarItems/seeker-sidebar/seeker-sidebar.component';
 import { EmployerSidebarComponent } from '../../SideBarItems/employer-sidebar/employer-sidebar.component';
 import { RouterOutlet } from '@angular/router';
+import {HeaderSeekerComponent} from '../../header-seeker/header.component';
+import {HeaderEmployerComponent} from '../../header-employer/header.component';
+import {HeaderAdminComponent} from '../../header-admin/header.component';
+import {FooterComponent} from '../../footer/footer.component';
+import {HeaderGuestComponent} from '../../header-guest/header.component';
 
 @Component({
   selector: 'app-home-layout',
@@ -15,7 +20,14 @@ import { RouterOutlet } from '@angular/router';
     NgSwitch,
     SeekerSidebarComponent,
     EmployerSidebarComponent,
-    NgSwitchCase
+    NgSwitchCase,
+    HeaderSeekerComponent,
+    HeaderEmployerComponent,
+    HeaderAdminComponent,
+    NgIf,
+    FooterComponent,
+    HeaderGuestComponent,
+    NgSwitchDefault
   ],
   styleUrls: ['./home-layout.component.css']
 })

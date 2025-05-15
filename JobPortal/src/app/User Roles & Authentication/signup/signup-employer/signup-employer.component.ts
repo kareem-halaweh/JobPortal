@@ -41,7 +41,7 @@ export class SignupEmployerComponent  implements OnInit {
 
     if (this.employerForm.invalid) return;
 
-    this.router.navigate(['/createAccount']);
+    this.router.navigate(['/createAccountEmployer']);
   }
 
   onLogoSelected(event: Event): void {
