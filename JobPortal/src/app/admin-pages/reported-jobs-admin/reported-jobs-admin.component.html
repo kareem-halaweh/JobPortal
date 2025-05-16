@@ -4,7 +4,10 @@
       (sortChanged)=" SortChange($event)">
     </app-filters-reported-jobs-admin>
 
-    <app-table-reported-jobs-admin [displayedreportedjobs]="paginatedreportedjobs"></app-table-reported-jobs-admin>
+    <app-table-reported-jobs-admin
+      [displayedreportedjobs]="paginatedreportedjobs">
+
+    </app-table-reported-jobs-admin>
     <div class="d-flex justify-content-center">
       <app-pagination
         [currentPage]="currentPage"

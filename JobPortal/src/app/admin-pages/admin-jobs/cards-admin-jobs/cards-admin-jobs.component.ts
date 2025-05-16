@@ -5,7 +5,6 @@ import {RouterLink} from '@angular/router';
 @Component({
     selector: 'app-cards-admin-jobs',
   imports: [
-    NgOptimizedImage,
     RouterLink
   ],
     templateUrl: './cards-admin-jobs.component.html',
@@ -14,14 +13,14 @@ import {RouterLink} from '@angular/router';
 })
 export class CardsAdminJobsComponent {
   @Input() id!: number;
-  @Input() title:string = '';
-  @Input()company ='';
-  @Input() location:string = '';
-  @Input()type ='';
-  @Input()salary ='';
-  @Input ()Date :string = '';
-  @Input()imageUrl: string='';
-  @Input()linkcompany: string='';
+  @Input() title!:string;
+  @Input()company!:string
+  @Input() location!:string ;
+  @Input()type !:string;
+  @Input()salary!: string;
+  @Input ()date! :string ;
+  @Input()imageUrl!: string;
+  @Input()linkcompany!: string;
 
 
 }

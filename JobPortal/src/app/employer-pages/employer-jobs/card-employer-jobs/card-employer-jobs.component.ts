@@ -17,7 +17,6 @@ export class CardEmployerJobsComponent {
   @Input() location:string = '';
   @Input()type ='';
   @Input()salary ='';
-  @Input ()Date :string = '';
+  @Input ()date :string = '';
   @Input()imageUrl: string='';
-  @Input()linkcompany: string='';
 }
