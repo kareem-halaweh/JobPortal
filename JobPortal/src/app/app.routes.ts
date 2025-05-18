@@ -99,7 +99,19 @@ export const routes: Routes = [
       { path: 'jobs/:id', component: CardDetailsComponent },
     ]
 
+  },
+  {
+    path: '',
+    component: HomeLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent},
+      { path: 'home', component: HomeComponent},
+      { path: 'jobs', component: FindJobComponent },
+      { path: 'jobs/:id', component: CardDetailsComponent },
+    ]
+
   }
+
 
 
 ];
