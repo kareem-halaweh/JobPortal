@@ -43,8 +43,10 @@
               <input id="profilePicture" type="file" class="form-control border-2 rounded-4 ps-1" accept="image/*" (change)="onLogoSelected($event)" />
             </div>
 
-            <!-- Age -->
-            <div class="col-md-6">
+
+            <div class="col-md-6 d-flex">
+              <!-- Age -->
+              <div >
               <label class="fw-bold ms-1" style="color:#1B2A41;">Age</label>
               <input formControlName="age" type="number" class="form-control border-2 rounded-4"  />
               <div *ngIf="submitted && seekerForm.get('age')?.errors" class="text-danger small ps-1">
@@ -54,6 +56,22 @@
                 <div *ngIf="seekerForm.get('age')?.errors?.['min']">
                   Age must be at least 18.
                 </div>
+              </div>
+              </div>
+              <!-- Gender -->
+              <div class="ms-2">
+                <label class="fw-bold ms-1" style="color:#1B2A41;">Gender</label>
+                <select formControlName="gender" class="form-control border-2 rounded-4">
+                  <option value="" disabled selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <div *ngIf="submitted && seekerForm.get('gender')?.errors" class="text-danger small ps-1">
+                  <div *ngIf="seekerForm.get('gender')?.errors?.['required']">
+                    Gender is required.
+                  </div>
+                </div>
+
               </div>
             </div>
 
