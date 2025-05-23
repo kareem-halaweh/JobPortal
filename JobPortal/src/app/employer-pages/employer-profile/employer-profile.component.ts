@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class EmployerProfileComponent {
   isEditMode = false;
-  isOwner = false;
+  isOwner = true;
 
   companyName = 'Tech Easy Life Inc.';
   industry = 'Software Development';
@@ -21,7 +21,7 @@ export class EmployerProfileComponent {
   location = 'Ramallah, Palestine';
   description = 'Our company is made to make your life easier, join us and become on of us. ';
 
-  bannerUrl = 'banner.jpg';
+
   profileImageUrl = 'logo1.png';
 
   topEmployers = [
@@ -39,14 +39,6 @@ export class EmployerProfileComponent {
     this.toggleEdit();
   }
 
-  onBannerImageChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files?.[0]) {
-      const reader = new FileReader();
-      reader.onload = e => this.bannerUrl = e.target?.result as string;
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
 
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;

@@ -1,0 +1,38 @@
+
+
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+
+  <div>
+    <h6 class="mb-0 fw-bold">Showing Jobs Results</h6>
+  </div>
+  <div class=" d-flex justify-content-center mt-2 mb-3">
+    <div class="filter d-flex flex-wrap gap-2">
+      <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
+      <button class="filter-btn" (click)="setFilter('IT')" [ngClass]="{ 'active': currentFilter === 'IT' }">IT</button>
+      <button class="filter-btn" (click)="setFilter('Marketing')" [ngClass]="{ 'active': currentFilter === 'Marketing' }">Marketing</button>
+      <button class="filter-btn" (click)="setFilter('Finance')" [ngClass]="{ 'active': currentFilter === 'Finance' }">Finance</button>
+      <button class="filter-btn" (click)="setFilter('Graphic Design')" [ngClass]="{ 'active': currentFilter === 'Graphic Design' }">Graphic Design</button>
+
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center flex-wrap gap-3">
+
+    <div class="dropdown">
+      <button class="btn  rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        <i class="fas fa-sort me-1"></i>
+        All
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item"  (click)="sortBy('newest')">Newest</a>
+        </li>
+        <li>
+          <a class="dropdown-item"  (click)="sortBy('oldest')">Oldest</a>
+        </li>
+        <li>
+      </ul>
+    </div>
+  </div>
+</div>

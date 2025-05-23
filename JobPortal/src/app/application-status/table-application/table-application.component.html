@@ -1,0 +1,40 @@
+<div class="container shadow rounded mt-3 table-responsive" style="background: #FFFFFF; ">
+  <table class="table rounded align-middle text-center" style="color:#1F2F44;">
+    <thead >
+    <tr>
+      <th>Job Title</th>
+      <th>Job Type</th>
+      <th>Company</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let JobApplication of applications">
+
+      <td >
+        <a href="#" class="text-dark text-decoration-none">{{ JobApplication.jobTitle }}</a>
+      </td>
+
+      <td >{{ JobApplication.type }}</td>
+
+      <td >
+        <a href="#" class=" text-decoration-none d-flex align-items-center justify-content-center" style="color:#1F2F44;">
+          <img [src]="JobApplication.imageUrl" alt="logo" class="rounded me-2" width="40" height="40" />
+          {{ JobApplication.companyName }}
+        </a>
+      </td>
+
+      <td >{{ JobApplication.date }}</td>
+
+      <td>
+      <span class="badge px-3 py-2" [ngClass]="getStatus(JobApplication.status)">
+        {{ JobApplication.status }}
+      </span>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+

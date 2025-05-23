@@ -1,13 +1,27 @@
-<div class="container-fluid p-0" style="background-color: #f8f9fa; min-height: 100vh;">
-  <div class="d-flex">
+<div class="d-flex flex-column min-vh-100" style="background-color:#f8f9fa;">
+  <!-- 🔼 HEADER -->
+  <ng-container [ngSwitch]="currentRole">
+    <app-header-seeker *ngSwitchCase="'Seeker'"></app-header-seeker>
+    <app-header-employer *ngSwitchCase="'Employer'"></app-header-employer>
+    <app-header-admin *ngSwitchCase="'Admin'"></app-header-admin>
+    <app-header-guest *ngSwitchDefault></app-header-guest>
+  </ng-container>
 
+  <!-- 🔽 MAIN BODY: SIDEBAR + CONTENT -->
+  <div class="d-flex flex-grow-1">
     <ng-container [ngSwitch]="currentRole">
       <app-seeker-sidebar *ngSwitchCase="'Seeker'"></app-seeker-sidebar>
       <app-employer-sidebar *ngSwitchCase="'Employer'"></app-employer-sidebar>
       <app-admin-sidebar *ngSwitchCase="'Admin'"></app-admin-sidebar>
+
     </ng-container>
 
-    <div class="flex-grow-1" style="padding: 2rem 2rem 2rem 3.5rem;">
+    <!-- Page content -->
+    <div class="flex-grow-1" style="padding: 2rem;">
       <router-outlet></router-outlet>
     </div>
-  </div></div>
+  </div>
+
+  <!-- 🔽 Optional FOOTER -->
+  <app-footer></app-footer>
+</div>

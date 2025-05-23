@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+ctable} from '@angular/core';
 import {Job} from '../models/job.model';
 @Injectable({ providedIn:'root'})
 export class JobService {
@@ -102,6 +102,7 @@ export class JobService {
   getJob(): Job[] {
     return this.jobs;
   };
+
 
 
 

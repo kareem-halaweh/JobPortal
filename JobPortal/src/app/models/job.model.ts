@@ -1,3 +1,4 @@
+
 export interface Job{
   id:number;
   job_title: string,
@@ -7,5 +8,7 @@ export interface Job{
   date: string,
   salary:string ,
   imageUrl: string,
+  linkcompany:string,
+  linkjob:string,
   category:'Graphic Design'|'IT'|'Marketing'|'Finance',
 }
