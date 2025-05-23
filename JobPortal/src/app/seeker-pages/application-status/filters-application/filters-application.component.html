@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-1 gap-3">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center  gap-3">
 
-    <div class="d-flex justify-content-between align-items-center w-100 w-md-auto order-0">
+    <div class="d-flex justify-content-between align-items-center mb-2 w-100 w-md-auto order-0">
       <h4 class="fw-bold mb-0">Application </h4>
 
       <div class="dropdown position-relative d-md-none">
@@ -13,7 +13,7 @@
     </div>
 
 
-    <div class="d-flex flex-nowrap justify-content-lg-center me-5 justify-content-md-center text-end text-md-center flex-row-reverse flex-md-row flex-wrap gap-2 w-100 order-2 order-md-1">
+    <div class="d-flex flex-nowrap justify-content-lg-center me-5 justify-content-md-center mb-2 text-end text-md-center flex-row-reverse flex-md-row flex-wrap gap-2 w-100 order-2 order-md-1">
       <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
       <button class="filter-btn" (click)="setFilter('pending')" [ngClass]="{ 'active': currentFilter === 'pending' }">Pending</button>
       <button class="filter-btn" (click)="setFilter('rejected')" [ngClass]="{ 'active': currentFilter === 'rejected' }">Rejected</button>

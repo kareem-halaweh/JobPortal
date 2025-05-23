@@ -1,21 +1,21 @@
-<div class="card shadow-lg d-flex flex-column justify-content-between"
-     style="color: #1F2F44; border-radius: 20px; font-size: 1.1rem; padding: 20px; height: 100%; min-height: 350px; width: 100%;">
+<div class="card shadow-lg d-flex flex-column "
+     style="color: #1F2F44; border-radius: 20px; font-size: 1.1rem; padding: 20px; height: 100%;  width: 100%;">
 
+  <div class="d-flex align-items-start ">
+    <img  [src]="imageUrl" alt="logo" style="margin-right: 15px;" width="80" height="auto">
 
-  <div class="d-flex align-items-start mb-0">
-    <img [ngSrc]="imageUrl" alt="logo" style="max-width: 80px; height: auto; margin-right: 15px;" >
     <div>
-      <a href="{{linkjob}}" style=" color: #1F2F44;text-decoration: none;"> <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4></a>
-      <a href="{{linkcompany}}" class=" text-muted" style=" text-decoration: none;" > <p class="text-muted mb-1">{{ company }}</p></a>
+      <a [routerLink]="['/jobs', id]" style=" color: #1F2F44;text-decoration: none;"> <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4></a>
+      <a href="{{linkcompany}}" class=" text-muted" style=" text-decoration: none;" > <p class="text-muted ">{{ company }}</p></a>
     </div>
   </div>
 
 
-  <div class="mb-3 text-muted">
-    <div class="mb-2 d-flex align-items-center"><i class="fas fa-map-marker-alt me-2"></i> {{ location }}</div>
-    <div class="mb-2 d-flex align-items-center"><i class="fas fa-clock me-2"></i> {{ type }}</div>
-    <div class="mb-2 d-flex align-items-center"><i class="fas fa-calendar-alt me-2"></i> {{ Date }}</div>
-    <div class="mb-2 d-flex align-items-center"><i class="fas fa-money-bill-wave me-2"></i> {{ salary }}</div>
+  <div class=" text-muted">
+    <div class="mb-2 d-flex align-items-center"><i class="bi bi-geo-alt me-2"></i>  {{ location }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="bi bi-clock me-2"></i> {{ type }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="bi bi-calendar3 me-2"></i> {{ date }}</div>
+    <div class="mb-2 d-flex align-items-center"><i class="bi bi-cash-stack me-2"></i> {{ salary }}</div>
     <div class="mt-auto d-flex justify-content-end">
       <button class="btn btn-md"  style="background:#F4B400; color: #FFFFFF; min-width: 100px;">
         Delete Job

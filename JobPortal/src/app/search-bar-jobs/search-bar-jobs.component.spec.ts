@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SaerchAdminJobsComponent } from './saerch-admin-jobs.component';
+import { SearchBarJobsComponent } from './search-bar-jobs.component';
 
-describe('SaerchAdminJobsComponent', () => {
-  let component: SaerchAdminJobsComponent;
-  let fixture: ComponentFixture<SaerchAdminJobsComponent>;
+describe('SearchBarJobsComponent', () => {
+  let component: SearchBarJobsComponent;
+  let fixture: ComponentFixture<SearchBarJobsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SaerchAdminJobsComponent]
+      imports: [SearchBarJobsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SaerchAdminJobsComponent);
+    fixture = TestBed.createComponent(SearchBarJobsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

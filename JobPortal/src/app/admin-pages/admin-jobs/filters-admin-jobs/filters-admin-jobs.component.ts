@@ -1,11 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass} from '@angular/common';
+import {SortDropdownComponent} from '../../../sort-dropdown/sort-dropdown.component';
 
 
 @Component({
   selector: 'app-filters-admin-jobs',
   imports: [
-    NgClass
+    NgClass,
+    SortDropdownComponent
   ],
   templateUrl: './filters-admin-jobs.component.html',
   standalone: true,
