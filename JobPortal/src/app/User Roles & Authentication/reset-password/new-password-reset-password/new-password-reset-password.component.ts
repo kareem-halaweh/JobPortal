@@ -43,7 +43,7 @@ export class NewPasswordResetPasswordComponent implements OnInit{
       return;
     }
 
-    this.router.navigate(['/Admin']);
+    this.router.navigate(['/login']);
   }
 }
 
