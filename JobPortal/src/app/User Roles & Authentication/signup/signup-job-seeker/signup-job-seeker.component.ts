@@ -27,7 +27,7 @@ export class SignupJobSeekerComponent implements OnInit {
       fullName: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       age: ['', [Validators.required, Validators.min(18)]],
-      gender: ['', Validators.required],
+      gender: [''],
       specialization: ['', Validators.required],
       location: ['', Validators.required],
       aboutYou: ['']
