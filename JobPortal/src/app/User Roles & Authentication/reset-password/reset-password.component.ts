@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,9 +17,15 @@ import {NgIf} from '@angular/common';
 export class ResetPasswordComponent implements OnInit {
 
   resetPasswordForm!: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
+  successMessage = '';
+  errorMessage = '';
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private resetPasswordService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group({
@@ -28,11 +35,23 @@ export class ResetPasswordComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    this.successMessage = '';
+    this.errorMessage = '';
 
     if (this.resetPasswordForm.invalid) {
-    return;
-  }
+      return;
+    }
 
-  this.router.navigate(['/resetPasswordCode']);
-}
+    const email = this.resetPasswordForm.get('email')!.value;
+
+    this.resetPasswordService.sendResetLinkEmail(email).subscribe({
+      next: (response) => {
+        this.successMessage = response.message || 'Reset link sent! Please check your email.';
+
+      },
+      error: (error) => {
+        this.errorMessage = error.error.message || 'Failed to send reset link. Please try again.';
+      }
+    });
+  }
 }

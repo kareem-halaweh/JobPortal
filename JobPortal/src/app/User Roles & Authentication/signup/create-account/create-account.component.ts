@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-create-account',
+  selector: 'app-create-account-employer',
   imports: [
     ReactiveFormsModule,
     NgIf
@@ -22,7 +22,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {
     this.accountForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.minLength(4)]],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
     });
   }

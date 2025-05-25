@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminSidebarComponent } from '../../SideBarItems/admin-sidebar/admin-sidebar.component';
-import {NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import { SeekerSidebarComponent } from '../../SideBarItems/seeker-sidebar/seeker-sidebar.component';
 import { EmployerSidebarComponent } from '../../SideBarItems/employer-sidebar/employer-sidebar.component';
 import { RouterOutlet } from '@angular/router';
@@ -24,7 +24,7 @@ import {HeaderGuestComponent} from '../../headers/header-guest/header.component'
     HeaderSeekerComponent,
     HeaderEmployerComponent,
     HeaderAdminComponent,
-    NgIf,
+
     FooterComponent,
     HeaderGuestComponent,
     NgSwitchDefault

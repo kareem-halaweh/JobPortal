@@ -16,7 +16,6 @@ import { LoginComponent } from './User Roles & Authentication/login/login.compon
 import { ChangePasswordComponent } from './User Roles & Authentication/change-password/change-password.component';
 
 import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
-import { ResetPasswordCodeComponent } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 
 import { SignupComponent } from './User Roles & Authentication/signup/signup.component';
@@ -42,7 +41,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'resetPasswordCode', component: ResetPasswordCodeComponent },
   { path: 'newPasswordResetPassword', component: NewPasswordResetPasswordComponent },
  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
@@ -50,9 +48,11 @@ export const routes: Routes = [
   { path: 'createAccountEmployer', component: CreateAccountComponent },
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
-
+/*
   { path: 'jobs', component: FindJobComponent },
   { path: 'jobs/:id', component: CardDetailsComponent },
+  */
+
   {
     path: 'Seeker',
     component: HomeLayoutComponent,
