@@ -90,7 +90,6 @@
 .sidebar:hover .nav-link:hover {
   background-color: #f8f9fa;
   color: #1B2A41;
-  padding: 0.5rem 0.5rem;
   margin-right: -100px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;

@@ -1,0 +1,19 @@
+.card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;}
+
+.card .btn {
+  color: #FFFFFF;
+  background-color: #F4B400;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #F7C600;
+}
+
+
+
+
+
+

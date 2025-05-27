@@ -1,54 +1,97 @@
-<main class=" rounded-3">
-  <div class="  rounded-3">
-    <div  class="d-flex justify-content-center align-items-center" >
+<!-- Employer Sign-Up Page -->
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: rgba(244,245,246,0.05);">
+  <div class="row w-100 justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-7" style="max-width: 80rem;">
+      <div class="custom-modal-content p-4 pt-1" style="background-color: white; border: 4px solid #1B2A41; border-radius: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
 
-      <app-header-text [headerText]= "'Create your account'"></app-header-text>
+        <!-- Header -->
+        <div class="header border-0 justify-content-center">
+          <h2 class="fs-3 text-center w-100 mt-1 mb-4 fw-bold" style="color:#1B2A41;">
+            Create your account
+          </h2>
+        </div>
+
+        <!-- Employer Sign-Up Form -->
+        <form [formGroup]="employerForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-3 ps-2">
+
+            <!-- Company Name -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Company Name</label>
+              <input formControlName="companyName" type="text" class="form-control border-2 rounded-4" />
+              <div *ngIf="submitted && employerForm.get('companyName')?.errors?.['required']" class="text-danger small ps-1">
+                Company name is required.
+              </div>
+            </div>
+
+            <!-- Founded Date -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Founded Date</label>
+              <input formControlName="foundedDate" type="date" class="form-control border-2 rounded-4" />
+            </div>
+
+            <!-- Company Logo -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Company Logo (optional)</label>
+              <input id="companyLogo" type="file" class="form-control border-2 rounded-4 ps-1" accept="image/*" (change)="onLogoSelected($event)" />
+            </div>
+
+            <!-- Industry -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Company Industry</label>
+              <select formControlName="companyIndustry" class="form-control border-2 rounded-4">
+                <option value="" disabled selected>Select industry</option>
+                <option value="Technology">Finance</option>
+                <option value="Healthcare">IT</option>
+                <option value="Finance">Marketing</option>
+                <option value="Education">Graph design</option>
+              </select>
+              <div *ngIf="submitted && employerForm.get('companyIndustry')?.errors?.['required']" class="ps-1 text-danger small">
+                Company industry is required.
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Location (Online)</label>
+              <input formControlName="location" type="text" class="form-control border-2 rounded-4" />
+              <div *ngIf="submitted && employerForm.get('location')?.errors?.['required']" class="ps-1 text-danger small">
+                Location is required.
+              </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="col-md-6">
+              <label class="fw-bold" style="color:#1B2A41;">Phone Number</label>
+              <input formControlName="phoneNumber" type="text" class="form-control border-2 rounded-4" placeholder="XXXXXXXX" />
+              <div *ngIf="submitted && employerForm.get('phoneNumber')?.errors" class="text-danger small ps-1">
+                <div *ngIf="employerForm.get('phoneNumber')?.errors?.['required']">
+                  Phone number is required.
+                </div>
+                <div *ngIf="employerForm.get('phoneNumber')?.errors?.['minlength']">
+                  Enter a valid phone number.
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="col-12">
+              <label class="fw-bold" style="color:#1B2A41;">Description</label>
+              <textarea formControlName="description" class="form-control border-2 rounded-4" rows="3"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-flex justify-content-center align-items-center mt-4">
+
+            <button type="submit" class="btn px-4 py-2 fw-bold rounded-3" style="background-color: #FFC727;color: #1B2A41;" >
+              Next
+            </button>
+
+          </div>
+        </form>
+
+      </div>
     </div>
-    <div class=" mt-4 mx-5" >
-
-      <div class="d-flex row">
-        <div class="my-3 col-6">
-          <app-label [labelText]="'Company name'" ></app-label>
-          <app-input [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
-        </div>
-        <div class="my-3 col-6">
-          <app-label [labelText]="'Founded Date'"  ></app-label>
-          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
-        </div>
-
-      </div>
-      <div class="d-flex row">
-        <div class="my-3 col-6">
-          <app-label [labelText]="'Company Logo (Optional)'" ></app-label>
-          <app-input [submitted]="submitted" [type]="'url'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
-        </div>
-        <div class="my-3 col-6">
-          <app-label [labelText]="' Company Industry'"  ></app-label>
-          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
-        </div>
-      </div>
-      <div class="d-flex row">
-        <div class="my-3 col-6">
-          <app-label [labelText]="'Location/online'" ></app-label>
-          <app-input [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'Email is required'" icon="bi bi-envelope"></app-input>
-        </div>
-        <div class="my-3 col-6">
-          <app-label [labelText]="'Phone number'"  ></app-label>
-          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
-        </div>
-
-      </div>
-      <div class="d-flex " >
-        <div class="my-3 col-10">
-          <app-label [labelText]="'Description'"  ></app-label>
-          <app-input  [submitted]="submitted" [type]="'text'" [placeholder]="'###'" [required]="true" [requiredMessage]="'password is required'" icon="bi bi-envelope"></app-input>
-        </div>
-        <app-button class=" p-3 mt-5" text="Next" [linkTo]="'createAccount'" ></app-button>
-      </div>
-
-
-
-    </div>
-
   </div>
-</main>
+</div>

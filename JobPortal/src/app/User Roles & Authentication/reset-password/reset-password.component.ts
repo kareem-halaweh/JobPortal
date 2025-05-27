@@ -1,23 +1,38 @@
-import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {HeaderTextComponent} from '../../shared components/header-text/header.component';
-import {LabelComponent} from '../../shared components/label/label.component';
-import {InputComponent} from '../../shared components/input/input.component';
-import {ButtonComponent} from '../../shared components/button/button.component';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-reset-password',
   imports: [
-    RouterLink,
-    HeaderTextComponent,
-    LabelComponent,
-    InputComponent,
-    ButtonComponent
+    ReactiveFormsModule,
+    NgIf
+
   ],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
 })
-export class ResetPasswordComponent {
-  submitted = false;
+export class ResetPasswordComponent implements OnInit {
 
+  resetPasswordForm!: FormGroup;
+  submitted: boolean = false;
+
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
+  ngOnInit(): void {
+    this.resetPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.resetPasswordForm.invalid) {
+    return;
+  }
+
+  this.router.navigate(['/resetPasswordCode']);
+}
 }
