@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SeekerProfileComponent } from './seeker-pages/seeker-profile/seeker-profile.component';
 import { SeekerNotificationsComponent } from './seeker-pages/seeker-notifications/seeker-notifications.component';
 import {FavoriteJobsComponent} from './seeker-pages/favorite-jobs/favorite-jobs.component';
-import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';
@@ -29,15 +27,6 @@ import { SignupComponent } from './User Roles & Authentication/signup/signup.com
 import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
-
-import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
-
-import { FindJobComponent } from './find-job/find-job.component';
-import { CardDetailsComponent } from './find-job/card-details/card-details.component';
-
-import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
-import {HomeComponent} from './home/home.component';
-
 
 
 import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
@@ -107,14 +96,13 @@ export const routes: Routes = [
     path: 'Admin',
     component: HomeLayoutComponent,
     children: [
-      { path: '', component: HomeComponent},
-      { path: 'home', component: HomeComponent},
-      { path: 'Profile', component: AdminProfileComponent },
-      { path: 'Notifications', component: AdminNotificationsComponent },
-
-
-
-  },{
+      {path: '', component: HomeComponent},
+      {path: 'home', component: HomeComponent},
+      {path: 'Profile', component: AdminProfileComponent},
+      {path: 'Notifications', component: AdminNotificationsComponent}
+    ]
+  },
+  {
     path: 'Guest',
     component: HomeLayoutComponent,
     children: [
