@@ -25,15 +25,7 @@ import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/s
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
 
-import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
 
-import { FindJobComponent } from './find-job/find-job.component';
-import { CardDetailsComponent } from './find-job/card-details/card-details.component';
-
-import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
-import {HomeComponent} from './home/home.component';
-import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
 import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
 import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
@@ -109,11 +101,11 @@ export const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: AdminProfileComponent },
-      { path: 'Notifications', component: AdminNotificationsComponent },
+      { path: 'Notifications', component: AdminNotificationsComponent }
 
 
 
-  },{
+  ]},{
     path: 'Guest',
     component: HomeLayoutComponent,
     children: [

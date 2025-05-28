@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
 import {Job} from '../models/job.model';
+// @ts-ignore
 import {JobService} from '../services/job.service';
 import {NgForOf} from '@angular/common';
 import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
