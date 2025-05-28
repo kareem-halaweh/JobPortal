@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {RouterLink} from '@angular/router';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-profile',
@@ -15,11 +14,10 @@ export class AdminProfileComponent {
   isEditMode = false;
   isOwner = true;
 
-  name = 'admin admin';
+  username = 'admin admin';
   role = 'admin';
   email = 'admin@example.com';
   phone = '+1111111111';
-
   profileImageUrl = 'pfp1.jpg';
 
   toggleEdit(): void {
@@ -27,15 +25,22 @@ export class AdminProfileComponent {
   }
 
   saveChanges(): void {
-    this.toggleEdit();
+    this.isEditMode = false;
+    console.log('Saved values:', {
+      username: this.username,
+      role: this.role,
+      email: this.email,
+      phone: this.phone
+    });
   }
-
 
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files?.[0]) {
       const reader = new FileReader();
-      reader.onload = e => this.profileImageUrl = e.target?.result as string;
+      reader.onload = e => {
+        this.profileImageUrl = e.target?.result as string;
+      };
       reader.readAsDataURL(input.files[0]);
     }
   }

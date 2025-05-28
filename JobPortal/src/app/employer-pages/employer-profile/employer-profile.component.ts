@@ -14,13 +14,12 @@ export class EmployerProfileComponent {
   isEditMode = false;
   isOwner = true;
 
-  companyName = 'Tech Easy Life Inc.';
+  username = 'Tech Easy Life Inc.';
   industry = 'Software Development';
   email = 'hr@easylife.com';
   phone = '+1234567890';
   location = 'Ramallah, Palestine';
   description = 'Our company is made to make your life easier, join us and become on of us. ';
-
 
   profileImageUrl = 'logo1.png';
 
@@ -38,7 +37,6 @@ export class EmployerProfileComponent {
   saveChanges(): void {
     this.toggleEdit();
   }
-
 
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;
