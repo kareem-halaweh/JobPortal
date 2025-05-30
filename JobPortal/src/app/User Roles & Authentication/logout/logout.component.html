@@ -10,10 +10,10 @@
 
         <!-- Buttons -->
         <div class="d-flex justify-content-center align-items-center gap-4">
-          <button class="btn px-4 py-2 fw-bold rounded-3" style="background-color: #FFC727; color: #1B2A41;" [routerLink]="''">
+          <button (click)="cancel()" class="btn px-4 py-2 fw-bold rounded-3" style="background-color: #FFC727; color: #1B2A41;">
             Cancel
           </button>
-          <button class="btn px-4 py-2 fw-bold rounded-3" style="background-color: #FFC727; color: #1B2A41;" [routerLink]="'/guest'">
+          <button (click)="logout()" class="btn px-4 py-2 fw-bold rounded-3" style="background-color: #FFC727; color: #1B2A41;">
             Log out
           </button>
         </div>

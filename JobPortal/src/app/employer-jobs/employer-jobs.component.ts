@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Job } from '../models/job.model';
-import { JobService } from '../services/job.service';
+//import { Job } from '../models/job.model';
+//import { JobService } from '../services/job.service';
 import { NgForOf } from '@angular/common';
 import { CardEmployerJobsComponent } from './card-employer-jobs/card-employer-jobs.component';
 import { FilterEmployerJobsComponent } from './filter-employer-jobs/filter-employer-jobs.component';
@@ -18,8 +18,8 @@ import {SearchEmployerJobsComponent} from './search-employer-jobs/search-employe
   templateUrl: './employer-jobs.component.html',
   styleUrls: ['./employer-jobs.component.css']
 })
-export class EmployerJobsComponent implements OnInit {
-  jobs: Job[] = [];
+export class EmployerJobsComponent{/* implements OnInit {
+ /* jobs: Job[] = [];
   filter: string = 'All';
   sortMethod: string = '';
   displayedJob:Job[]=[];
@@ -67,6 +67,6 @@ export class EmployerJobsComponent implements OnInit {
     this.sortMethod = method;
     this.Filters();
   }
-
+*/
 }
 
