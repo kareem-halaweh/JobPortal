@@ -1,0 +1,21 @@
+
+
+<div class="filter d-flex flex-nowrap mt-1 justify-content-center gap-2">
+  <button class="filter-btn" (click)="setFilter('all')" [ngClass]="{ 'active': currentFilter === 'all' }">All</button>
+  <button class="filter-btn" (click)="setFilter('part time')" [ngClass]="{ 'active': currentFilter === 'part time' }">Part Time</button>
+  <button class="filter-btn" (click)="setFilter('full time')" [ngClass]="{ 'active': currentFilter === 'full time' }">Full Time</button>
+</div>
+
+<div class="d-flex flex-nowrap justify-content-between align-items-center mb-4">
+
+  <div>
+    <h6 class="mb-0 fw-bold">Showing Jobs Results</h6>
+  </div>
+
+  <div class="dropdown">
+    <app-sort-dropdown
+      [sortLabel]="sortLabel"
+      (sortBy)="SortChange($event)">
+    </app-sort-dropdown>
+  </div>
+</div>
