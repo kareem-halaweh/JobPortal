@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-seeker-profile',
@@ -10,7 +11,9 @@ import { RouterLink } from '@angular/router';
   templateUrl: './seeker-profile.component.html',
   styleUrls: ['./seeker-profile.component.css']
 })
-export class SeekerProfileComponent {
+export class SeekerProfileComponent implements OnInit {
+  private http = inject(HttpClient);
+
   isEditMode = false;
   isOwner: boolean = true;
   showUploadModal: boolean = false;
@@ -30,6 +33,42 @@ export class SeekerProfileComponent {
   uploadedFiles: { title: string; file: File }[] = [];
   selectedFile: File | null = null;
   newFileTitle = '';
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token in localStorage');
+      return;
+
+    }
+
+    this.http.get<any>('http://127.0.0.1:8000/api/profile', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).subscribe({
+      next: (res) => {
+        const user = res.user;
+        const seeker = res.profile;
+
+        this.username = user.username || '';
+        this.email = user.email || '';
+        this.phone = user.phone_number || '';
+        this.location = user.location || '';
+
+        this.gender = seeker?.gender || '';
+        this.age = seeker?.age || 0;
+        this.description = seeker?.about_you || '';
+        this.title = seeker?.specialization || '';
+
+        // If you later support image URLs from backend:
+        this.profileImageUrl = 'pfp.jpg';
+      },
+      error: (err) => {
+        console.error('Failed to load profile:', err);
+      }
+    });
+  }
 
   toggleEdit(): void {
     this.isEditMode = !this.isEditMode;
@@ -63,7 +102,7 @@ export class SeekerProfileComponent {
 
   addFileFromModal(): void {
     if (this.selectedFile && this.newFileTitle) {
-      this.uploadedFiles.push({ title: this.newFileTitle, file: this.selectedFile });
+      this.uploadedFiles.push({title: this.newFileTitle, file: this.selectedFile});
       this.newFileTitle = '';
       this.selectedFile = null;
       this.toggleUploadModal();
@@ -88,12 +127,31 @@ export class SeekerProfileComponent {
   }
 
   saveChanges(): void {
-    console.log('Saved profile:', {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    const body = {
       username: this.username,
       email: this.email,
+      phone_number: this.phone,
       location: this.location,
-      uploadedFiles: this.uploadedFiles
+      gender: this.gender,
+      age: this.age,
+      about_me: this.description
+    };
+
+    this.http.put('http://127.0.0.1:8000/api/profile/seeker', body, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).subscribe({
+      next: () => {
+        this.toggleEdit();
+      },
+      error: (err) => {
+        console.error('Failed to update seeker profile:', err);
+        this.toggleEdit();
+      }
     });
-    this.toggleEdit();
   }
 }
