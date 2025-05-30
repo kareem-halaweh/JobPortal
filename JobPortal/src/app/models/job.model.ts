@@ -12,4 +12,3 @@ export interface Job{
   linkjob:string,
   category:'Graphic Design'|'IT'|'Marketing'|'Finance',
 }
-

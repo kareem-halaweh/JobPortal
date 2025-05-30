@@ -424,3 +424,38 @@
   80%  { background-position: 10% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* Save Button: Blue */
+.btn-primary {
+  background-color: #1B2A41;
+  border-color: #1B2A41;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3659A2;
+  border-color: #3659A2;
+}
+
+
+.btn-secondary {
+  background-color: #FFC727;
+  border-color: #FFC727;
+  color: black;
+}
+
+.btn-secondary:hover {
+  background-color: #e6b820;
+  border-color: #e6b820;
+}
+
+
+.small-link {
+  color: #3659A2;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.small-link:hover {
+  color: #FFC727;
+}

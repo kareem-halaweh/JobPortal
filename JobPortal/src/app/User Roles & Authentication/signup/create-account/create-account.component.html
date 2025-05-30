@@ -50,7 +50,7 @@
                   New password is required
                 </small>
                 <small *ngIf="accountForm.get('newPassword')?.errors?.['minlength']" class="text-danger">
-                  New password must be at least 4 characters
+                  New password must be at least 8 characters
                 </small>
                 <small *ngIf="accountForm.get('newPassword')?.errors?.['sameAsCurrent']" class="text-danger">
                   New password must be different from current password

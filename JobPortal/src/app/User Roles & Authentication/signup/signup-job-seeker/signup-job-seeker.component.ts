@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NgIf} from '@angular/common';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-signup-job-seeker',
@@ -20,16 +21,17 @@ export class SignupJobSeekerComponent implements OnInit {
   logoPreview: string | ArrayBuffer | null = null;
   selectedLogoFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
-
+ constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
   ngOnInit(): void {
     this.seekerForm = this.fb.group({
       fullName: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       age: ['', [Validators.required, Validators.min(18)]],
-      specialization: ['', Validators.required],
+      gender: [''],
+      specialization: [''],
       location: ['', Validators.required],
-      aboutYou: ['']
+      aboutYou: [''],
+      profilePicture: [null]
     });
   }
 
@@ -39,8 +41,11 @@ export class SignupJobSeekerComponent implements OnInit {
     this.seekerForm.updateValueAndValidity();
 
     if (this.seekerForm.invalid) return;
-      this.router.navigate(['/createAccountSeeker']);
-  }
+    this.authService.setSeekerFormData({
+      ...this.seekerForm.value,
+    });
+    this.router.navigate(['/createAccountSeeker']);
+    }
 
   onLogoSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];

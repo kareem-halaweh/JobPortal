@@ -7,16 +7,18 @@ import {FavoriteJobsComponent} from './seeker-pages/favorite-jobs/favorite-jobs.
 
 import { EmployerProfileComponent } from './employer-pages/employer-profile/employer-profile.component';
 import { EmployerNotificationsComponent } from './employer-pages/employer-notifications/employer-notifications.component';
+import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
 
 import { AdminProfileComponent } from './admin-pages/admin-profile/admin-profile.component';
 import { AdminNotificationsComponent } from './admin-pages/admin-notifications/admin-notifications.component';
+import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
+import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
 
 import { LoginComponent } from './User Roles & Authentication/login/login.component';
 
 import { ChangePasswordComponent } from './User Roles & Authentication/change-password/change-password.component';
 
 import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
-import { ResetPasswordCodeComponent } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 
 
@@ -24,11 +26,6 @@ import { SignupComponent } from './User Roles & Authentication/signup/signup.com
 import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
-
-
-import {AdminJobsComponent} from './admin-pages/admin-jobs/admin-jobs.component';
-import {ReportedJobsAdminComponent} from './admin-pages/reported-jobs-admin/reported-jobs-admin.component';
-import {EmployerJobsComponent} from './employer-pages/employer-jobs/employer-jobs.component';
 
 
 import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
@@ -43,18 +40,15 @@ import {ApplicationStatusComponent} from './application-status/application-statu
 import {
   CreateAccountComponentSeeker
 } from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
+import {RoleGuard} from './auth/role.guard';
 
 
 export const routes: Routes = [
-
-  { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
-
 
 
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'resetPasswordCode', component: ResetPasswordCodeComponent },
   { path: 'newPasswordResetPassword', component: NewPasswordResetPasswordComponent },
  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
@@ -63,12 +57,22 @@ export const routes: Routes = [
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
 
+/*
+=======
 
+
+>>>>>>> 302856a9da1223103bd3ad159a276e8957ed494e
   { path: 'jobs', component: FindJobComponent },
   { path: 'jobs/:id', component: CardDetailsComponent },
+  */
+
+
+
   {
     path: 'Seeker',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 2 },
     children: [
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
@@ -84,6 +88,8 @@ export const routes: Routes = [
   {
     path: 'Employer',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 3 },
     children: [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
@@ -97,16 +103,17 @@ export const routes: Routes = [
   {
     path: 'Admin',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 1 },
     children: [
-      { path: '', component: HomeComponent},
-      { path: 'home', component: HomeComponent},
-      { path: 'Profile', component: AdminProfileComponent },
-      { path: 'Notifications', component: AdminNotificationsComponent }
+      {path: '', component: HomeComponent},
+      {path: 'home', component: HomeComponent},
+      {path: 'Profile', component: AdminProfileComponent},
+      {path: 'Notifications', component: AdminNotificationsComponent}
+    ]
 
-
-
-  ]},{
-    path: 'Guest',
+  },{
+    path: '',
     component: HomeLayoutComponent,
     children: [
       { path: '', component: HomeComponent},
@@ -120,9 +127,7 @@ export const routes: Routes = [
 
     ]
 
-  }
-
-
+  },
 ];
 
 @NgModule({

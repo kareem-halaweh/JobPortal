@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-seeker-profile',
@@ -12,11 +12,10 @@ import {RouterLink} from '@angular/router';
 })
 export class SeekerProfileComponent {
   isEditMode = false;
-  isOwner: boolean =true;
+  isOwner: boolean = true;
   showUploadModal: boolean = false;
 
-  firstName = 'Ahmad';
-  lastName = 'Adham';
+  username = 'Username';
   title = 'Engineer';
   email = 'wafaa@example.com';
   phone = '+1234567890';
@@ -79,7 +78,6 @@ export class SeekerProfileComponent {
     this.uploadedFiles.splice(index, 1);
   }
 
-
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files?.[0]) {
@@ -91,7 +89,7 @@ export class SeekerProfileComponent {
 
   saveChanges(): void {
     console.log('Saved profile:', {
-      name: `${this.firstName} ${this.lastName}`,
+      username: this.username,
       email: this.email,
       location: this.location,
       uploadedFiles: this.uploadedFiles

@@ -5,6 +5,9 @@ import {NgForOf} from '@angular/common';
 import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
 import {Job} from '../../models/job.model';
 import {JobService} from '../../services/jobs.service';
+import {SearchBarJobsComponent} from '../../search-bar-jobs/search-bar-jobs.component';
+
+
 
 
 
@@ -14,6 +17,9 @@ import {JobService} from '../../services/jobs.service';
     FiltersAdminJobsComponent,
     NgForOf,
     CardsAdminJobsComponent,
+
+
+    SearchBarJobsComponent,
 
 
   ],
@@ -28,21 +34,30 @@ displayedJob:Job[]=[];
 filter: string = 'all';
 sortMethod: string = '';
 sortLabel:string='sort By';
+selectedLocation: string = '';
 
 
   constructor(private appService: JobService) {}
 
   ngOnInit() {
-    this.jobs = this.appService. getJob();
-    this.Filters();
+    this.loadJobs();
   }
+  loadJobs() {
+
+      this.jobs = this.appService.getJob();
+      this.displayedJob = [...this.jobs];
+    this.Filters();
+    }
 
 
   Filters() {
     let apps = [...this.jobs];
 
-    if ( this.filter !== 'all') {
-      apps = apps.filter(app => app.type === this.filter);
+    apps = this.filter === 'all' ? apps : apps.filter(job => job.type === this.filter);
+    if (this.selectedLocation) {
+      apps = apps.filter(job =>
+        job.location.toLowerCase() === this.selectedLocation.toLowerCase()
+      );
     }
 
     switch (this.sortMethod) {
@@ -53,8 +68,7 @@ sortLabel:string='sort By';
         apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
         break;
     }
-
-    this.displayedJob = apps;
+    this.displayedJob =[...apps];
 
   }
 
@@ -68,11 +82,14 @@ sortLabel:string='sort By';
 
   SortChange(method: string) {
     this.sortMethod = method;
-    this.sortLabel = method === 'newest' ? 'Newest' : 'Oldest';
+    this.sortLabel = method === 'newest' ? 'newest' : 'oldest';
     this.Filters();
   }
 
-
+  filterByLocation(location: string) {
+    this.selectedLocation = location;
+    this.Filters();
+  }
 
 
 

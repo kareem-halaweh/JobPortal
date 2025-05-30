@@ -22,7 +22,8 @@
   background-color: #232945;
   color: white;
   border-radius: 1rem;
-  min-width: 80px;
+  min-width: 60px;
+ max-height: 30px;
   text-align: center;
   padding: 6px 12px;
   display: inline-block;
