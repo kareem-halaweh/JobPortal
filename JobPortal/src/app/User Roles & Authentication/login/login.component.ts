@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginData).subscribe({
       next: (response) => {
         const user = response.user;
-
+        localStorage.setItem('user', JSON.stringify(user));
         // Redirect based on role_id
         switch (user.role_id) {
           case 1: this.router.navigate(['/Admin']); break;
@@ -54,8 +54,13 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.errorMessage = 'Invalid email or password.';
-      }
+        if (err.status === 401) {
+          this.errorMessage = 'Invalid email or password.';
+        } else if (err.status === 0) {
+          this.errorMessage = 'Cannot reach the server. Please check your connection.';
+        } else {
+          this.errorMessage = `Login failed: ${err.message}`;
+        }  }
     });
   }
 }

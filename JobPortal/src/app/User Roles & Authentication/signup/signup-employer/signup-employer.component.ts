@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-signup-employer',
@@ -20,13 +21,13 @@ export class SignupEmployerComponent  implements OnInit {
   logoPreview: string | ArrayBuffer | null = null;
   selectedLogoFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router , private authService: AuthService ) {}
 
   ngOnInit(): void {
     this.employerForm = this.fb.group({
       companyName: ['', Validators.required],
       foundedDate: [''],
-      companyLogo: [''],
+      profile_img: ['null'],
       companyIndustry: ['', Validators.required],
       location: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
@@ -41,6 +42,7 @@ export class SignupEmployerComponent  implements OnInit {
 
     if (this.employerForm.invalid) return;
 
+    this.authService.setEmployerFormData(this.employerForm.value); // Added: set form data to service
     this.router.navigate(['/createAccountEmployer']);
   }
 

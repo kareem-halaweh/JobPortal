@@ -29,7 +29,7 @@ export class LogoutComponent implements OnInit {
           case 1: this.userRolePath = '/Admin/home'; break;
           case 2: this.userRolePath = '/Seeker/home'; break;
           case 3: this.userRolePath = '/Employer/home'; break;
-          default: this.userRolePath = '/home';
+          default: this.userRolePath = '/';
         }
       } catch (err) {
         console.error('Error parsing user:', err);
@@ -44,12 +44,12 @@ export class LogoutComponent implements OnInit {
 
   logout(): void {
     this.authService.logout().subscribe({
-      next: () => this.router.navigate(['/Guest']),
+      next: () => this.router.navigate(['/']),
       error: err => {
         console.error('Logout error:', err);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.router.navigate(['/Guest']);
+        this.router.navigate(['/']);
       }
     });
   }

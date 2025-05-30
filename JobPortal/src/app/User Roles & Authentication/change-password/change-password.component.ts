@@ -60,9 +60,8 @@ export class ChangePasswordComponent implements OnInit {
         alert(response.message || 'Password changed successfully!');
 
         const user = response.user;
-        console.log('User:', user);               // Check if user exists
-        console.log('Role ID:', user?.role_id);   // Check role_id value
-
+        console.log('User:', user);
+        console.log('Role ID:', user?.role_id);
         switch (user?.role_id) {
           case 1:
             this.router.navigate(['/Admin/home']);

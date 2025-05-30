@@ -35,9 +35,11 @@ import {ApplicationStatusComponent} from './application-status/application-statu
 import {
   CreateAccountComponentSeeker
 } from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
+import {RoleGuard} from './auth/role.guard';
 
 
 export const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
@@ -53,9 +55,13 @@ export const routes: Routes = [
   { path: 'jobs/:id', component: CardDetailsComponent },
   */
 
+
+
   {
     path: 'Seeker',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 2 },
     children: [
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
@@ -71,6 +77,8 @@ export const routes: Routes = [
   {
     path: 'Employer',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 3 },
     children: [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
@@ -81,6 +89,8 @@ export const routes: Routes = [
   {
     path: 'Admin',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 1 },
     children: [
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
@@ -90,17 +100,6 @@ export const routes: Routes = [
     ]
 
   },{
-    path: 'Guest',
-    component: HomeLayoutComponent,
-    children: [
-      { path: '', component: HomeComponent},
-      { path: 'home', component: HomeComponent},
-      { path: 'jobs', component: FindJobComponent },
-      { path: 'jobs/:id', component: CardDetailsComponent },
-    ]
-
-  },
-  {
     path: '',
     component: HomeLayoutComponent,
     children: [
@@ -110,10 +109,7 @@ export const routes: Routes = [
       { path: 'jobs/:id', component: CardDetailsComponent },
     ]
 
-  }
-
-
-
+  },
 ];
 
 @NgModule({

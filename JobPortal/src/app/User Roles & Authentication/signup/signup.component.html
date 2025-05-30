@@ -16,22 +16,20 @@
         <div class="row justify-content-center g-4">
           <!-- Job Seeker Option -->
           <div class="col-6 col-sm-5 col-lg-4">
-            <a routerLink="/signupJobSeeker" class="text-decoration-none">
-              <button class="btn p-3 w-100 rounded-4 border-2 fw-bold"
+            <button   (click)="chooseRole(2)" class="btn p-3 w-100 rounded-4 border-2 fw-bold"
                       style=" background-color: #FFC727; color:#1B2A41;">
                 Job Seeker
               </button>
-            </a>
+
           </div>
 
           <!-- Employer Option -->
           <div class="col-6 col-sm-5 col-lg-4">
-            <a routerLink="/signupEmployer" class="text-decoration-none">
-              <button class="btn p-3 w-100 rounded-4 border-2 fw-bold"
+           <button (click)="chooseRole(3)" class="btn p-3 w-100 rounded-4 border-2 fw-bold"
                       style=" background-color: #FFC727; color:#1B2A41;">
                 Employer
               </button>
-            </a>
+
           </div>
         </div>
 

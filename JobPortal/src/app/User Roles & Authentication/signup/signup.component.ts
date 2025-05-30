@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, } from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
   imports: [
-
-    RouterLink
 
   ],
   templateUrl: './signup.component.html',
@@ -13,4 +12,14 @@ import {RouterLink} from '@angular/router';
 })
 export class SignupComponent {
 
+  constructor(private authService: AuthService, private router: Router) {}
+
+  chooseRole(roleId: number) {
+    this.authService.setRole(roleId);
+    if (roleId === 2) {
+      this.router.navigate(['/signupJobSeeker']);
+    } else if (roleId === 3) {
+      this.router.navigate(['/signupEmployer']);
+    }
+  }
 }
