@@ -1,59 +1,58 @@
-import {Component, OnInit} from '@angular/core';
-import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
-
-import {NgForOf} from '@angular/common';
-import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
-import {Job} from '../../models/job.model';
-import {JobService} from '../../services/jobs.service';
-import {SearchBarJobsComponent} from '../../search-bar-jobs/search-bar-jobs.component';
-
-
-
-
+import { Component, OnInit } from '@angular/core';
+import { FiltersAdminJobsComponent } from './filters-admin-jobs/filters-admin-jobs.component';
+import { NgForOf } from '@angular/common';
+import { CardsAdminJobsComponent } from './cards-admin-jobs/cards-admin-jobs.component';
+import { Job } from '../../models/job.model';
+import { JobService } from '../../services/jobs.service';
+import { SearchBarJobsComponent } from '../../search-bar-jobs/search-bar-jobs.component';
 
 @Component({
   selector: 'app-admin-jobs',
+  standalone: true,
   imports: [
     FiltersAdminJobsComponent,
     NgForOf,
     CardsAdminJobsComponent,
-
-
-    SearchBarJobsComponent,
-
-
+    SearchBarJobsComponent
   ],
   templateUrl: './admin-jobs.component.html',
-  standalone: true,
-  styleUrl: './admin-jobs.component.css'
+  styleUrls: ['./admin-jobs.component.css']
 })
-export class AdminJobsComponent implements OnInit{
-jobs: Job[] = [];
-displayedJob:Job[]=[];
+export class AdminJobsComponent implements OnInit {
+  jobs: Job[] = [];
+  displayedJob: Job[] = [];
 
-filter: string = 'all';
-sortMethod: string = '';
-sortLabel:string='sort By';
-selectedLocation: string = '';
+  filter: string = 'all';
+  sortMethod: string = '';
+  sortLabel: string = 'sort By';
+  selectedLocation: string = '';
 
-
-  constructor(private appService: JobService) {}
+  constructor(private jobService: JobService) {}
 
   ngOnInit() {
     this.loadJobs();
   }
+
   loadJobs() {
-
-      this.jobs = this.appService.getJob();
-      this.displayedJob = [...this.jobs];
-    this.Filters();
-    }
-
+    this.jobService.getJobs().subscribe({
+      next: (jobs) => {
+        this.jobs = jobs;
+        this.displayedJob = [...this.jobs];
+        this.Filters();
+      },
+      error: (err) => {
+        console.error('Failed to load jobs:', err);
+      }
+    });
+  }
 
   Filters() {
     let apps = [...this.jobs];
 
-    apps = this.filter === 'all' ? apps : apps.filter(job => job.type === this.filter);
+    if (this.filter !== 'all') {
+      apps = apps.filter(job => job.type.toLowerCase() === this.filter.toLowerCase());
+    }
+
     if (this.selectedLocation) {
       apps = apps.filter(job =>
         job.location.toLowerCase() === this.selectedLocation.toLowerCase()
@@ -68,12 +67,9 @@ selectedLocation: string = '';
         apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
         break;
     }
-    this.displayedJob =[...apps];
 
+    this.displayedJob = [...apps];
   }
-
-
-
 
   Changestatus(filter: string) {
     this.filter = filter;
@@ -90,7 +86,5 @@ selectedLocation: string = '';
     this.selectedLocation = location;
     this.Filters();
   }
-
-
-
 }
+

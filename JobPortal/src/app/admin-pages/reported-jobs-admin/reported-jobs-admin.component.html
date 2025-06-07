@@ -1,18 +1,20 @@
+<div class="container">
+  <app-filters-reported-jobs-admin (sortChanged)="SortChange($event)">
+  </app-filters-reported-jobs-admin>
 
-  <div class ="container"  >
-    <app-filters-reported-jobs-admin
-      (sortChanged)=" SortChange($event)">
-    </app-filters-reported-jobs-admin>
+  <app-table-reported-jobs-admin
+    [displayedreportedjobs]="paginatedreportedjobs"
+    (approve)="Approve($event)"
+    (reject)="Reject($event)">
+  </app-table-reported-jobs-admin>
 
-    <app-table-reported-jobs-admin
-      [displayedreportedjobs]="paginatedreportedjobs">
-
-    </app-table-reported-jobs-admin>
-    <div class="d-flex justify-content-center">
-      <app-pagination
-        [currentPage]="currentPage"
-        [totalPages]="totalPages()"
-        (pageChange)="PageChange($event)">
-      </app-pagination></div>
+  <div class="d-flex justify-content-center">
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages()"
+      (pageChange)="PageChange($event)">
+    </app-pagination>
   </div>
+</div>
+
 
