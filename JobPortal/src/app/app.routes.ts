@@ -41,6 +41,7 @@ import {
   CreateAccountComponentSeeker
 } from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
 import {RoleGuard} from './auth/role.guard';
+import {CreateJobComponent} from './create-job/create-job.component';
 
 
 export const routes: Routes = [
@@ -57,15 +58,7 @@ export const routes: Routes = [
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
 
-/*
-=======
-
-
->>>>>>> 302856a9da1223103bd3ad159a276e8957ed494e
-  { path: 'jobs', component: FindJobComponent },
-  { path: 'jobs/:id', component: CardDetailsComponent },
-  */
-
+  {path: 'create' , component: CreateJobComponent},
 
 
   {
@@ -94,6 +87,7 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
+
 
       { path: 'Notifications', component: EmployerNotificationsComponent },
       { path: 'employer-jobs', component: EmployerJobsComponent }

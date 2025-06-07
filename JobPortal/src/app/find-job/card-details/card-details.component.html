@@ -128,9 +128,10 @@
 
           <h5 class="fw-bold mt-4 mb-3">Skills:</h5>
           <ul class="d-flex flex-wrap gap-2">
-            <li class="badge bg-light text-dark border">Business</li>
-            <li class="badge bg-light text-dark border">Marketing</li>
-            <li class="badge bg-light text-dark border">Development</li>
+            <li *ngFor="let skill of job.skills" class="skill-item">
+              {{ skill }}
+            </li>
+
           </ul>
         </div>
       </div>
