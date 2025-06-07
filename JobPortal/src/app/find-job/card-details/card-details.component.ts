@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {NgForOf} from '@angular/common';
+
 
 
 @Component({
   selector: 'app-card-details',
-  imports: [FormsModule],
+  imports: [FormsModule, NgForOf],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.css'
 })

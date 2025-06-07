@@ -1,1 +1,79 @@
-<p>create-job works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Create New Job</h2>
+
+  <form (ngSubmit)="onSubmit()" #jobForm="ngForm">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Basic Job Information -->
+            <div class="mb-3">
+              <label for="jobTitle" class="form-label">Job Title</label>
+              <input type="text" class="form-control" id="jobTitle" name="jobTitle"
+                     [(ngModel)]="jobData.title" required>
+            </div>
+
+
+            <!-- About the Job -->
+            <div class="mb-3">
+              <label for="description" class="form-label">About the Job</label>
+              <textarea class="form-control" id="description" name="description" rows="4"
+                        [(ngModel)]="jobData.description" required></textarea>
+            </div>
+
+            <!-- Responsibilities -->
+            <div class="mb-3">
+              <label for="responsibilities" class="form-label">Responsibilities</label>
+              <textarea class="form-control" id="responsibilities" name="responsibilities" rows="4"
+                        [(ngModel)]="jobData.responsibilities"
+                        placeholder="Enter responsibilities (one per line)" required></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-3">
+              <label for="skills" class="form-label">Skills (comma-separated)</label>
+              <input type="text" class="form-control" id="skills" name="skills"
+                     [(ngModel)]="jobData.skills"
+                     placeholder="e.g. Business, Marketing, Development">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <!-- Job Details -->
+            <div class="mb-3">
+              <label for="salary" class="form-label">Average Salary</label>
+              <input type="number" class="form-control" id="salary" name="salary"
+                     [(ngModel)]="jobData.salary" required>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="employmentType" class="form-label">Employment Type</label>
+              <select class="form-control" id="employmentType" name="employmentType"
+                      [(ngModel)]="jobData.employmentType" required>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Contract">Contract</option>
+                <option value="Temporary">Temporary</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="category" class="form-label">Job Category</label>
+              <input type="text" class="form-control" id="category" name="category"
+                     [(ngModel)]="jobData.category" required>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary w-100"
+                    [disabled]="!jobForm.form.valid">Create Job</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

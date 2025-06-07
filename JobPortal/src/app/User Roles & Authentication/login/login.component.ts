@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         const user = response.user;
         localStorage.setItem('user', JSON.stringify(user));
-        // Redirect based on role_id
+
         switch (user.role_id) {
           case 1: this.router.navigate(['/Admin']); break;
           case 2: this.router.navigate(['/Seeker']); break;
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
         console.error('Login failed', err);
         if (err.status === 401) {
           this.errorMessage = 'Invalid email or password.';
+          alert('Incorrect email or password. Please try again.');
         } else if (err.status === 0) {
           this.errorMessage = 'Cannot reach the server. Please check your connection.';
         } else {
