@@ -35,13 +35,17 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
-import {AppliedJobsComponent} from './applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './application-status/application-status.component';
+
 import {
   CreateAccountComponentSeeker
 } from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
 import {RoleGuard} from './auth/role.guard';
+
+import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
+
 import {CreateJobComponent} from './create-job/create-job.component';
+
 
 
 export const routes: Routes = [

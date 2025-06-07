@@ -22,54 +22,74 @@ import {reportejobsService} from '../../services/reportedjobs.service';
 })
 export class ReportedJobsAdminComponent implements OnInit  {
   reportedJobs: reportedJob[] = [];
-  displayedreportedjobs: reportedJob[] = [];
+  sortedReportedJobs: reportedJob[] = [];
+  paginatedreportedjobs: reportedJob[] = [];
 
-  filter: string = 'all';
+  sortMethod: string = 'newest';
+  sortLabel: string = 'Newest';
+
   currentPage: number = 1;
   rowsPerPage: number = 7;
-  sortMethod: string = '';
-  sortLabel: string = 'Sort By';
 
-  constructor(private reportejobsService: reportejobsService) {}
+  constructor(private reportJobsService: reportejobsService) {}
 
-  ngOnInit() {
-    this.reportedJobs = this.reportejobsService.getreportedJob();
-    this.Filters();
+  ngOnInit(): void {
+    this.loadReportedJobs();
   }
 
-  Filters() {
-    let apps = [...this.reportedJobs];
-
-    switch (this.sortMethod) {
-      case 'newest':
-        apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        break;
-      case 'oldest':
-        apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        break;
+  loadReportedJobs(): void {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found');
+      return;
     }
 
-    this.displayedreportedjobs = apps;
-    this.currentPage = 1;
+    this.reportJobsService.getAllReports(token, this.sortMethod).subscribe({
+      next: (data: reportedJob[]) => {
+        this.reportedJobs = data;
+        this.applySorting();
+      },
+      error: error => {
+        console.error('Failed to fetch reported jobs:', error);
+      }
+    });
   }
 
-  SortChange(method: string) {
+  SortChange(method: string): void {
     this.sortMethod = method;
     this.sortLabel = method === 'newest' ? 'Newest' : 'Oldest';
-    console.log('Sorting by:', method);
-    this.Filters();
+    this.applySorting();
   }
 
-  get paginatedreportedjobs() {
+  applySorting(): void {
+    if (this.sortMethod === 'oldest') {
+      this.sortedReportedJobs = [...this.reportedJobs].sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+    } else {
+      this.sortedReportedJobs = [...this.reportedJobs].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+    }
+
+    this.currentPage = 1;
+    this.updatePaginatedJobs();
+  }
+
+  updatePaginatedJobs(): void {
     const start = (this.currentPage - 1) * this.rowsPerPage;
-    return this.displayedreportedjobs.slice(start, start + this.rowsPerPage);
+    const end = start + this.rowsPerPage;
+    this.paginatedreportedjobs = this.sortedReportedJobs.slice(start, end);
+  }
+
+  PageChange(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedJobs();
   }
 
   totalPages(): number[] {
-    return Array.from({ length: Math.ceil(this.displayedreportedjobs.length / this.rowsPerPage) }, (_, i) => i + 1);
+    return Array(Math.ceil(this.reportedJobs.length / this.rowsPerPage)).fill(0).map((_, i) => i + 1);
   }
 
-  onPageChange(page: number) {
-    this.currentPage = page;
-  }
+
 }

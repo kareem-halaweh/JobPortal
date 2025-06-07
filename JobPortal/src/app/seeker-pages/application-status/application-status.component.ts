@@ -22,63 +22,84 @@ import {PaginationComponent} from '../../pagination/pagination.component';
 })
 export class ApplicationStatusComponent implements OnInit {
   JobApplication: JobApplication[] = [];
-  displayedApplications: JobApplication[] = [];
+  paginatedApplicants: JobApplication[] = [];
 
   filter: string = 'all';
-  sortMethod: string = '';
-  sortLabel: string = 'Sort By';
-
+  sortMethod: string = 'newest';
+  sortLabel: string = 'Newest';
   currentPage: number = 1;
-  rowsPerPage: number = 7;
+  itemsPerPage: number = 4;
+  isLoading: boolean = false;
 
   constructor(private appService: ApplicationsService) {}
 
-  ngOnInit() {
-    this.JobApplication = this.appService.getApplications();
-    this.Filters();
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
+    this.isLoading = true;
+
+    this.appService.getAllApplications(token).subscribe({
+      next: (data: JobApplication[]) => {
+        this.JobApplication = data;
+        this.applyFilters();
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Failed to fetch job applications:', error);
+        this.isLoading = false;
+      }
+    });
   }
 
-  Filters() {
-    let apps = [...this.JobApplication];
+  Changestatus(filter: string): void {
+    this.filter = filter;
+    this.applyFilters();
+  }
 
-    if ( this.filter !== 'all') {
-      apps = apps.filter(app => app.status === this.filter);
+  SortChange(method: string): void {
+    this.sortMethod = method;
+    this.sortLabel = method === 'newest' ? 'Newest' : 'Oldest';
+    this.applyFilters();
+  }
+
+  applyFilters(): void {
+    let filtered = this.JobApplication;
+
+    if (this.filter !== 'all') {
+      filtered = filtered.filter(app => app.status === this.filter);
     }
 
-    switch (this.sortMethod) {
-      case 'newest':
-        apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        break;
-      case 'oldest':
-        apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        break;
-    }
+    filtered.sort((a, b) => {
+      return this.sortMethod === 'newest'
+        ? new Date(b.date).getTime() - new Date(a.date).getTime()
+        : new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
 
-    this.displayedApplications = apps;
-    this.currentPage = 1;
+    this.paginate(filtered);
+  }
+
+  paginate(apps: JobApplication[]): void {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.paginatedApplicants = apps.slice(start, end);
+  }
+
+  onPageChange(newPage: number): void {
+    this.currentPage = newPage;
+    this.applyFilters();
   }
 
   totalPages(): number[] {
-    return Array.from({ length: Math.ceil(this.displayedApplications.length / this.rowsPerPage) }, (_, i) => i + 1);
+    const filteredCount = this.filter === 'all'
+      ? this.JobApplication.length
+      : this.JobApplication.filter(app => app.status === this.filter).length;
+
+    const totalPages = Math.ceil(filteredCount / this.itemsPerPage); // غيرت هنا
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  get paginatedApplicants() {
-    const start = (this.currentPage - 1) * this.rowsPerPage;
-    return this.displayedApplications.slice(start, start + this.rowsPerPage);
-  }
-
-  Changestatus(filter: string) {
-    this.filter = filter;
-    this.Filters();
-  }
-
-  SortChange(method: string) {
-    this.sortMethod = method;
-    this.sortLabel = method === 'newest' ? 'Newest' : 'Oldest';
-    this.Filters();
-  }
-
-  onPageChange(page: number) {
-    this.currentPage = page;
-  }
 }
