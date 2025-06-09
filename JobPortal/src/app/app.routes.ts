@@ -107,7 +107,9 @@ export const routes: Routes = [
       {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent},
       {path: 'Profile', component: AdminProfileComponent},
-      {path: 'Notifications', component: AdminNotificationsComponent}
+      {path: 'Notifications', component: AdminNotificationsComponent},
+      { path: 'admin-jobs', component: AdminJobsComponent },
+      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
     ]
 
   },{
