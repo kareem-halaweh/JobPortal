@@ -45,6 +45,7 @@ import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.com
 import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
 import {CreateJobComponent} from './create-job/create-job.component';
+import {AdminReportMonthlyComponent} from './admin-pages/admin-report-monthly/admin-report-monthly.component';
 
 
 
@@ -109,7 +110,8 @@ export const routes: Routes = [
       {path: 'Profile', component: AdminProfileComponent},
       {path: 'Notifications', component: AdminNotificationsComponent},
       { path: 'admin-jobs', component: AdminJobsComponent },
-      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
+      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent },
+      { path: 'admin-report-monthly', component: AdminReportMonthlyComponent }
     ]
 
   },{
