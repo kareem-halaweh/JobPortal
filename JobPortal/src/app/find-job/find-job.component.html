@@ -1,29 +1,14 @@
-
 <div class="container-fluid mt-1">
 
-
-
-
-
-    <app-search-bar></app-search-bar>
-
-
-
-
-
+  <app-search-bar
+    (searchChanged)="onSearchChanged($event)"
+    [filteredJobsCount]="filteredJobsList.length"
+    [jobCount]="jobs.length">
+  </app-search-bar>
 
   <div class="jobs-container">
-
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
-   <app-card></app-card>
- </div>
+    <app-card *ngFor="let job of filteredJobsList" [job]="job"></app-card>
+  </div>
 </div>
 
 
