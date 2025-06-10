@@ -32,9 +32,10 @@ export class FindJobComponent implements OnInit {
 
   constructor(private jobService: JobService) {}
 
-  ngOnInit() {
-    this.jobs = this.jobService.getJob();
-    console.log('Loaded jobs:', this.jobs); // Add this line
+  ngOnInit() {///رح هونن
+    this.jobService.getJobs().subscribe(jobs => {
+      this.jobs = jobs;
+    });    console.log('Loaded jobs:', this.jobs);
     this.filteredJobsList = this.jobs;
   }
 
