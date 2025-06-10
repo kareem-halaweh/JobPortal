@@ -1,0 +1,93 @@
+ <div class="row g-4" >
+
+    <div class="col-9 d-flex flex-column gap-4" style="height: 100%;">
+
+      <div class="shadow rounded-4 p-4 bg-light flex-grow-1">
+        <apx-chart
+          [series]="jobsBar.series"
+          [chart]="jobsBar.chart"
+          [xaxis]="jobsBar.xaxis"
+          [title]="jobsBar.title"
+          [tooltip]="jobsBar.tooltip"
+          [colors]="jobsBar.colors"
+          [dataLabels]="jobsBar.dataLabels"
+          [plotOptions]="{ bar: { columnWidth: '29%' } }"
+          style="height: 300px;">
+        </apx-chart>
+      </div>
+
+      <div class="d-flex gap-4 flex-grow-1">
+
+        <div class="shadow rounded-4 w-50 bg-light p-4 text-center flex-fill">
+          <h6 class="fw-bold mb-3 text-secondary">Applications Status</h6>
+          <apx-chart
+            [series]="applicationsDonut.series"
+            [chart]="{ type: 'radialBar', height: 250 }"
+            [labels]="applicationsDonut.labels"
+            [tooltip]="applicationsDonut.tooltip"
+            [colors]="applicationsDonut.colors"
+            style="height: 250px;">
+          </apx-chart>
+        </div>
+
+        <div class="shadow rounded-4  w-50 bg-light p-4 text-center flex-fill">
+          <h6 class="fw-bold mb-3 text-secondary">Job Seekers</h6>
+          <apx-chart
+            [series]="jobSeekersDonut.series"
+            [chart]="{ type: 'radialBar', height: 250 }"
+            [labels]="jobSeekersDonut.labels"
+            [tooltip]="jobSeekersDonut.tooltip"
+            [colors]="jobSeekersDonut.colors"
+            style="height: 250px;">
+          </apx-chart>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="col-3 d-flex flex-column gap-4" style="height: 100%;">
+      <div class="shadow rounded-4 bg-light p-3 flex-grow-1 d-flex flex-column">
+        <h6 class="fw-bold text-center mb-3 text-secondary">🔥 Trending Jobs</h6>
+        <div class="d-flex flex-column gap-4 flex-grow-1 overflow-hidden">
+          <div class="text-center" *ngFor="let chart of trendingJobs">
+            <apx-chart
+              [series]="chart.series"
+              [chart]="{ type: 'radialBar', height: 160 }"
+              [labels]="chart.labels"
+              [tooltip]="chart.tooltip"
+              [colors]="chart.colors"
+              style="height: 160px;">
+            </apx-chart>
+            <div class="fw-bold mt-2">{{ chart.labels[0] }}</div>
+            <div>{{ chart.series[0] }}%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

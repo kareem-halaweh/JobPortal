@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
+import { NgForOf, NgIf, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-admin-notifications',
   standalone: true,
-  imports: [NgIf, NgForOf, NgClass, NgStyle],
+  imports: [NgIf, NgForOf, NgStyle],
   templateUrl: './admin-notifications.component.html',
   styleUrls: ['./admin-notifications.component.css']
 })

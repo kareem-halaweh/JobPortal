@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-create-account1',
+  selector: 'app-create-account-employer',
   imports: [
     ReactiveFormsModule,
     NgIf
@@ -16,13 +17,19 @@ import {NgIf} from '@angular/common';
 export class CreateAccountComponent implements OnInit {
   accountForm!: FormGroup;
   submitted = false;
+  employerFormData: any;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.employerFormData = this.authService.getEmployerFormData();
+
+    if (!this.employerFormData) {
+      this.router.navigate(['/signupEmployer']);
+    }
     this.accountForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.minLength(4)]],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
     });
   }
@@ -39,8 +46,42 @@ export class CreateAccountComponent implements OnInit {
       return;
     }
 
-    if (this.accountForm.valid) {
-      this.router.navigate(['/Employer']);
+    if (this.accountForm.valid && this.employerFormData) {
+      const combinedData = new FormData();
+      combinedData.append('role_id', String(this.authService.getRole() ?? 3));
+      combinedData.append('email', this.accountForm.value.email);
+      combinedData.append('password', newPassword);
+      combinedData.append('password_confirmation', confirmPassword);
+      combinedData.append('username', this.employerFormData.companyName);
+      combinedData.append('founded_date', this.employerFormData.foundedDate ?? '');
+     // combinedData.append('profile_img', this.employerFormData.profile_img ?? '');
+      combinedData.append('industry', this.employerFormData.companyIndustry);
+      combinedData.append('location', this.employerFormData.location);
+      combinedData.append('phone_number', this.employerFormData.phoneNumber);
+      combinedData.append('description', this.employerFormData.description ?? '');
+
+      this.authService.register(combinedData).subscribe({
+        next: (response) => {
+          console.log('Employer registered successfully!', response);
+          console.log('Registered user:', response.user);
+          console.log('User in localStorage:', localStorage.getItem('user'));
+
+          this.router.navigate(['/Employer']);
+        },
+        error: (error) => {
+          console.error('Registration failed', error);
+
+          if (error.status === 422 && error.error?.errors?.email) {
+            const emailErrors = error.error.errors.email.join(', ');
+            this.accountForm.get('email')?.setErrors({ backend: emailErrors });
+            alert(`Registration failed: ${emailErrors}`);
+          } else {
+            alert('Registration failed: ' + (error.error?.message || 'Unknown error'));
+          }
+        }
+      });
+    } else {
+      console.log('Invalid form data.');
     }
   }
 }

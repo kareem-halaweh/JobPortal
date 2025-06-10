@@ -17,10 +17,11 @@
           <p class="fw-bold">
             Thousands of Jobs at here. Find Your New Job Today! New Job Postings Everyday
           </p>
+          <a *ngIf="userRole !== 1 && userRole !== 3"  [routerLink]="userRole === 2 ? '/Seeker/jobs' : '/jobs'" >
           <div>
-            <button class="fw-bold">find a job</button>
+            <button class="fw-bold" >find a job</button>
           </div>
-
+          </a>
         </div>
 
       </section>

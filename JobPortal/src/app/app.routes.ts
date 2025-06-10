@@ -19,7 +19,6 @@ import { LoginComponent } from './User Roles & Authentication/login/login.compon
 import { ChangePasswordComponent } from './User Roles & Authentication/change-password/change-password.component';
 
 import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
-import { ResetPasswordCodeComponent } from './User Roles & Authentication/reset-password/reset-password-code/reset-password-code.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 
 
@@ -36,23 +35,30 @@ import { CardDetailsComponent } from './find-job/card-details/card-details.compo
 
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import {HomeComponent} from './home/home.component';
-import {AppliedJobsComponent} from './applied-jobs/applied-jobs.component';
-import {ApplicationStatusComponent} from './application-status/application-status.component';
+
 import {
   CreateAccountComponentSeeker
 } from './User Roles & Authentication/signup/create-account-seeker/create-account.component';
+import {RoleGuard} from './auth/role.guard';
+
+import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
+import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
+
+import {CreateJobComponent} from './create-job/create-job.component';
+
+import {AdminReportMonthlyComponent} from './admin-pages/admin-report-monthly/admin-report-monthly.component';
+
+import {EditJobComponent} from './edit-job/edit-job.component';
+
+
 
 
 export const routes: Routes = [
-
-  { path: '', redirectTo: 'Seeker', pathMatch: 'full' },
-
 
 
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'resetPasswordCode', component: ResetPasswordCodeComponent },
   { path: 'newPasswordResetPassword', component: NewPasswordResetPasswordComponent },
  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
@@ -61,12 +67,14 @@ export const routes: Routes = [
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
 
-
-  { path: 'jobs', component: FindJobComponent },
+  {path: 'create' , component: CreateJobComponent},
   { path: 'jobs/:id', component: CardDetailsComponent },
+
   {
     path: 'Seeker',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 2 },
     children: [
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
@@ -82,10 +90,13 @@ export const routes: Routes = [
   {
     path: 'Employer',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 3 },
     children: [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
+
 
       { path: 'Notifications', component: EmployerNotificationsComponent },
       { path: 'employer-jobs', component: EmployerJobsComponent }
@@ -95,15 +106,20 @@ export const routes: Routes = [
   {
     path: 'Admin',
     component: HomeLayoutComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 1 },
     children: [
       {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent},
       {path: 'Profile', component: AdminProfileComponent},
-      {path: 'Notifications', component: AdminNotificationsComponent}
+      {path: 'Notifications', component: AdminNotificationsComponent},
+      { path: 'admin-jobs', component: AdminJobsComponent },
+      { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent },
+      { path: 'admin-report-monthly', component: AdminReportMonthlyComponent }
     ]
-  },
-  {
-    path: 'Guest',
+
+  },{
+    path: '',
     component: HomeLayoutComponent,
     children: [
       { path: '', component: HomeComponent},
@@ -117,9 +133,7 @@ export const routes: Routes = [
 
     ]
 
-  }
-
-
+  },
 ];
 
 @NgModule({

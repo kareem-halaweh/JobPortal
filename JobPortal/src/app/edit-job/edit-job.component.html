@@ -1,1 +1,40 @@
-<p>edit-job works!</p>
+<div class="container mt-4">
+  <h2>Edit Job</h2>
+
+  <form (ngSubmit)="onSubmit()" *ngIf="jobData">
+    <div class="mb-3">
+      <label class="form-label">Job Title</label>
+      <input type="text" class="form-control" [(ngModel)]="jobData.job_title" name="job_title" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Company</label>
+      <input type="text" class="form-control" [(ngModel)]="jobData.company" name="company" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" [(ngModel)]="jobData.location" name="location" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Salary</label>
+      <input type="text" class="form-control" [(ngModel)]="jobData.salary" name="salary">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Type</label>
+      <select class="form-control" [(ngModel)]="jobData.type" name="type">
+        <option value="full time">Full Time</option>
+        <option value="part time">Part Time</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <input type="text" class="form-control" [(ngModel)]="jobData.category" name="category">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Job</button>
+  </form>
+</div>
