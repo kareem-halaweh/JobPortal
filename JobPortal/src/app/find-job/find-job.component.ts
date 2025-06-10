@@ -18,10 +18,12 @@ export class FindJobComponent implements OnInit {
 
   constructor(private jobService: JobService) {}
 
+
   ngOnInit() {
     this.jobService.getJobs().subscribe((jobs: Job[]) => {
       this.jobs = jobs;
       this.filteredJobsList = this.jobs;
+
     });
   }
 
