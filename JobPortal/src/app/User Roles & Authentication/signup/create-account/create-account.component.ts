@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-create-account',
+  selector: 'app-create-account1',
   imports: [
     ReactiveFormsModule,
     NgIf

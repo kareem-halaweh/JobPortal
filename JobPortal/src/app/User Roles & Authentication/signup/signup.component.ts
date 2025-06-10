@@ -6,8 +6,6 @@ import {RouterLink} from '@angular/router';
 @Component({
   selector: 'app-signup',
   imports: [
-    HeaderTextComponent,
-    ButtonComponent,
     RouterLink
 
   ],

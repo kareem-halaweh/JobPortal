@@ -1,29 +1,30 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { NgIf, NgForOf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import {Router, RouterLink} from '@angular/router';
+import { NgIf, NgForOf, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
-  imports: [NgIf, NgForOf, FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, RouterLink],
   templateUrl: './employer-profile.component.html',
   styleUrls: ['./employer-profile.component.css']
 })
 export class EmployerProfileComponent implements OnInit {
   private http = inject(HttpClient);
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
 
+  profileForm!: FormGroup;
   isEditMode = false;
   isOwner = true;
+  submitted = false;
 
-  username = 'Tech Easy Life Inc.';
-  industry = 'Software Development';
-  email = 'hr@easylife.com';
-  phone = '+1234567890';
-  location = 'Ramallah, Palestine';
-  description = 'Our company is made to make your life easier, join us and become on of us. ';
-  profileImageUrl = 'logo1.png';
+  profileImageUrl = 'assets/pfp.jpg';
+  selectedProfileImage: File | null = null;
+  isDefaultPfp = true;
+  originalData: any;
 
   topEmployers = [
     { name: 'Ahmad Yasin', avatar: 'pfp1.jpg' },
@@ -33,67 +34,102 @@ export class EmployerProfileComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.profileForm = this.fb.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone_number: ['', Validators.required],
+      location: ['', Validators.required],
+      industry: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    this.http.get<any>('http://127.0.0.1:8000/api/profile', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    this.http.get<any>('http://127.0.0.1:8000/api/employer/profile', {
+      headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: (res) => {
-        const user = res.user;
-        const employer = res.profile;
-        this.username = user.username || '';
-        this.email = user.email || '';
-        this.phone = user.phone_number || '';
-        this.location = user.location || '';
-        this.industry = employer?.industry || '';
-        this.description = employer?.description || '';
-      },
-      error: () => {}
+        this.profileForm.patchValue({
+          username: res.username || '',
+          email: res.email || '',
+          phone_number: res.phone_number || '',
+          location: res.location || '',
+          industry: res.industry || '',
+          description: res.description || ''
+        });
+
+        if (res.profile_img === 'pfp.jpg') {
+          this.profileImageUrl = 'pfp.jpg';
+          this.isDefaultPfp = true;
+        } else {
+          this.profileImageUrl = res.profile_img;
+          this.isDefaultPfp = false;
+        }
+
+        this.originalData = this.profileForm.value;
+      }
     });
   }
 
   toggleEdit(): void {
     this.isEditMode = !this.isEditMode;
-  }
-
-  saveChanges(): void {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
-    const body = {
-      username: this.username,
-      email: this.email,
-      phone_number: this.phone,
-      location: this.location,
-      industry: this.industry,
-      description: this.description,
-    };
-
-    this.http.put('http://127.0.0.1:8000/api/profile/employer', body, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).subscribe({
-      next: () => {
-        this.toggleEdit();
-      },
-      error: (err) => {
-        console.error('Failed to update profile:', err);
-        this.toggleEdit();
-
-      }
-    });
+    if (!this.isEditMode && this.originalData) {
+      this.profileForm.patchValue(this.originalData);
+      this.selectedProfileImage = null;
+      this.submitted = false;
+    }
   }
 
   onProfileImageChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files?.[0]) {
+      this.selectedProfileImage = input.files[0];
       const reader = new FileReader();
       reader.onload = e => this.profileImageUrl = e.target?.result as string;
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(this.selectedProfileImage);
+      this.isDefaultPfp = false;
     }
+  }
+
+  removeProfileImage(): void {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    this.http.post('http://127.0.0.1:8000/api/remove-profile-picture', {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).subscribe(() => {
+      this.profileImageUrl = '/pfp.jpg';
+      this.isDefaultPfp = true;
+      this.selectedProfileImage = null;
+      this.profileForm.patchValue({ profile_img: 'pfp.jpg' });
+    });
+  }
+
+  saveChanges(): void {
+    this.submitted = true;
+    if (this.profileForm.invalid) return;
+
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    const formData = new FormData();
+    formData.append('username', this.profileForm.value.username);
+    formData.append('email', this.profileForm.value.email);
+    formData.append('phone_number', this.profileForm.value.phone_number);
+    formData.append('location', this.profileForm.value.location);
+    formData.append('industry', this.profileForm.value.industry);
+    formData.append('description', this.profileForm.value.description);
+
+    if (this.selectedProfileImage) {
+      formData.append('profile_img', this.selectedProfileImage);
+    }
+
+    this.http.post('http://127.0.0.1:8000/api/employer/update', formData, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).subscribe(() => {
+      this.originalData = this.profileForm.value;
+      this.toggleEdit();
+    });
   }
 }

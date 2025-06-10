@@ -508,13 +508,23 @@ body {
   background-color: #e6b820;
   border-color: #e6b820;
 }
-.small-link {
-  color: #3659A2;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  background-color: #f0f0f0;
 }
 
-.small-link:hover {
-  color: #FFC727;
+
+.profile-img-bordered {
+  border: 3px solid #1B2A41;
+}
+
+
+.profile-img.no-border {
+  border: 3px solid #1B2A41;
+
 }
