@@ -139,6 +139,21 @@ export class AuthService {
       return null;
     }
   }
+  getUserId(): number | null {
+    if (!this.inBrowser) return null;
+
+    const raw = localStorage.getItem('user');
+    if (!raw) return null;
+
+    try {
+      const user = JSON.parse(raw);
+      return user?.id ?? null;
+    } catch (e) {
+      console.error('Failed to parse user from localStorage', e);
+      return null;
+    }
+  }
+
 
   /* form-data helpers */
   setSeekerFormData(data: any) {

@@ -1,0 +1,14 @@
+<div class="">
+  <app-header-admin-report-monthly></app-header-admin-report-monthly>
+
+  <app-card-admin-report-monthly
+    [summary]="summaryCards">
+  </app-card-admin-report-monthly>
+
+  <app-chart-admin-report-monthly
+    [applications]="applicationsStatus"
+    [jobSeekers]="jobSeekersStatus"
+    [topJobs]="topAppliedJobs">
+  </app-chart-admin-report-monthly>
+</div>
+

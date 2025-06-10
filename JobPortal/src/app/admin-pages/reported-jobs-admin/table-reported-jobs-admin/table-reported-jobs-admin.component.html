@@ -27,8 +27,15 @@
 
       <td>
         <div class=" d-inline-flex  gap-2">
-          <button class="btn btn-sm " style="background: #F4B400; color:#FFFFFF; min-width:70px;">Approved</button>
-          <button class="btn btn-sm " style="background:#F4B400;  color:#FFFFFF; min-width: 70px;">Rejected</button>
+          <button class="btn btn-sm" style="background: #F4B400; color:#FFFFFF; min-width:70px;"
+                  (click)="onApprove(Job.userId, Job.jobId)">
+            Approve
+          </button>
+          <button class="btn btn-sm" style="background:#F4B400; color:#FFFFFF; min-width:70px;"
+                  (click)="onReject(Job.userId, Job.jobId)">
+            Reject
+          </button>
+
         </div>
       </td>
     </tr>

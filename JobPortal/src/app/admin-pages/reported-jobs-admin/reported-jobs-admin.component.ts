@@ -36,7 +36,7 @@ export class ReportedJobsAdminComponent implements OnInit  {
   ngOnInit(): void {
     this.loadReportedJobs();
   }
-
+  successMessage: string = '';
   loadReportedJobs(): void {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -53,6 +53,39 @@ export class ReportedJobsAdminComponent implements OnInit  {
         console.error('Failed to fetch reported jobs:', error);
       }
     });
+  }
+  Approve(event: { userId: number; jobId: number }) {
+    const token = localStorage.getItem('token') || '';
+    this.reportJobsService.approveReport(event.userId, event.jobId, token).subscribe({
+      next: () => {
+        this.successMessage = 'Report approved successfully!';
+        this.loadReportedJobs();
+        this.clearMessageAfterTimeout();
+      },
+      error: (err) => {
+        console.error('Failed to approve report:', err);
+      }
+    });
+  }
+
+  Reject(event: { userId: number; jobId: number }) {
+    const token = localStorage.getItem('token') || '';
+    this.reportJobsService.rejectReport(event.jobId, token).subscribe({
+      next: () => {
+        this.successMessage = 'Report rejected successfully!';
+        this.loadReportedJobs();
+        this.clearMessageAfterTimeout();
+      },
+      error: (err) => {
+        console.error('Failed to reject report:', err);
+      }
+    });
+  }
+
+  clearMessageAfterTimeout() {
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 404);
   }
 
   SortChange(method: string): void {

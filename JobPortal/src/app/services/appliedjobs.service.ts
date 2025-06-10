@@ -1,95 +1,24 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { JobApplied } from '../models/jobApplied.model';
+import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
-export class jobAppliedService {
-  private jobApplied: JobApplied[] = [
-    {
-      id: 1,
-      type: 'Full Time',
+@Injectable({
+  providedIn: 'root'
+})
+export class JobAppliedService {
+  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
 
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'pending',
-      date: '2025-05-02'
-    },
-    {
-      id: 2,
+  constructor(private http: HttpClient) {}
 
-      jobTitle: 'Frontend Developer',
-      companyName: 'Meta',
-      type:'part time',
-      imageUrl: 'download.jpeg',
-      status: 'accepted',
-      date: '2025-04-28'
-    },
-    {
-      id: 2,
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'rejected',
-      date: '2025-05-02'
-    },
-    {
-      id: 3,
-      jobTitle: 'Frontend Developer',
-      companyName: 'Meta',
-      type:'part time',
-      imageUrl: 'download.jpeg',
-      status: 'accepted',
-      date: '2025-04-28'
-    },{
-      id: 4,
+  getJobApplied(userId: number): Observable<JobApplied[]> {
+    return this.http.get<JobApplied[]>(`${this.apiUrl}/users/${userId}/applied-jobs`);
+  }
 
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'pending',
-      date: '2025-05-02'
 
-    },{
-      id: 5,
 
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'pending',
-      date: '2025-05-02'
-    },{
-      id: 6,
-
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'pending',
-      date: '2025-05-02'
-    },{
-      id: 7,
-
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'pending',
-      date: '2025-05-02'
-    },
-    {
-      id: 8,
-      type: 'Full Time',
-      jobTitle: 'Digital Marketing Executive',
-      companyName: 'Google',
-      imageUrl: 'download.jpeg',
-      status: 'rejected',
-      date: '2025-05-02'
-
-    }];
-  getjobApplied(): JobApplied[] {
-    return this.jobApplied;
+  deleteJobApplied(applicationId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/applied-jobs/${applicationId}`);
   }
 }
+
