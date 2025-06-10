@@ -69,6 +69,7 @@ export const routes: Routes = [
 
   {path: 'create' , component: CreateJobComponent},
   {path: 'jobs/:id', component: CardDetailsComponent },
+  {path:'create-job', component: CreateJobComponent},
 
   {
     path: 'Seeker',

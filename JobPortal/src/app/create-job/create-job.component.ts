@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { HeaderEmployerComponent } from '../headers/header-employer/header.component';
 interface JobData {
   title: string;
   company: string;
@@ -22,7 +22,7 @@ interface JobData {
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, HeaderEmployerComponent]
 })
 export class CreateJobComponent {
   jobData: JobData = {
