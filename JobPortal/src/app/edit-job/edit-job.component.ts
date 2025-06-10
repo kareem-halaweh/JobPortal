@@ -10,32 +10,11 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './edit-job.component.html',
   styleUrl: './edit-job.component.css'
 })
-export class EditJobComponent implements OnInit {
-  jobId!: number;
-  jobData!: Job;
+export class EditJobComponent  {
 
-  constructor(
-    private route: ActivatedRoute,
-    private jobService: JobService,
-    private router: Router
-  ) {}
 
-  ngOnInit(): void {
-    this.jobId = Number(this.route.snapshot.paramMap.get('id'));
-    this.jobService.getJobById(this.jobId).subscribe({
-      next: (job) => {
-        this.jobData = job;
-      },
-      error: () => {
-        // job not found
-        this.router.navigate(['/jobs']);
-      }
-    });
-  }
 
-  onSubmit(): void {
-    this.jobService.updateJob(this.jobId, this.jobData).subscribe({
-      next: () => this.router.navigate(['/jobs'])
-    });
-  }
+
+
+
 }
