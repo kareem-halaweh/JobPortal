@@ -45,7 +45,11 @@ import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.com
 import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
 import {CreateJobComponent} from './create-job/create-job.component';
+
 import {AdminReportMonthlyComponent} from './admin-pages/admin-report-monthly/admin-report-monthly.component';
+
+import {EditJobComponent} from './edit-job/edit-job.component';
+
 
 
 
@@ -64,7 +68,7 @@ export const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
   {path: 'create' , component: CreateJobComponent},
-
+  { path: 'jobs/:id', component: CardDetailsComponent },
 
   {
     path: 'Seeker',
