@@ -1,34 +1,32 @@
 
+<div class="job-card">
+  <div class="job-card-header">
 
+    <div class="company-logo">
+      <img [src]="job.imageUrl" [alt]="job.company + ' Logo'">
+    </div>
+  </div>
 
+  <div class="job-card-body">
+    <a *ngIf="job.id" [routerLink]="['/jobs', job.id]" routerLinkActive="active">
+      <h2 class="job-title">{{ job.job_title }}</h2>
+    </a>
+    <p class="company-name">{{ job.company }}</p>
 
-      <div class="job-card">
-        <div class="job-card-header">
-          <span class="badge-wfh">WFH</span>
-          <div class="company-logo">
-            <img src="/api/placeholder/40/40" alt="Company Logo">
-          </div>
+    <div class="job-meta">
+      <div class="d-flex">
+        <div class="views-info me-3">
+          Salary: {{ job.salary }}
         </div>
-        <div class="job-card-body">
-          <a  [routerLink]="'job-details'" routerLinkActive="active" >
-          <h2 class="job-title">Data Engineering Associate</h2>
-        </a>
-          <p class="company-name">Norstella</p>
-          <div class="job-meta">
-            <div class="d-flex">
-              <div class="views-info me-3">
-
-                salary
-              </div>
-              <div class="days-info">
-
-               location
-              </div>
-            </div>
-          </div>
+        <div class="days-info">
+          Location: {{ job.location }}
         </div>
+      </div>
+    </div>
 
 
+  </div>
+</div>
 
 
 
