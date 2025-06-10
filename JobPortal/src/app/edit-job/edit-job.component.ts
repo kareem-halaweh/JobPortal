@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {JobService} from '../services/jobs.service';
+import { JobService } from '../services/jobs.service';
 import { Job } from '../models/job.model';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-job',
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule],
   templateUrl: './edit-job.component.html',
   styleUrl: './edit-job.component.css'
 })
-export class EditJobComponent {
+export class EditJobComponent implements OnInit {
   jobId!: number;
   jobData!: Job;
 
@@ -24,18 +22,20 @@ export class EditJobComponent {
 
   ngOnInit(): void {
     this.jobId = Number(this.route.snapshot.paramMap.get('id'));
-    const job = this.jobService.getJobById(this.jobId);
-    if (job) {
-      this.jobData = { ...job };
-    } else {
-      // job not found
-      this.router.navigate(['/jobs']);
-    }
+    this.jobService.getJobById(this.jobId).subscribe({
+      next: (job) => {
+        this.jobData = job;
+      },
+      error: () => {
+        // job not found
+        this.router.navigate(['/jobs']);
+      }
+    });
   }
 
   onSubmit(): void {
-    this.jobService.updateJob(this.jobId, this.jobData);
-    this.router.navigate(['/jobs']);
+    this.jobService.updateJob(this.jobId, this.jobData).subscribe({
+      next: () => this.router.navigate(['/jobs'])
+    });
   }
-
 }

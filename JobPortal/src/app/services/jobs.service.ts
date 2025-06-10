@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Job } from '../models/job.model';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
 
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
-
+  private apiUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
 
   getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(this.apiUrl);
-
-  }
-
-  addJob(newJob: Job): void {
-    newJob.id = this.jobs.length > 0 ? Math.max(...this.jobs.map(j => j.id)) + 1 : 1;
-    this.jobs.push(newJob);
+    return this.http.get<Job[]>(`${this.apiUrl}/jobs`);
   }
 
 
-  getJobById(id: number): Job | undefined {
-    return this.jobs.find(job => job.id === id);
+  addJob(newJob: Job): Observable<Job> {
+    return this.http.post<Job>(`${this.apiUrl}/create`, newJob);
   }
 
-  updateJob(id: number, updatedJob: Job): void {
-    const index = this.jobs.findIndex(job => job.id === id);
-    if (index !== -1) {
-      this.jobs[index] = { ...updatedJob };
-    }
+
+  getJobById(id: number): Observable<Job> {
+    return this.http.get<Job>(`${this.apiUrl}/jobs/${id}`);
+  }
+
+ 
+  updateJob(id: number, updatedJob: Job): Observable<Job> {
+    return this.http.put<Job>(`${this.apiUrl}/jobs/${id}`, updatedJob);
+  }
+
+
+  deleteJob(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/jobs/${id}`);
+  }
+
+  // Search jobs (if you want to use your backend search)
+  searchJobs(searchData: any): Observable<Job[]> {
+    return this.http.post<Job[]>(`${this.apiUrl}/jobs/search`, searchData);
   }
 }
