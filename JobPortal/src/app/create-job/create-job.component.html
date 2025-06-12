@@ -20,16 +20,16 @@
             <!-- About the Job -->
             <div class="mb-3">
               <label for="description" class="form-label">About the Job</label>
-              <textarea class="form-control" id="description" name="description" rows="4"
-                        [(ngModel)]="jobData.description" required></textarea>
+              <textarea class="form-control" id="about" name="about" rows="4"
+                        [(ngModel)]="jobData.about" required></textarea>
             </div>
 
             <!-- Responsibilities -->
             <div class="mb-3">
-              <label for="responsibilities" class="form-label">Responsibilities</label>
-              <textarea class="form-control" id="responsibilities" name="responsibilities" rows="4"
-                        [(ngModel)]="jobData.responsibilities"
-                        placeholder="Enter responsibilities (one per line)" required></textarea>
+              <label for="responsibilities" class="form-label"> description</label>
+              <textarea class="form-control" id=" description" name=" description" rows="4"
+                        [(ngModel)]="jobData. description"
+                        placeholder="Enter  description" required></textarea>
             </div>
 
             <!-- Skills -->
@@ -57,7 +57,7 @@
             <div class="mb-3">
               <label for="employmentType" class="form-label">Employment Type</label>
               <select class="form-control" id="employmentType" name="employmentType"
-                      [(ngModel)]="jobData.employmentType" required>
+                      [(ngModel)]="jobData.employment_type" required>
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
                 <option value="Contract">Contract</option>

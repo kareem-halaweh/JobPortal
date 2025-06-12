@@ -49,7 +49,7 @@ export class EmployerJobsComponent implements OnInit {
     let apps = [...this.jobs];
 
     if (this.filter !== 'all') {
-      apps = apps.filter(job => job.type.toLowerCase() === this.filter.toLowerCase());
+      apps = apps.filter(job => job.employment_type.toLowerCase() === this.filter.toLowerCase());
     }
 
     if (this.selectedLocation) {
