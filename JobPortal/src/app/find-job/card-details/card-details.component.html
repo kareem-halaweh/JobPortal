@@ -1,88 +1,28 @@
-<div class="container mt-4" >
-
-
-  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="applyModalLabel">Apply for this job</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-
-
-        <div class="modal-body">
-
-          <div class="mb-3">
-            <label for="resume" class="form-label">Upload your Resume (PDF)</label>
-            <input type="file" class="form-control" id="resume" accept=".pdf" (change)="onFileSelected($event)">
-          </div>
-
-          <!-- Cover Letter -->
-          <div class="mb-3">
-            <label for="coverLetter" class="form-label">Cover Letter</label>
-            <textarea id="coverLetter" class="form-control" rows="5" [(ngModel)]="coverLetter"></textarea>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="submitApplication()">Submit Application</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <div class="row mb-4">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body p-0">
-          <div class="bg-gradient rounded-3 p-3 d-flex align-items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/768px-Microsoft_logo.svg.png" alt="Microsoft Logo" class="microsoft-logo" width="40">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+<div class="container mt-4" *ngIf="job">
   <div class="row mb-4">
     <div class="col-md-8">
-      <h3 class="fw-bold">{{ job?.job_title }}</h3>
-      <p class="text-muted mb-1">{{ job?.company }}</p>
-      <p class="text-muted small mb-0">{{ job?.location }}</p>
+      <h3 class="fw-bold">{{ job.title }}</h3>
+      <p class="text-muted mb-1">{{ job.company }}</p>
+      <p class="text-muted small mb-0">{{ job.location }}</p>
     </div>
     <div class="col-md-4 text-end d-flex justify-content-end align-items-start">
       <button class="btn btn-outline-secondary me-2">Report</button>
       <button class="btn btn-outline-secondary me-2">Save</button>
-
-      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#applyModal" >Apply</button>
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#applyModal">Apply</button>
     </div>
   </div>
 
-
   <div class="row">
-
-    <div class="col-md-4 order-md-last order-first ">
-
+    <div class="col-md-4 order-md-last order-first">
       <div class="card">
         <div class="card-body">
-          <h4 class="fw-bold">{{ job?.salary }}</h4>
-          <p class="text-muted small">Avg. salary</p>
-
+          <h4 class="fw-bold">{{ job.salary }}</h4>
+          <p class="text-muted small">Salary</p>
 
           <div class="d-flex align-items-center my-4">
             <i class="bi bi-clock me-3 attribute-icon"></i>
             <div>
-              <h6 class="mb-0">{{ job?.type}}</h6>
+              <h6 class="mb-0">{{ job.employment_type }}</h6>
               <p class="text-muted small mb-0">Employment Type</p>
             </div>
           </div>
@@ -90,52 +30,96 @@
           <div class="d-flex align-items-center my-4">
             <i class="bi bi-briefcase me-3 attribute-icon"></i>
             <div>
-              <h6 class="mb-0">{{ job?.category}}</h6>
+              <h6 class="mb-0">{{ job.category }}</h6>
               <p class="text-muted small mb-0">Job Category</p>
             </div>
           </div>
 
           <div class="d-flex align-items-center my-4">
-            <i class="bi bi-envelope me-3 attribute-icon"></i>
+            <i class="bi bi-calendar3 me-3 attribute-icon"></i>
             <div>
-              <h6 class="mb-0">jobs&#64;microsoft.com</h6>
-              <p class="text-muted small mb-0">Contact Email</p>
+              <h6 class="mb-0">{{ job.date }}</h6>
+              <p class="text-muted small mb-0">Posted Date</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
-    <div class="col-md-8 order-md-first order-last mt-4 mt-md-0">
-
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="fw-bold mb-3">About the job</h5>
-          <p>{{ job?.about}}</p>
+   
 
 
-         <div *ngIf="job.responsibilities?.length > 0 ">
-          <h5 class="fw-bold mt-4 mb-3">Responsibilities:</h5>
-          <ul class="list-unstyled responsibilities">
-            <li class="mb-2" *ngFor="let responsibility of job.responsibilities">{{ responsibility }}</li>
-          </ul>
-         </div>
+      <div class="col-md-8 order-md-first order-last mt-4 mt-md-0">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">About the Job</h5>
+            <p class="card-text" style="white-space: pre-wrap;">{{ job.about }}</p>
+          </div>
+        </div>
 
-          <div *ngIf="job.skills?.length > 0">
-            <h5 class="fw-bold mt-4 mb-3">Skills</h5>
-            <ul class="list-unstyled responsibilities">
-              <li class="mb-2" *ngFor="let skill of job.skills">{{ skill }}</li>
-            </ul>
+        <div class="col-md-8 order-md-first order-last mt-4 mt-md-0 w-100">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Job description</h5>
+              <p class="card-text" style="white-space: pre-wrap; width: 100%;">{{ job.description }}</p>
+            </div>
           </div>
 
+      
 
-
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Required Skills</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <h1 class="badge bg-light text-dark" >
+              {{ job.skills }}
+            </h1>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
+<!-- Loading State -->
+<div class="container mt-4" *ngIf="isLoading">
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading job details...</p>
+  </div>
+</div>
 
+<!-- Error State -->
+<div class="container mt-4" *ngIf="error">
+  <div class="alert alert-danger">
+    {{ error }}
+    <button class="btn btn-link" (click)="loadJob()">Try Again</button>
+  </div>
+</div>
 
+<!-- Apply Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="applyModalLabel">Apply for {{ job?.title }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitApplication()">
+          <div class="mb-3">
+            <label for="resume" class="form-label">Upload Resume (PDF)</label>
+            <input type="file" class="form-control" id="resume" accept=".pdf" (change)="onFileSelected($event)">
+          </div>
+          <div class="mb-3">
+            <label for="coverLetter" class="form-label">Cover Letter</label>
+            <textarea class="form-control" id="coverLetter" rows="4" [(ngModel)]="coverLetter" name="coverLetter"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

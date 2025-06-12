@@ -1,17 +1,30 @@
-
 export interface Job{
-  id:number;
-  job_title: string,
+  id:number,
+  title: string,
   company: string,
+  description:string,
   location:string,
   about : string,
-  responsibilities:string[],
-  type:string,
+  employment_type:string,
   date: string,
   salary:string ,
-  skills: string[],
+  skills: string,
   imageUrl: string,
-  linkcompany:string,
-  linkjob:string,
-  category:'Graphic Design'|'IT'|'Marketing'|'Finance',
+  category:string,
+  employer_id: number,
+  user:any
 }
+
+export interface jojo{
+  title: string
+  salary: string
+  category: string
+  employment_type: string
+  description: string
+  skills: string
+  about: string
+  user_id: number
+  date: string
+
+}
+
