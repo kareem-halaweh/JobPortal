@@ -18,7 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
   private selectedRole: number | null = null;
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
+  private apiUrl = 'http://localhost:8000/api';
   private seekerFormData: any = null;
   private employerFormData: any = null;
   sendResetLinkEmail(email: string): Observable<any> {
