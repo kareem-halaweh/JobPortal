@@ -5,37 +5,64 @@
   </div>
 </div>
 
-<div class="container mt-0 profile-animate delay-1">
+<div class="container mt-0 profile-animate delay-1" *ngIf="profileForm">
   <div class="row g-4 justify-content-center">
-
     <div class="col-lg-8">
       <div class="main-profile-card bordered-card shadow profile-animate delay-2">
         <div class="text-center position-relative">
-          <img [src]="profileImageUrl" class="profile-img" alt="Profile" />
+          <img [src]="profileImageUrl" [ngClass]="{ 'profile-img': true, 'no-border': isDefaultPfp }" alt="Profile" />
           <div *ngIf="isOwner && isEditMode" class="edit-profile-img-icon">
             <label for="profileInput"><i class="bi bi-pencil-fill"></i></label>
             <input type="file" id="profileInput" hidden (change)="onProfileImageChange($event)" />
           </div>
-          <h4 class="mt-3 company-name">{{ companyName }}</h4>
-          <p class="text-muted">{{ industry }}</p>
+          <div *ngIf="isEditMode && !isDefaultPfp" class="remove-image-wrapper">
+            <button class="modern-remove-btn" type="button" (click)="removeProfileImage()">
+              <i class="bi bi-trash3 me-1"></i> Remove
+            </button>
+          </div>
+          <h4 class="mt-3 company-name">{{ profileForm.value.username }}</h4>
+          <p class="text-muted">{{ profileForm.get('industry')?.value }}</p>
         </div>
 
         <div *ngIf="!isEditMode" class="mt-4 profile-info-block profile-animate delay-3">
-          <p><i class="bi bi-envelope gradient-icon"></i>{{ email }}</p>
-          <p><i class="bi bi-telephone gradient-icon"></i>{{ phone }}</p>
-          <p><i class="bi bi-geo-alt gradient-icon"></i>{{ location }}</p>
-          <p><i class="bi bi-info-circle gradient-icon"></i>{{ description }}</p>
-
+          <p><i class="bi bi-envelope gradient-icon"></i>{{ profileForm.value.email }}</p>
+          <p><i class="bi bi-telephone gradient-icon"></i>{{ profileForm.get('phone_number')?.value }}</p>
+          <p><i class="bi bi-geo-alt gradient-icon"></i>{{ profileForm.value.location }}</p>
+          <p><i class="bi bi-info-circle gradient-icon"></i>{{ profileForm.value.description }}</p>
         </div>
 
-        <div *ngIf="isEditMode" class="mt-4 profile-animate delay-3">
-          <input class="form-control mb-2" [(ngModel)]="companyName" placeholder="Company Name" />
-          <input class="form-control mb-2" [(ngModel)]="industry" placeholder="Industry" />
-          <input class="form-control mb-2" [(ngModel)]="email" placeholder="Email" />
-          <input class="form-control mb-2" [(ngModel)]="phone" placeholder="Phone" />
-          <input class="form-control mb-2" [(ngModel)]="location" placeholder="Location" />
-          <textarea rows="3" class="form-control" [(ngModel)]="description" placeholder="Company Description"></textarea>
-        </div>
+        <form [formGroup]="profileForm" *ngIf="isEditMode" class="mt-4 profile-animate delay-3">
+          <input class="form-control mb-1" formControlName="username" placeholder="Company Name" />
+          <div *ngIf="(profileForm.get('username')?.touched || submitted) && profileForm.get('username')?.invalid" class="text-danger small mb-2">
+            Company name is required.
+          </div>
+
+          <input class="form-control mb-1" formControlName="industry" placeholder="Industry" />
+          <div *ngIf="(profileForm.get('industry')?.touched || submitted) && profileForm.get('industry')?.invalid" class="text-danger small mb-2">
+            Industry is required.
+          </div>
+
+          <input class="form-control mb-1" formControlName="email" placeholder="Email" />
+          <div *ngIf="(profileForm.get('email')?.touched || submitted) && profileForm.get('email')?.invalid" class="text-danger small mb-2">
+            <div *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="profileForm.get('email')?.errors?.['email']">Email is invalid.</div>
+          </div>
+
+          <input class="form-control mb-1" formControlName="phone_number" placeholder="Phone" />
+          <div *ngIf="(profileForm.get('phone_number')?.touched || submitted) && profileForm.get('phone_number')?.invalid" class="text-danger small mb-2">
+            Phone number is required.
+          </div>
+
+          <input class="form-control mb-1" formControlName="location" placeholder="Location" />
+          <div *ngIf="(profileForm.get('location')?.touched || submitted) && profileForm.get('location')?.invalid" class="text-danger small mb-2">
+            Location is required.
+          </div>
+
+          <textarea rows="3" class="form-control mb-1" formControlName="description" placeholder="Company Description"></textarea>
+          <div *ngIf="(profileForm.get('description')?.touched || submitted) && profileForm.get('description')?.invalid" class="text-danger small mb-2">
+            Description is required.
+          </div>
+        </form>
       </div>
     </div>
 
@@ -57,19 +84,15 @@
           <span class="shiny-hover">{{ emp.name }}</span>
         </div>
       </div>
-
     </div>
-
 
     <div class="col-12 d-flex justify-content-between mt-2 px-1 profile-animate delay-3" *ngIf="isEditMode && isOwner">
       <a routerLink="/changePassword" class="small-link">Change Password</a>
-
     </div>
 
     <div class="col-12 d-flex justify-content-end gap-2 mt-2 profile-animate delay-3" *ngIf="isEditMode && isOwner">
       <button class="btn btn-primary" (click)="saveChanges()">Save</button>
       <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
     </div>
-
   </div>
 </div>

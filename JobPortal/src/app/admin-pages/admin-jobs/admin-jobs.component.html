@@ -1,0 +1,29 @@
+
+<div class="container">
+  <app-search-bar-jobs
+    (locationChanged)="filterByLocation($event)">
+
+  </app-search-bar-jobs>
+  <app-filters-admin-jobs   (sortChanged)=" SortChange($event)"
+                            [currentFilter]="filter"
+                            (filterChanged)="Changestatus($event)"
+  >
+
+  </app-filters-admin-jobs>
+<div class="row">
+  <div *ngFor="let job of displayedJob" class="col-12 col-md-4 mb-4">
+    <app-cards-admin-jobs
+      [id]="job.id"
+      [title]="job.job_title"
+      [company]="job.company"
+      [location]="job.location"
+      [type]="job.type"
+      [date]="job.date"
+      [salary]="job.salary"
+      [imageUrl]="job.imageUrl"
+
+     >
+    </app-cards-admin-jobs>
+  </div>
+</div>
+</div>

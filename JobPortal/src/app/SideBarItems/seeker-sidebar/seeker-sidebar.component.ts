@@ -13,7 +13,9 @@ export class SeekerSidebarComponent {
   sidebarVisible: boolean = false;
 
   get isMobileScreen(): boolean {
+
     return typeof window !== 'undefined' && window.innerWidth<768;
+
   }
 
   toggleSidebar(): void {

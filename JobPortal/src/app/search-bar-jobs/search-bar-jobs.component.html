@@ -1,0 +1,38 @@
+<div class="d-flex align-items-center p-2 px-4 shadow-sm rounded-pill bg-white" style="gap: 10px; flex-wrap: wrap;">
+
+
+  <div class="position-relative d-flex align-items-center gap-2">
+    <i class="bi bi-map-marker-alt text-purple"></i>
+
+    <button class="dropdown-toggle fw-semibold p-0 border-0 shadow-none bg-transparent"
+            type="button"
+            (click)="toggleDropdown()">
+      {{ selectedLocation || 'Around You' }}
+    </button>
+
+
+    <ul class="dropdown-menu-custom list-unstyled m-0 p-2 bg-white shadow-sm rounded position-absolute"
+        *ngIf="dropdownOpen"
+        style="top: 100%; left: 0; z-index: 1000; min-width: 150px;">
+      <li><a class="dropdown-item py-1 px-2" (click)="LocationChange('Ramallah')">Ramallah</a></li>
+      <li><a class="dropdown-item py-1 px-2" (click)="LocationChange('Gaza')">Gaza</a></li>
+      <li><a class="dropdown-item py-1 px-2" (click)="LocationChange('Nablus')">Nablus</a></li>
+      <li><a class="dropdown-item py-1 px-2" (click)="LocationChange('Hebron')">Hebron</a></li>
+      <li><a class="dropdown-item py-1 px-2" (click)="LocationChange('Bethlehem')">Bethlehem</a></li>
+    </ul>
+  </div>
+
+
+  <input type="text"
+         class="form-control border-0 shadow-none"
+         placeholder="Search by Title, Company"
+         style="flex: 1; min-width: 200px;">
+
+
+  <button class="btn rounded-pill d-flex align-items-center px-4"
+          style="color: #FFFFFF; background: #F4B400;">
+    <i class="bi bi-search me-2" style="color: #FFFFFF;"></i>
+    FIND
+  </button>
+
+</div>

@@ -488,3 +488,43 @@ body {
   background-clip: text;
   text-fill-color: transparent;
 }
+.btn-primary {
+  background-color: #1B2A41;
+  border-color: #1B2A41;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3659A2;
+  border-color: #3659A2;
+}
+.btn-secondary {
+  background-color: #FFC727;
+  border-color: #FFC727;
+  color: black;
+}
+
+.btn-secondary:hover {
+  background-color: #e6b820;
+  border-color: #e6b820;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  background-color: #f0f0f0;
+}
+
+
+.profile-img-bordered {
+  border: 3px solid #1B2A41;
+}
+
+
+.profile-img.no-border {
+  border: 3px solid #1B2A41;
+
+}
