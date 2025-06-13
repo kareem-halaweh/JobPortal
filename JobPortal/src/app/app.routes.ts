@@ -60,7 +60,7 @@ export const routes: Routes = [
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
   { path: 'newPasswordResetPassword', component: NewPasswordResetPasswordComponent },
- { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
   { path: 'signupEmployer', component: SignupEmployerComponent },
   { path: 'createAccountEmployer', component: CreateAccountComponent },
@@ -68,6 +68,7 @@ export const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
   {path: 'create' , component: CreateJobComponent},
+  {path: 'edit' , component: EditJobComponent},
   {path: 'jobs/:id', component: CardDetailsComponent },
   {path:'create-job', component: CreateJobComponent},
 
