@@ -102,7 +102,7 @@ export class SeekerProfileComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    this.http.post('http://127.0.0.1:8000/api/seeker/remove-profile-picture', {}, {
+    this.http.post('http://127.0.0.1:8000/api/remove-profile-picture', {}, {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: () => {

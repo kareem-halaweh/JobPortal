@@ -20,7 +20,7 @@ export class AdminProfileComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    this.http.get<any>('http://127.0.0.1:8000/api/profile', {
+    this.http.get<any>('http://localhost:8000/api/profile', {
       headers: {
         Authorization: `Bearer ${token}`
       }
