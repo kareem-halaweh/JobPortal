@@ -46,30 +46,34 @@ export class EmployerProfileComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    this.http.get<any>('http://127.0.0.1:8000/api/employer/profile', {
+    this.http.get<any>('http://127.0.0.1:8000/api/profile', {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: (res) => {
+        const user = res.user;
+        const profile = res.profile;
+
         this.profileForm.patchValue({
-          username: res.username || '',
-          email: res.email || '',
-          phone_number: res.phone_number || '',
-          location: res.location || '',
-          industry: res.industry || '',
-          description: res.description || ''
+          username: user?.username || '',
+          email: user?.email || '',
+          phone_number: user?.phone_number || '',
+          location: user?.location || '',
+          industry: profile?.industry || '',
+          description: profile?.description || ''
         });
 
-        if (res.profile_img === 'pfp.jpg') {
+        if (user?.profile_img === 'pfp.jpg') {
           this.profileImageUrl = 'pfp.jpg';
           this.isDefaultPfp = true;
         } else {
-          this.profileImageUrl = res.profile_img;
+          this.profileImageUrl = user?.profile_img;
           this.isDefaultPfp = false;
         }
 
         this.originalData = this.profileForm.value;
       }
     });
+
   }
 
   toggleEdit(): void {

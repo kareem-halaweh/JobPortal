@@ -21,7 +21,9 @@ export class AuthService {
 
   private selectedRole: number | null = null;
   private apiUrl =
-    'http://localhost/new-laravel/web2-Data/DataSite/public/api';
+
+    'http://localhost:8000/api';
+
   private seekerFormData: any = null;
   private employerFormData: any = null;
 
@@ -155,7 +157,6 @@ export class AuthService {
   }
 
 
-  /* form-data helpers */
   setSeekerFormData(data: any) {
     this.seekerFormData = data;
   }
