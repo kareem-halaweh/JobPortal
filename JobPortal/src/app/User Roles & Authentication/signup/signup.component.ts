@@ -14,16 +14,7 @@ import {AuthService} from '../../services/auth.service';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  constructor(private authService: AuthService, private router: Router) {}
 
-  chooseRole(roleId: number) {
-    this.authService.setRole(roleId);
-    if (roleId === 2) {
-      this.router.navigate(['/signupJobSeeker']);
-    } else if (roleId === 3) {
-      this.router.navigate(['/signupEmployer']);
-    }
-  }
 
   constructor(private authService: AuthService, private router: Router) {}
 
