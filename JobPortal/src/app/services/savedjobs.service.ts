@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import {savedJob} from '../models/savedjobs.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class savejobsService{
-  private savedJob: savedJob[] = [
-    {
-      id: 1,
-      job_title: 'Digital Marketing Executive',
-      company:'google',
-      link:'',
-      type: 'Full time',
-      position: 'nablus',
-      imageUrl: 'download.jpeg'
+  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
 
-    }];
+  constructor(private http: HttpClient) {}
 
-  getsavedJob():savedJob []{
-    return this.savedJob;
+
+  getsavedJob(token: string): Observable<savedJob[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get<savedJob[]>(this.apiUrl, { headers });
   }
+
+
+
+
 
 
 }
