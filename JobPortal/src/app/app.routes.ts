@@ -48,6 +48,7 @@ import {CreateJobComponent} from './create-job/create-job.component';
 import {AdminReportMonthlyComponent} from './admin-pages/admin-report-monthly/admin-report-monthly.component';
 
 import {EditJobComponent} from './edit-job/edit-job.component';
+import path from 'path';
 
 
 
@@ -100,7 +101,9 @@ export const routes: Routes = [
       { path: 'Profile', component: EmployerProfileComponent },
       {path: 'create' , component: CreateJobComponent},
       { path: 'Notifications', component: EmployerNotificationsComponent },
-      { path: 'employer-jobs', component: EmployerJobsComponent }
+      { path: 'employer-jobs', component: EmployerJobsComponent },
+      
+      
     ]
   },
   {
@@ -128,7 +131,7 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'jobs', component: FindJobComponent },
       { path: 'jobs/:id', component: CardDetailsComponent },
-
+      {path: 'jobs/:id/edit' , component: EditJobComponent},
       { path: 'admin-jobs', component: AdminJobsComponent },
       { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
 
