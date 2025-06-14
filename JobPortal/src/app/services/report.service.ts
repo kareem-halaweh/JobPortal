@@ -6,7 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ReportService {
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
+  private apiUrl =
+    'http://localhost:8000/api';
   constructor(private http: HttpClient) {}
 
   getMonthlyReport(month: number, year: number, token: string | null): Observable<any> {

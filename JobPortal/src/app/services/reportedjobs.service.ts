@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {reportedJob} from '../models/reportedjobs.model';
 @Injectable({ providedIn: 'root' })
 export class reportejobsService{
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
+  private apiUrl =
+    'http://localhost:8000/api';
   constructor(private http: HttpClient) {}
   getAllReports(token: string, sort: string) {
     const headers = {

@@ -5,8 +5,8 @@ import {Observable} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class savejobsService{
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
-
+  private apiUrl =
+    'http://localhost:8000/api';
   constructor(private http: HttpClient) {}
 
 

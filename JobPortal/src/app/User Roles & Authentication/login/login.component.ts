@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
-
   onSubmit(): void {
     this.submitted = true;
 
@@ -46,7 +45,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(user));
 
         switch (user.role_id) {
-          case 1: this.router.navigate(['/Admin']); break;
+          case 1:
+            this.router.navigate(['/Admin']);
+            break;
           case 2: this.router.navigate(['/Seeker']); break;
           case 3: this.router.navigate(['/Employer']); break;
           default: this.router.navigate(['/']);
