@@ -122,12 +122,14 @@ export class SeekerProfileComponent implements OnInit {
 
     const headers = { Authorization: `Bearer ${token}` };
     const formValues = this.profileForm.value;
+    const genderRaw = String(formValues.gender).trim();
+    const capitalizedGender = genderRaw.charAt(0).toUpperCase() + genderRaw.slice(1).toLowerCase();
     const data = {
       username: String(formValues.username),
       email: String(formValues.email),
       phone_number: String(formValues.phone),
       location: String(formValues.location),
-      gender: String(formValues.gender),
+      gender: capitalizedGender,
       age: String(formValues.age),
       specialization: String(formValues.specialization),
       about_me: String(formValues.aboutMe)

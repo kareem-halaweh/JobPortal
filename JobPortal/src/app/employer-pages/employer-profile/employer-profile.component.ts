@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {Router, RouterLink} from '@angular/router';
-import { NgIf, NgForOf, NgClass } from '@angular/common';
+import { NgIf, NgForOf, NgClass,CommonModule  } from '@angular/common';
 
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass,CommonModule, ],
   templateUrl: './employer-profile.component.html',
   styleUrls: ['./employer-profile.component.css']
 })
@@ -21,10 +21,12 @@ export class EmployerProfileComponent implements OnInit {
   isOwner = true;
   submitted = false;
 
-  profileImageUrl = 'assets/pfp.jpg';
+  profileImageUrl = 'pfp.jpg';
   selectedProfileImage: File | null = null;
   isDefaultPfp = true;
   originalData: any;
+  charCount: number = 0;
+
 
   topEmployers = [
     { name: 'Ahmad Yasin', avatar: 'pfp1.jpg' },
@@ -40,7 +42,8 @@ export class EmployerProfileComponent implements OnInit {
       phone_number: ['', Validators.required],
       location: ['', Validators.required],
       industry: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      founded_date: ['']
     });
 
     const token = localStorage.getItem('token');
@@ -59,16 +62,21 @@ export class EmployerProfileComponent implements OnInit {
           phone_number: user?.phone_number || '',
           location: user?.location || '',
           industry: profile?.industry || '',
-          description: profile?.description || ''
+          description: profile?.description || '',
+          founded_date: profile?.founded_date || ''
         });
+        const img = user?.profile_img;
 
-        if (user?.profile_img === 'pfp.jpg') {
+        if (!img || img === 'null' || (typeof img === 'string' && img.trim() === '') || img === 'pfp.jpg') {
           this.profileImageUrl = 'pfp.jpg';
           this.isDefaultPfp = true;
         } else {
-          this.profileImageUrl = user?.profile_img;
+          this.profileImageUrl = img;
           this.isDefaultPfp = false;
         }
+
+
+
 
         this.originalData = this.profileForm.value;
       }
@@ -103,7 +111,7 @@ export class EmployerProfileComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/remove-profile-picture', {}, {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe(() => {
-      this.profileImageUrl = '/pfp.jpg';
+      this.profileImageUrl = 'pfp.jpg';
       this.isDefaultPfp = true;
       this.selectedProfileImage = null;
       this.profileForm.patchValue({ profile_img: 'pfp.jpg' });
@@ -124,6 +132,7 @@ export class EmployerProfileComponent implements OnInit {
     formData.append('location', this.profileForm.value.location);
     formData.append('industry', this.profileForm.value.industry);
     formData.append('description', this.profileForm.value.description);
+    formData.append('founded_date', this.profileForm.value.founded_date);
 
     if (this.selectedProfileImage) {
       formData.append('profile_img', this.selectedProfileImage);

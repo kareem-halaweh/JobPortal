@@ -54,7 +54,9 @@ export class CreateAccountComponent implements OnInit {
       combinedData.append('password_confirmation', confirmPassword);
       combinedData.append('username', this.employerFormData.companyName);
       combinedData.append('founded_date', this.employerFormData.foundedDate ?? '');
-     // combinedData.append('profile_img', this.employerFormData.profile_img ?? '');
+      if (this.employerFormData.profile_img) {
+        combinedData.append('profile_img', this.employerFormData.profile_img);
+      }
       combinedData.append('industry', this.employerFormData.companyIndustry);
       combinedData.append('location', this.employerFormData.location);
       combinedData.append('phone_number', this.employerFormData.phoneNumber);
