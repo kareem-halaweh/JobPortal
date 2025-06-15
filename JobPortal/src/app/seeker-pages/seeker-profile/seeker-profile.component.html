@@ -24,34 +24,66 @@
         </div>
 
         <div *ngIf="!isEditMode" class="mt-4 profile-info-block">
-          <p><i class="bi bi-envelope" style="color: #F5A623;"></i> {{ profileForm?.value?.email }}</p>
-          <p><i class="bi bi-telephone" style="color: #F5A623;"></i> {{ profileForm?.value?.phone }}</p>
-          <p><i class="bi bi-gender-ambiguous"></i> {{ profileForm?.value?.gender }}</p>
-          <p><i class="bi bi-calendar3"></i> {{ profileForm?.value?.age }}</p>
-          <p><i class="bi bi-geo-alt"></i> {{ profileForm?.value?.location }}</p>
+          <p><i class="bi bi-envelope"></i> {{ profileForm?.value?.email || 'No email added yet' }}</p>
+          <p><i class="bi bi-telephone"></i> {{ profileForm?.value?.phone_number || 'No phone number added yet' }}</p>
+          <p><i class="bi bi-gender-ambiguous"></i> {{ profileForm?.value?.gender || 'No gender added yet' }}</p>
+          <p><i class="bi bi-calendar3"></i> {{ profileForm?.value?.age || 'No age provided' }}</p>
+          <p><i class="bi bi-geo-alt"></i> {{ profileForm?.value?.location || 'No location provided' }}</p>
         </div>
 
         <form [formGroup]="profileForm" *ngIf="isEditMode" class="mt-4">
           <input class="form-control mb-1" formControlName="username" placeholder="Full Name" />
           <div *ngIf="submitted && profileForm.get('username')?.invalid" class="text-danger small mb-2">Full Name is required.</div>
+
           <input class="form-control mb-1" formControlName="specialization" placeholder="Title" />
           <div *ngIf="submitted && profileForm.get('specialization')?.invalid" class="text-danger small mb-2">Title is required.</div>
+
           <input class="form-control mb-1" formControlName="email" placeholder="Email" />
           <div *ngIf="submitted && profileForm.get('email')?.invalid" class="text-danger small mb-2">
             <ng-container *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</ng-container>
             <ng-container *ngIf="profileForm.get('email')?.errors?.['email']">Invalid email format.</ng-container>
           </div>
-          <input class="form-control mb-1" formControlName="phone" placeholder="Phone" />
-          <div *ngIf="submitted && profileForm.get('phone')?.invalid" class="text-danger small mb-2">Phone must be at least 10 digits.</div>
-          <input class="form-control mb-1" formControlName="gender" placeholder="Gender" />
+
+          <input class="form-control mb-1" formControlName="phone_number" placeholder="Phone" />
+          <div *ngIf="submitted && profileForm.get('phone_number')?.invalid" class="text-danger small mb-2">Phone must be at least 10 digits.</div>
+
+          <select class="form-control mb-1" formControlName="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
           <div *ngIf="submitted && profileForm.get('gender')?.invalid" class="text-danger small mb-2">Gender is required.</div>
+
           <input class="form-control mb-1" type="number" formControlName="age" placeholder="Age" />
           <div *ngIf="submitted && profileForm.get('age')?.invalid" class="text-danger small mb-2">
             <ng-container *ngIf="profileForm.get('age')?.errors?.['required']">Age is required.</ng-container>
             <ng-container *ngIf="profileForm.get('age')?.errors?.['min']">Minimum age is 18.</ng-container>
           </div>
-          <input class="form-control mb-1" formControlName="location" placeholder="Location" />
+
+          <select class="form-control mb-1" formControlName="location">
+            <option value="">Select Location</option>
+            <option value="Ramallah">Ramallah</option>
+            <option value="Nablus">Nablus</option>
+            <option value="Hebron">Hebron</option>
+            <option value="Jerusalem">Jerusalem</option>
+            <option value="Jenin">Jenin</option>
+            <option value="Tulkarem">Tulkarem</option>
+            <option value="Gaza">Gaza</option>
+          </select>
           <div *ngIf="submitted && profileForm.get('location')?.invalid" class="text-danger small mb-2">Location is required.</div>
+
+          <select class="form-control mb-1" formControlName="industry">
+            <option value="">Select Industry</option>
+            <option value="Technology">Technology</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Finance">Finance</option>
+            <option value="Retail">Retail</option>
+            <option value="Other">Other</option>
+          </select>
+          <div *ngIf="submitted && profileForm.get('industry')?.invalid" class="text-danger small mb-2">Industry is required.</div>
+
           <textarea rows="3" class="form-control" formControlName="aboutMe" placeholder="About you..."></textarea>
         </form>
       </div>
@@ -90,8 +122,6 @@
       </div>
     </div>
 
-
-
     <div class="col-lg-12" *ngIf="isOwner || uploadedFiles.length > 0">
       <div class="bordered-card shadow p-3 position-relative profile-animate delay-3">
         <h6 class="section-title d-flex justify-content-between align-items-center">
@@ -105,10 +135,7 @@
               <i class="bi bi-dash-circle-fill remove-icon me-2" (click)="fileIndexToDelete = i; showDeleteModal = true"></i>
             </ng-container>
             <i class="bi bi-file-earmark-pdf me-2 text-danger"></i>
-            <a [href]="getFileUrl(file.url)" target="_blank" rel="noopener noreferrer">
-              {{ file.title }}
-            </a>
-
+            <a [href]="getFileUrl(file.url)" target="_blank" rel="noopener noreferrer">{{ file.title }}</a>
           </div>
         </div>
 
@@ -117,7 +144,6 @@
         </ng-template>
       </div>
     </div>
-
 
     <div *ngIf="showUploadModal" class="upload-modal-overlay">
       <div class="upload-modal-content">
@@ -140,7 +166,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="col-12 d-flex justify-content-end gap-2 mt-2" *ngIf="isEditMode && isOwner">
       <a routerLink="/changePassword" class="small-link">Change Password</a>

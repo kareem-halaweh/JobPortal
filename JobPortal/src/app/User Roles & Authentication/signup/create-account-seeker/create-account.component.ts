@@ -60,9 +60,10 @@ export class CreateAccountComponentSeeker implements OnInit {
       combinedData.append('specialization', this.seekerFormData.specialization);
       combinedData.append('location', this.seekerFormData.location);
       combinedData.append('about_me', this.seekerFormData.aboutYou);
-  /*    if (this.seekerFormData.profile_img) {
-        combinedData.append('profile_img', this.seekerFormData.profile_img); // The actual file
-      }*/
+      if (this.seekerFormData.profile_img) {
+        combinedData.append('profile_img', this.seekerFormData.profile_img);
+      }
+
       this.authService.register(combinedData).subscribe({
         next: (response) => {
           console.log('Seeker registered successfully!', response);

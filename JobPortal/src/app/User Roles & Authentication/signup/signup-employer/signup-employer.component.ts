@@ -42,9 +42,14 @@ export class SignupEmployerComponent  implements OnInit {
 
     if (this.employerForm.invalid) return;
 
-    this.authService.setEmployerFormData(this.employerForm.value); // Added: set form data to service
+    this.authService.setEmployerFormData({
+      ...this.employerForm.value,
+      profile_img: this.selectedLogoFile
+    });
+
     this.router.navigate(['/createAccountEmployer']);
   }
+
 
   onLogoSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];
