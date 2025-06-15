@@ -46,16 +46,26 @@ export class FindJobComponent implements OnInit {
     });
   }
 
-  onSearchChanged(term: string) {
-    this.searchTerm = term.toLowerCase();
-    this.filteredJobsList = this.jobs.filter(job =>
-      job.title.toLowerCase().includes(this.searchTerm) ||
-      job.company.toLowerCase().includes(this.searchTerm) ||
-      job.location.toLowerCase().includes(this.searchTerm) ||
-      job.category.toLowerCase().includes(this.searchTerm) ||
-      job.skills.toLowerCase().includes(this.searchTerm)
-    );
+  onSearchChanged(filters: any) {
+    const allEmpty = Object.values(filters).every(value => value === '');
+  
+    if (allEmpty) {
+      this.loadJobs(); // this is correctly defined inside FindJobComponent
+    } else {
+      this.isLoading = true;
+      this.jobService.searchJobs(filters).subscribe({
+        next: (jobs) => {
+          this.filteredJobsList = jobs;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Search failed', err);
+          this.isLoading = false;
+        }
+      });
+    }
   }
+  
 
   onEditJob(job: Job) {
     this.selectedJob = { ...job };
