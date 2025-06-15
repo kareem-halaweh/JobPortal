@@ -6,6 +6,7 @@ import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-hero',
+
   imports: [
     RouterLink,
     NgIf,
