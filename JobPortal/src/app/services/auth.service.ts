@@ -21,7 +21,9 @@ export class AuthService {
 
   private selectedRole: number | null = null;
   private apiUrl =
+
     'http://localhost:8000/api';
+
   private seekerFormData: any = null;
   private employerFormData: any = null;
 

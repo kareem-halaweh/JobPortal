@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderEmployerComponent } from '../headers/header-employer/header.component';
+import { JobService } from '../services/jobs.service';
+import { Job, jojo } from '../models/job.model';
+import { AuthService } from '../services/auth.service';
+
 
 interface JobData {
   title: string;
@@ -22,36 +27,41 @@ interface JobData {
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, HeaderEmployerComponent]
 })
 export class CreateJobComponent {
-  jobData: JobData = {
+
+  constructor(private jobService: JobService,private authService: AuthService) {}
+
+  jobData:jojo = {
+
+  
     title: '',
-    company: '',
-    location: '',
-    description: '',
-    responsibilities: '',
-    skills: '',
-    salary: 0,
-    benefits: '',
-    employmentType: '',
-    category: '',
-    contactEmail: '',
-    companyLogo: ''
+   salary:'',
+   category: '',
+   employment_type: '',
+   description: '',
+   skills:'',
+   about: '',
+   user_id:1 ,
+   date:new Date().toISOString().slice(0, 19).replace('T', ' '),
+
+
   };
 
   onSubmit() {
 
+   
+    this.jobData.user_id = this.authService.getUserId() ?? 1;
     console.log('Form submitted:', this.jobData);
-
-    // You can add your API call here to save the job
-    // this.jobService.createJob(this.jobData).subscribe(
-    //   response => {
-    //     // Handle success
-    //   },
-    //   error => {
-    //     // Handle error
-    //   }
-    // );
+   
+    this.jobService.createJob(this.jobData ).subscribe(
+      response => {
+        // Handle success
+      },
+      error => {
+        // Handle error
+      }
+    );
   }
 }

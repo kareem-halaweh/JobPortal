@@ -21,12 +21,10 @@ import { ChangePasswordComponent } from './User Roles & Authentication/change-pa
 import {ResetPasswordComponent} from './User Roles & Authentication/reset-password/reset-password.component';
 import { NewPasswordResetPasswordComponent } from './User Roles & Authentication/reset-password/new-password-reset-password/new-password-reset-password.component';
 
-
 import { SignupComponent } from './User Roles & Authentication/signup/signup.component';
 import { SignupJobSeekerComponent } from './User Roles & Authentication/signup/signup-job-seeker/signup-job-seeker.component';
 import { SignupEmployerComponent } from './User Roles & Authentication/signup/signup-employer/signup-employer.component';
 import { CreateAccountComponent } from './User Roles & Authentication/signup/create-account/create-account.component';
-
 
 import { LogoutComponent } from './User Roles & Authentication/logout/logout.component';
 
@@ -44,26 +42,35 @@ import {RoleGuard} from './auth/role.guard';
 import {AppliedJobsComponent} from './seeker-pages/applied-jobs/applied-jobs.component';
 import {ApplicationStatusComponent} from './seeker-pages/application-status/application-status.component';
 
+
 import {CreateJobComponent} from './create-job/create-job.component';
+
 import {AdminReportMonthlyComponent} from './admin-pages/admin-report-monthly/admin-report-monthly.component';
+
+import {EditJobComponent} from './edit-job/edit-job.component';
+import path from 'path';
+
 
 
 
 export const routes: Routes = [
 
 
+
   { path: 'login', component: LoginComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
   { path: 'newPasswordResetPassword', component: NewPasswordResetPasswordComponent },
- { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'signupJobSeeker', component: SignupJobSeekerComponent },
   { path: 'signupEmployer', component: SignupEmployerComponent },
   { path: 'createAccountEmployer', component: CreateAccountComponent },
   { path: 'createAccountSeeker', component: CreateAccountComponentSeeker },
   { path: 'logout', component: LogoutComponent },
 
-  {path: 'create' , component: CreateJobComponent},
+
+ 
+
 
 
   {
@@ -92,11 +99,11 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
-
-
+      {path: 'create' , component: CreateJobComponent},
       { path: 'Notifications', component: EmployerNotificationsComponent },
-      { path: 'employer-jobs', component: EmployerJobsComponent }
-
+      { path: 'employer-jobs', component: EmployerJobsComponent },
+      
+      
     ]
   },
   {
@@ -105,6 +112,7 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { expectedRole: 1 },
     children: [
+
       {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent},
       {path: 'Profile', component: AdminProfileComponent},
@@ -112,6 +120,7 @@ export const routes: Routes = [
       { path: 'admin-jobs', component: AdminJobsComponent },
       { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent },
       { path: 'admin-report-monthly', component: AdminReportMonthlyComponent }
+
     ]
 
   },{
@@ -122,7 +131,7 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'jobs', component: FindJobComponent },
       { path: 'jobs/:id', component: CardDetailsComponent },
-
+      {path: 'jobs/:id/edit' , component: EditJobComponent},
       { path: 'admin-jobs', component: AdminJobsComponent },
       { path: 'reported-jobs-admin', component: ReportedJobsAdminComponent }
 

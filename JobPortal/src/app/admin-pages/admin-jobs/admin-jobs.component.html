@@ -14,10 +14,10 @@
   <div *ngFor="let job of displayedJob" class="col-12 col-md-4 mb-4">
     <app-cards-admin-jobs
       [id]="job.id"
-      [title]="job.job_title"
-      [company]="job.company"
-      [location]="job.location"
-      [type]="job.type"
+      [title]="job.title"
+      [company]="job.user.name"
+      [location]="job.user.location"
+      [type]="job.employment_type"
       [date]="job.date"
       [salary]="job.salary"
       [imageUrl]="job.imageUrl"
