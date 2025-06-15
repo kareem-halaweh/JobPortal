@@ -70,13 +70,10 @@ export class CreateAccountComponent implements OnInit {
 
           this.router.navigate(['/Employer']);
         },
-        error: (error) => {
-          console.error('Registration failed', error);
 
+        error: (error) => {
           if (error.status === 422 && error.error?.errors?.email) {
-            const emailErrors = error.error.errors.email.join(', ');
-            this.accountForm.get('email')?.setErrors({ backend: emailErrors });
-            alert(`Registration failed: ${emailErrors}`);
+            alert('This email is already registered and cannot be used again.');
           } else {
             alert('Registration failed: ' + (error.error?.message || 'Unknown error'));
           }

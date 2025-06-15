@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-logout',
@@ -16,23 +17,36 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-    const userJson = localStorage.getItem('user');
-    if (userJson) {
-      try {
-        const user = JSON.parse(userJson);
-        console.log('User from localStorage:', user);
-        switch (user.role_id) {
-          case 1: this.userRolePath = '/Admin/home'; break;
-          case 2: this.userRolePath = '/Seeker/home'; break;
-          case 3: this.userRolePath = '/Employer/home'; break;
-          default: this.userRolePath = '/';
+    if (isPlatformBrowser(this.platformId)) {
+      // Remove token and user data
+      localStorage.removeItem('token');
+      const userJson = localStorage.getItem('user');
+
+      if (userJson) {
+        try {
+          const user = JSON.parse(userJson);
+          console.log('User from localStorage:', user);
+          switch (user.role_id) {
+            case 1:
+              this.userRolePath = '/Admin/home';
+              break;
+            case 2:
+              this.userRolePath = '/Seeker/home';
+              break;
+            case 3:
+              this.userRolePath = '/Employer/home';
+              break;
+            default:
+              this.userRolePath = '/';
+          }
+        } catch (err) {
+          console.error('Error parsing user:', err);
         }
-      } catch (err) {
-        console.error('Error parsing user:', err);
       }
     }
   }
