@@ -41,11 +41,15 @@ export class SignupJobSeekerComponent implements OnInit {
     this.seekerForm.updateValueAndValidity();
 
     if (this.seekerForm.invalid) return;
+
     this.authService.setSeekerFormData({
       ...this.seekerForm.value,
+      profile_img: this.selectedLogoFile
     });
+
     this.router.navigate(['/createAccountSeeker']);
-    }
+  }
+
 
   onLogoSelected(event: Event): void {
     const file = (event.target as HTMLInputElement)?.files?.[0];

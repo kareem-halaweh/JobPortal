@@ -51,9 +51,8 @@ export class JobService {
     );
   }
 
-  searchJobs(params: any): Observable<Job[]> {
-    return this.http.get<Job[]>(`http://localhost:8000/api/jobs/search`, { params }).pipe(
-      catchError(this.handleError)
-    );
+  searchJobs(filters: any): Observable<Job[]> {
+    return this.http.get<Job[]>('http://localhost:8000/api/jobs/search', { params: filters });
   }
+  
 }

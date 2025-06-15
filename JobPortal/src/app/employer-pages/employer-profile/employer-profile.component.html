@@ -20,15 +20,16 @@
               <i class="bi bi-trash3 me-1"></i> Remove
             </button>
           </div>
-          <h4 class="mt-3 company-name">{{ profileForm.value.username }}</h4>
-          <p class="text-muted">{{ profileForm.get('industry')?.value }}</p>
+          <h4 class="mt-3 company-name">{{ profileForm.value.username || 'No company name has been added yet' }}</h4>
+          <p class="text-muted">{{ profileForm.get('industry')?.value || 'No industry has been added yet' }}</p>
         </div>
 
         <div *ngIf="!isEditMode" class="mt-4 profile-info-block profile-animate delay-3">
-          <p><i class="bi bi-envelope gradient-icon"></i>{{ profileForm.value.email }}</p>
-          <p><i class="bi bi-telephone gradient-icon"></i>{{ profileForm.get('phone_number')?.value }}</p>
-          <p><i class="bi bi-geo-alt gradient-icon"></i>{{ profileForm.value.location }}</p>
-          <p><i class="bi bi-info-circle gradient-icon"></i>{{ profileForm.value.description }}</p>
+          <p><i class="bi bi-envelope gradient-icon"></i>{{ profileForm.value.email || 'No email has been added yet' }}</p>
+          <p><i class="bi bi-telephone gradient-icon"></i>{{ profileForm.get('phone_number')?.value || 'No phone number has been added yet' }}</p>
+          <p><i class="bi bi-geo-alt gradient-icon"></i>{{ profileForm.value.location || 'No location has been added yet' }}</p>
+          <p><i class="bi bi-info-circle gradient-icon"></i>{{ profileForm.value.description || 'No description has been added yet' }}</p>
+          <p><i class="bi bi-calendar-event gradient-icon"></i>{{ profileForm.get('founded_date')?.value || 'No founded date has been added yet' }}</p>
         </div>
 
         <form [formGroup]="profileForm" *ngIf="isEditMode" class="mt-4 profile-animate delay-3">
@@ -37,7 +38,14 @@
             Company name is required.
           </div>
 
-          <input class="form-control mb-1" formControlName="industry" placeholder="Industry" />
+          <input list="industryOptions" class="form-control mb-1" formControlName="industry" placeholder="Industry" />
+          <datalist id="industryOptions">
+            <option value="Information Technology"></option>
+            <option value="Healthcare"></option>
+            <option value="Education"></option>
+            <option value="Marketing"></option>
+            <option value="Construction"></option>
+          </datalist>
           <div *ngIf="(profileForm.get('industry')?.touched || submitted) && profileForm.get('industry')?.invalid" class="text-danger small mb-2">
             Industry is required.
           </div>
@@ -53,12 +61,32 @@
             Phone number is required.
           </div>
 
-          <input class="form-control mb-1" formControlName="location" placeholder="Location" />
+          <select class="form-control mb-1" formControlName="location">
+            <option value="">Select City</option>
+            <option value="Nablus">Nablus</option>
+            <option value="Ramallah">Ramallah</option>
+            <option value="Jerusalem">Jerusalem</option>
+            <option value="Hebron">Hebron</option>
+            <option value="Jenin">Jenin</option>
+            <option value="Tulkarm">Tulkarm</option>
+            <option value="Bethlehem">Bethlehem</option>
+            <option value="Qalqilya">Qalqilya</option>
+            <option value="Salfit">Salfit</option>
+            <option value="Tubas">Tubas</option>
+            <option value="Gaza">Gaza</option>
+            <option value="Rafah">Rafah</option>
+          </select>
           <div *ngIf="(profileForm.get('location')?.touched || submitted) && profileForm.get('location')?.invalid" class="text-danger small mb-2">
             Location is required.
           </div>
 
-          <textarea rows="3" class="form-control mb-1" formControlName="description" placeholder="Company Description"></textarea>
+          <input type="date" class="form-control mb-1" formControlName="founded_date" placeholder="Founded Date" />
+          <div *ngIf="(profileForm.get('founded_date')?.touched || submitted) && profileForm.get('founded_date')?.invalid" class="text-danger small mb-2">
+            Founded date is required.
+          </div>
+
+          <textarea rows="3" class="form-control mb-1" formControlName="description" placeholder="Company Description" (input)="charCount = (profileForm.get('description')?.value || '').length"></textarea>
+          <div class="text-end small text-muted mb-1">{{ charCount || 0 }}/500 characters</div>
           <div *ngIf="(profileForm.get('description')?.touched || submitted) && profileForm.get('description')?.invalid" class="text-danger small mb-2">
             Description is required.
           </div>
