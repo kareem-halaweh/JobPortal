@@ -7,7 +7,9 @@ import { NgIf, NgForOf, NgClass, CommonModule } from '@angular/common';
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, CommonModule],
+
+  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, CommonModule, RouterLink,],
+
   templateUrl: './employer-profile.component.html',
   styleUrls: ['./employer-profile.component.css']
 })
