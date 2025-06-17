@@ -673,3 +673,56 @@
   width: 400px;
   max-width: 90%;
 }
+.add-box-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-box {
+  padding: 6px 12px;
+  border: 2px dashed #1B2A41;
+  color: #1B2A41;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-box:hover {
+  background-color: #1B2A41;
+  color: white;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.custom-toast {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+.custom-toast.success {
+  background-color: #28a745;
+}
+
+.custom-toast.error {
+  background-color: #dc3545;
+}
