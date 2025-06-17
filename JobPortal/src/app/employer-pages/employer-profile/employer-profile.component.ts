@@ -2,12 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {Router, RouterLink} from '@angular/router';
-import { NgIf, NgForOf, NgClass,CommonModule  } from '@angular/common';
+import { NgIf, NgForOf, NgClass, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
+
   imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, CommonModule, RouterLink,],
+
   templateUrl: './employer-profile.component.html',
   styleUrls: ['./employer-profile.component.css']
 })
@@ -26,7 +28,8 @@ export class EmployerProfileComponent implements OnInit {
   isDefaultPfp = true;
   originalData: any;
   charCount: number = 0;
-
+  isLoading = false;
+  showDeleteModal = false;
 
   topEmployers = [
     { name: 'Ahmad Yasin', avatar: 'pfp1.jpg' },
@@ -36,6 +39,8 @@ export class EmployerProfileComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.profileForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -65,6 +70,7 @@ export class EmployerProfileComponent implements OnInit {
           description: profile?.description || '',
           founded_date: profile?.founded_date || ''
         });
+
         const img = user?.profile_img;
 
         if (!img || img === 'null' || (typeof img === 'string' && img.trim() === '') || img === 'pfp.jpg') {
@@ -75,13 +81,13 @@ export class EmployerProfileComponent implements OnInit {
           this.isDefaultPfp = false;
         }
 
-
-
-
         this.originalData = this.profileForm.value;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
       }
     });
-
   }
 
   toggleEdit(): void {
@@ -104,17 +110,30 @@ export class EmployerProfileComponent implements OnInit {
     }
   }
 
+  confirmRemoveImage(): void {
+    this.showDeleteModal = false;
+    this.removeProfileImage();
+  }
+
   removeProfileImage(): void {
     const token = localStorage.getItem('token');
     if (!token) return;
 
+    this.isLoading = true;
+
     this.http.post('http://127.0.0.1:8000/api/remove-profile-picture', {}, {
       headers: { Authorization: `Bearer ${token}` }
-    }).subscribe(() => {
-      this.profileImageUrl = 'pfp.jpg';
-      this.isDefaultPfp = true;
-      this.selectedProfileImage = null;
-      this.profileForm.patchValue({ profile_img: 'pfp.jpg' });
+    }).subscribe({
+      next: () => {
+        this.profileImageUrl = 'pfp.jpg';
+        this.isDefaultPfp = true;
+        this.selectedProfileImage = null;
+        this.profileForm.patchValue({ profile_img: 'pfp.jpg' });
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+      }
     });
   }
 
@@ -124,6 +143,8 @@ export class EmployerProfileComponent implements OnInit {
 
     const token = localStorage.getItem('token');
     if (!token) return;
+
+    this.isLoading = true;
 
     const formData = new FormData();
     formData.append('username', this.profileForm.value.username);
@@ -140,9 +161,15 @@ export class EmployerProfileComponent implements OnInit {
 
     this.http.post('http://127.0.0.1:8000/api/employer/update', formData, {
       headers: { Authorization: `Bearer ${token}` }
-    }).subscribe(() => {
-      this.originalData = this.profileForm.value;
-      this.toggleEdit();
+    }).subscribe({
+      next: () => {
+        this.originalData = this.profileForm.value;
+        this.toggleEdit();
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+      }
     });
   }
 }

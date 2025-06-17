@@ -47,24 +47,24 @@ export class FindJobComponent implements OnInit {
   }
 
   onSearchChanged(filters: any) {
-    const allEmpty = Object.values(filters).every(value => value === '');
+    // Remove empty filter values before sending
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filters).filter(([_, v]) => v != null && v !== '')
+    );
   
-    if (allEmpty) {
-      this.loadJobs(); // this is correctly defined inside FindJobComponent
-    } else {
-      this.isLoading = true;
-      this.jobService.searchJobs(filters).subscribe({
-        next: (jobs) => {
-          this.filteredJobsList = jobs;
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Search failed', err);
-          this.isLoading = false;
-        }
-      });
-    }
+    this.isLoading = true;
+    this.jobService.getJobs(cleanFilters).subscribe({
+      next: (jobs) => {
+        this.filteredJobsList = jobs;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Search failed', err);
+        this.isLoading = false;
+      }
+    });
   }
+  
   
 
   onEditJob(job: Job) {
