@@ -27,8 +27,17 @@ export class SearchBarComponent {
   };
 
   onSearch() {
-    this.searchChanged.emit(this.filters);
+    const cleanedFilters: any = {};
+  
+    for (const key in this.filters) {
+      if (this.filters[key] && this.filters[key].trim() !== '') {
+        cleanedFilters[key] = this.filters[key];
+      }
+    }
+  
+    this.searchChanged.emit(cleanedFilters);
   }
+  
 
   clear() {
     this.filters = {
