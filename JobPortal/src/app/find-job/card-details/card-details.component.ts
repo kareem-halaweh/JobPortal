@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { JobService } from '../../services/jobs.service';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-details',
@@ -20,17 +22,29 @@ export class CardDetailsComponent implements OnInit {
   isLoading: boolean = false;
   error: string | null = null;
 
-  isEditMode: boolean = false;  // <-- NEW
-  editableJob: Job | null = null; // <-- NEW
+  isEditMode: boolean = false;  
+  editableJob: Job | null = null; 
+
+  userRole : number | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private jobService: JobService
+    private jobService: JobService,
+    public authService : AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadJob();
+    this.userRole = this.authService.getRole();
   }
+
+  handleApplyClick(): void {
+    if (this.userRole !== 2) {
+      this.router.navigate(['/login']); 
+    }
+  }
+
 
   loadJob(): void {
     const jobId = this.route.snapshot.paramMap.get('id');
@@ -52,14 +66,14 @@ export class CardDetailsComponent implements OnInit {
     }
   }
 
-  // Edit mode toggling
+
   toggleEdit(): void {
     if (!this.job) return;
 
     this.isEditMode = !this.isEditMode;
 
     if (this.isEditMode) {
-      // Clone job data to editable copy
+      
       this.editableJob = { ...this.job };
     } else {
       this.editableJob = null;
@@ -75,7 +89,7 @@ export class CardDetailsComponent implements OnInit {
       next: () => {
         alert('Job updated successfully!');
         this.isEditMode = false;
-        this.loadJob(); // reload updated data
+        this.loadJob(); 
       },
       error: (error) => {
         console.error('Error updating job:', error);
@@ -85,7 +99,7 @@ export class CardDetailsComponent implements OnInit {
     });
   }
 
-  // Keep your existing file upload logic:
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file && file.type === 'application/pdf') {
@@ -108,4 +122,6 @@ export class CardDetailsComponent implements OnInit {
     this.selectedFile = null;
     this.coverLetter = '';
   }
+
+
 }
