@@ -39,11 +39,7 @@ export class CardDetailsComponent implements OnInit {
     this.userRole = this.authService.getRole();
   }
 
-  handleApplyClick(): void {
-    if (this.userRole !== 2) {
-      this.router.navigate(['/login']); 
-    }
-  }
+
 
   handleApplyClick2(): void {
     if (this.userRole !== 2) {
