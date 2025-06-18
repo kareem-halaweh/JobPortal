@@ -21,10 +21,18 @@ export class JobService {
     return throwError(() => new Error(errorMessage));
   }
 
-  getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(`http://localhost:8000/api/jobs`).pipe(
-      catchError(this.handleError)
-    );
+  getJobs(filters?: any): Observable<Job[]> {
+    const cleanedFilters: any = {};
+  
+    if (filters) {
+      for (const key in filters) {
+        if (filters[key] && filters[key].trim() !== '') {
+          cleanedFilters[key] = filters[key];
+        }
+      }
+    }
+  
+    return this.http.get<Job[]>('http://localhost:8000/api/jobs', { params: cleanedFilters });
   }
 
   createJob(newJob:jojo): Observable<jojo> {
@@ -51,9 +59,6 @@ export class JobService {
     );
   }
 
-  searchJobs(params: any): Observable<Job[]> {
-    return this.http.get<Job[]>(`http://localhost:8000/api/jobs/search`, { params }).pipe(
-      catchError(this.handleError)
-    );
-  }
+ 
+  
 }

@@ -1,22 +1,39 @@
 <div class="position-relative">
   <div class="profile-banner static-banner"></div>
+  <div *ngIf="isOwner && !isEditMode" class="edit-icon-right" (click)="toggleEdit()">
+    <i class="bi bi-gear-fill"></i>
+  </div>
 </div>
 
 <div class="main-content">
-  <div class="container mt-0">
+  <div class="container mt-0" *ngIf="profileForm">
     <div class="row justify-content-center g-4">
       <div class="col-lg-8">
         <div class="main-profile-card bordered-card shadow text-center">
           <div class="position-relative">
-            <img [src]="profileImageUrl" alt="Profile" class="profile-img no-border" />
+            <img [src]="profileImageUrl" [ngClass]="{ 'profile-img': true, 'no-border': isDefaultPfp }" alt="Profile" />
+            <div *ngIf="isEditMode" class="edit-profile-img-icon">
+              <label for="profileInput"><i class="bi bi-pencil-fill"></i></label>
+              <input type="file" id="profileInput" hidden (change)="onProfileImageChange($event)" />
+            </div>
+            <div *ngIf="isEditMode && !isDefaultPfp" class="remove-image-wrapper">
+              <button class="modern-remove-btn" type="button" (click)="removeProfileImage()">
+                <i class="bi bi-trash3 me-1"></i> Remove
+              </button>
+            </div>
           </div>
 
-          <div class="mt-3">
-            <p class="mb-1 company-name">{{ username }}</p>
+          <div class="mt-3" *ngIf="!isEditMode">
+            <p class="mb-1 company-name">{{ profileForm.value.username || 'No name' }}</p>
             <p class="mb-3 text-muted">{{ role }}</p>
           </div>
 
-          <div class="row mt-4 text-start">
+          <form [formGroup]="profileForm" *ngIf="isEditMode" class="mt-3 px-3 text-start">
+            <input class="form-control mb-2" formControlName="username" placeholder="Username" />
+            <input class="form-control mb-2" formControlName="phone" placeholder="Phone Number" />
+          </form>
+
+          <div class="row mt-4 text-start" *ngIf="!isEditMode">
             <div class="col-md-6">
               <p class="mb-2">
                 <i class="bi bi-envelope-fill static-gradient-icon me-2"></i>
@@ -26,10 +43,16 @@
             <div class="col-md-6">
               <p class="mb-2">
                 <i class="bi bi-telephone-fill static-gradient-icon me-2"></i>
-                <strong>Phone:</strong> {{ phone }}
+                <strong>Phone:</strong> {{ profileForm.value.phone || 'N/A' }}
               </p>
             </div>
+
           </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-2" *ngIf="isEditMode">
+          <button class="btn btn-primary" (click)="saveChanges()">Save</button>
+          <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
         </div>
       </div>
 

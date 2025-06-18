@@ -1,32 +1,25 @@
-
 <div class="job-card">
-  <div class="job-card-header">
 
-    <div class="company-logo">
-      <img [src]="job.user.profile_img" [alt]="job.company + ' Logo'">
-    </div>
-  </div>
 
   <div class="job-card-body">
-    <a *ngIf="job.id" [routerLink]="['/jobs', job.id]" routerLinkActive="active">
+    <a *ngIf="job.id" [routerLink]="['/jobs', job.id]" routerLinkActive="active" class="text-decoration-none">
       <h2 class="job-title">{{ job.title }}</h2>
     </a>
     <p class="company-name">{{ job.company }}</p>
 
     <div class="job-meta">
-      <div class="d-flex">
-        <div class="views-info me-3">
-          Salary: {{ job.salary }}
-        </div>
-        <div class="days-info">
-          Location: {{ job.user.location }}
-        </div>
-      </div>
+      <span class="badge-fulltime">{{ job.employment_type }}</span>
     </div>
 
+    <div class="skills">
+     
+        <span class="skill-badge">{{ job.skills }}</span>
+     
+    </div>
 
+    <div class="salary-location">
+      <div>Salary: {{ job.salary }}</div>
+      <div>Location: {{ job.user.location }}</div>
+    </div>
   </div>
 </div>
-
-
-

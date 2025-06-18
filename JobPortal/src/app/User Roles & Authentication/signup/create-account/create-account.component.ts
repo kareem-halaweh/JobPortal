@@ -54,7 +54,9 @@ export class CreateAccountComponent implements OnInit {
       combinedData.append('password_confirmation', confirmPassword);
       combinedData.append('username', this.employerFormData.companyName);
       combinedData.append('founded_date', this.employerFormData.foundedDate ?? '');
-     // combinedData.append('profile_img', this.employerFormData.profile_img ?? '');
+      if (this.employerFormData.profile_img) {
+        combinedData.append('profile_img', this.employerFormData.profile_img);
+      }
       combinedData.append('industry', this.employerFormData.companyIndustry);
       combinedData.append('location', this.employerFormData.location);
       combinedData.append('phone_number', this.employerFormData.phoneNumber);
@@ -68,13 +70,10 @@ export class CreateAccountComponent implements OnInit {
 
           this.router.navigate(['/Employer']);
         },
-        error: (error) => {
-          console.error('Registration failed', error);
 
+        error: (error) => {
           if (error.status === 422 && error.error?.errors?.email) {
-            const emailErrors = error.error.errors.email.join(', ');
-            this.accountForm.get('email')?.setErrors({ backend: emailErrors });
-            alert(`Registration failed: ${emailErrors}`);
+            alert('This email is already registered and cannot be used again.');
           } else {
             alert('Registration failed: ' + (error.error?.message || 'Unknown error'));
           }
