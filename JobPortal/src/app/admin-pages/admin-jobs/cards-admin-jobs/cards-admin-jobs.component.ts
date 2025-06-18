@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -20,7 +19,9 @@ export class CardsAdminJobsComponent {
   @Input()salary!: string;
   @Input ()date! :string ;
   @Input()imageUrl!: string;
-  @Input()linkcompany!: string;
-
+  @Output() deleteJob = new EventEmitter<number>();
+  onDeleteClick() {
+    this.deleteJob.emit(this.id);
+  }
 
 }

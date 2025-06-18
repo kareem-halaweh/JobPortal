@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Job, jojo } from '../models/job.model';
+import {Injectable} from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ 'providedIn': 'root' })
 export class JobService {
 
 
@@ -23,7 +23,7 @@ export class JobService {
 
   getJobs(filters?: any): Observable<Job[]> {
     const cleanedFilters: any = {};
-  
+
     if (filters) {
       for (const key in filters) {
         if (filters[key] && filters[key].trim() !== '') {
@@ -31,7 +31,7 @@ export class JobService {
         }
       }
     }
-  
+
     return this.http.get<Job[]>('http://localhost:8000/api/jobs', { params: cleanedFilters });
   }
 
@@ -59,6 +59,6 @@ export class JobService {
     );
   }
 
- 
-  
+
+
 }
