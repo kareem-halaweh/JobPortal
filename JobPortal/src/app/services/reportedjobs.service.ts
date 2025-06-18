@@ -1,36 +1,33 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {reportedJob} from '../models/reportedjobs.model';
-@Injectable({ providedIn: 'root' })
-export class reportejobsService{
-  private apiUrl =
-    'http://localhost:8000/api';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { reportedJob } from '../models/reportedjobs.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class reportejobsService {
+  private baseUrl = 'http://localhost:8000/api';
+
   constructor(private http: HttpClient) {}
-  getAllReports(token: string, sort: string) {
-    const headers = {
-      Authorization: `Bearer ${token}`
-    };
 
-    const params: any = {};
-    if (sort) {
-      params.sort = sort;
-    }
-
-    return this.http.get<reportedJob[]>(
-      'http://localhost:8000/api/reports',
-      { headers, params }
-    );
-  }
-
-
-  approveReport(userId: number, jobId: number, token: string) {
+  getAllReports(token: string): Observable<reportedJob[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.apiUrl}/report-approve/${userId}/${jobId}`, {}, { headers });
+    return this.http.get<reportedJob[]>(`${this.baseUrl}/reported`, { headers });
   }
 
-  rejectReport(reportId: number, token: string) {
+
+  approveReport(userId: number, jobId: number, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.apiUrl}/report-reject/${reportId}`, {}, { headers });
+    return this.http.post(`${this.baseUrl}/report/${userId}/${jobId}/approve`, {}, { headers });
   }
+
+  rejectReport(userId: number, jobId: number, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.baseUrl}/report/${userId}/${jobId}/reject`, {}, { headers });
+  }
+
+
 
 }
+

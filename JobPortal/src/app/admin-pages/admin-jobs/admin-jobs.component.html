@@ -1,13 +1,13 @@
 
-<div class="container">
+<div class="">
   <app-search-bar-jobs
-    (locationChanged)="filterByLocation($event)">
-
+    (locationChanged)="filterByLocation($event)"
+    (searchChanged)="onSearchChanged($event)">
   </app-search-bar-jobs>
-  <app-filters-admin-jobs   (sortChanged)=" SortChange($event)"
-                            [currentFilter]="filter"
-                            (filterChanged)="Changestatus($event)"
-  >
+  <app-filters-admin-jobs
+    (SortChange)=" SortChange($event)"
+    [currentFilter]="filter"
+    (filterChanged)="Changestatus($event)">
 
   </app-filters-admin-jobs>
 <div class="row">
