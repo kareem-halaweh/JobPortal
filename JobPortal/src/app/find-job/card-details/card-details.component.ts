@@ -45,6 +45,12 @@ export class CardDetailsComponent implements OnInit {
     }
   }
 
+  handleApplyClick2(): void {
+    if (this.userRole !== 2) {
+      this.router.navigate(['/unauthorized']); 
+    }
+  }
+
 
   loadJob(): void {
     const jobId = this.route.snapshot.paramMap.get('id');

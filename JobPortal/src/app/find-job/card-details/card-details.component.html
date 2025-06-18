@@ -9,7 +9,7 @@
       <button class="btn btn-outline-secondary me-2" *ngIf="!isEditMode && userRole === 3"  (click)="toggleEdit()">Edit</button>
       <button class="btn btn-outline-secondary me-2">Report</button>
       <button class="btn btn-outline-secondary me-2">Save</button>
-      <button class="btn btn-success" *ngIf="userRole != 2" (click)="handleApplyClick()" data-bs-toggle="modal" data-bs-target="#applyModal">Apply</button>
+      <button class="btn btn-success" (click)="handleApplyClick2()" [attr.data-bs-toggle]="userRole == 2 ? 'modal' : null" [attr.data-bs-target]="userRole == 2 ? '#applyModal' : null">Apply</button>
     </div>
   </div>
 
