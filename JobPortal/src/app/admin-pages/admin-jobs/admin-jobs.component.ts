@@ -1,20 +1,21 @@
-// استدعاء مكون البحث
+
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../../models/job.model';
 import { JobService } from '../../services/jobs.service';
 import {SearchBarJobsComponent} from '../../search-bar-jobs/search-bar-jobs.component';
-import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
 import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
 import {NgForOf} from '@angular/common';
+import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
 
 @Component({
   selector: 'app-admin-jobs',
   templateUrl: './admin-jobs.component.html',
   imports: [
     SearchBarJobsComponent,
-    FiltersAdminJobsComponent,
+
     CardsAdminJobsComponent,
-    NgForOf
+    NgForOf,
+    FiltersAdminJobsComponent
   ],
   styleUrls: ['./admin-jobs.component.css']
 })
@@ -96,5 +97,19 @@ export class AdminJobsComponent implements OnInit {
     this.sortMethod = method;
     this.Filters();
   }
+  onDeleteJob(id: number) {
+    if (confirm('Are you sure you want to delete this job?')) {
+      this.jobService.deleteJob(id).subscribe({
+        next: () => {
+          this.jobs = this.jobs.filter(job => job.id !== id);
+          this.Filters();
+        },
+        error: (err) => {
+          console.error('Failed to delete job:', err);
+        }
+      });
+    }
+  }
+
 }
 

@@ -6,7 +6,7 @@
 
     <div>
       <a [routerLink]="['/jobs', id]" style=" color: #1F2F44;text-decoration: none;"> <h4 class="card-title fw-bold m-0" style="font-size: 1.3rem;">{{ title }}</h4></a>
-      <a href="{{linkcompany}}" class=" text-muted" style=" text-decoration: none;" > <p class="text-muted ">{{ company }}</p></a>
+       <p class="text-muted ">{{ company }}</p>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="mb-2 d-flex align-items-center"><i class="bi bi-calendar3 me-2"></i> {{ date }}</div>
     <div class="mb-2 d-flex align-items-center"><i class="bi bi-cash-stack me-2"></i> {{ salary }}</div>
     <div class="mt-auto d-flex justify-content-end">
-      <button class="btn btn-md"  style="background:#F4B400; color: #FFFFFF; min-width: 100px;">
+      <button class="btn btn-md" (click)="onDeleteClick()"  style="background:#F4B400; color: #FFFFFF; min-width: 100px;">
         Delete Job
       </button>
     </div>

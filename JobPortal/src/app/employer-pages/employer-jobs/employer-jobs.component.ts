@@ -96,6 +96,7 @@ export class EmployerJobsComponent implements OnInit {
     this.sortMethod = method;
     this.Filters();
   }
+
 }
 
 

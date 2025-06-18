@@ -1,0 +1,282 @@
+[33mcommit a442a568a9adf3a1af231fa725b9af44efd170a2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfarah[m[33m)[m
+Merge: 42872f0 120fa79
+Author: farahshahin <s12324274@stu.najah.edu>
+Date:   Wed Jun 18 20:55:40 2025 +0300
+
+    conflict
+
+[33mcommit 42872f07149e69c21ba9fcaf77d436ac5cf80e78[m[33m ([m[1;31morigin/farah[m[33m)[m
+Author: farahshahin <s12324274@stu.najah.edu>
+Date:   Wed Jun 18 19:12:54 2025 +0300
+
+    admin jobs
+
+[33mcommit 120fa79b0672381a9bb22669a80341777d1b8e27[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 4ca78a0 cc1d7cf
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 17 20:59:13 2025 +0300
+
+    Merge pull request #44 from kareem-halaweh/lana
+    
+    Lana
+
+[33mcommit cc1d7cf559739a662ae88acd406d3ce2b6195fae[m
+Merge: 6850c1e 4ca78a0
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 17 20:59:06 2025 +0300
+
+    Merge branch 'main' into lana
+
+[33mcommit 4ca78a09e7096e7406b55a47cc136c8a0ac228e8[m
+Merge: fa387e1 f7cb651
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 17 20:57:57 2025 +0300
+
+    Merge pull request #43 from kareem-halaweh/basmala
+    
+    Basmala
+
+[33mcommit fa387e192e7eb24c67229ff8c4d80f1eac7e261e[m
+Merge: 77cc001 56b92e2
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 17 20:56:43 2025 +0300
+
+    Merge pull request #42 from kareem-halaweh/kareem
+    
+    fixing search
+
+[33mcommit 56b92e27bdeda8475bc0846e06ac681a0c44fc1d[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 17 11:54:38 2025 +0300
+
+    fixing search
+
+[33mcommit f7cb651098a591d22cce746d2f388135e8dfbab8[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Sun Jun 15 21:49:00 2025 +0300
+
+    dropdown fixed
+
+[33mcommit 70f67f103a03163517707176d8f1f43c2eba1ef1[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Sun Jun 15 21:41:20 2025 +0300
+
+    fixing some stuff that were suddenly gone
+
+[33mcommit 6850c1e378ea8f588640f8040f485c46fa431a1f[m
+Author: Lana-Khdair <s12325211@stu.najah.edu>
+Date:   Sun Jun 15 20:31:56 2025 +0300
+
+    sign up alert
+
+[33mcommit 21e426fc471bcf7ca2714a0cc38a24268ea433fb[m
+Merge: 8d6ec32 77cc001
+Author: Lana-Khdair <s12325211@stu.najah.edu>
+Date:   Sun Jun 15 19:44:40 2025 +0300
+
+    fix conflict
+
+[33mcommit 8d6ec322a803ae881efcb930c06b17ec7169929a[m
+Author: Lana-Khdair <s12325211@stu.najah.edu>
+Date:   Sun Jun 15 16:47:43 2025 +0300
+
+    --
+
+[33mcommit 77cc001d58de8f78efe374aca667aed7d1dbaa4a[m
+Merge: 454644e e9fd050
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Sun Jun 15 12:10:26 2025 +0300
+
+    Merge pull request #41 from kareem-halaweh/mainv3
+    
+    sing up wprks with uploading image+funding date
+
+[33mcommit 454644edffbff78ae0d46a47fc5db798a245bbda[m
+Merge: 8949d21 971ca9c
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Sun Jun 15 12:08:04 2025 +0300
+
+    Merge pull request #40 from kareem-halaweh/kareem
+    
+    Kareem
+
+[33mcommit 971ca9cfd34a853feba032532788565eb7cfaed2[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Sun Jun 15 12:07:06 2025 +0300
+
+    fixing search
+
+[33mcommit e5f1fe9df66b22c09c528ea881664c7df2e81d6c[m
+Merge: b1e9b04 8949d21
+Author: farahshahin <s12324274@stu.najah.edu>
+Date:   Sun Jun 15 10:31:54 2025 +0300
+
+    conflict
+
+[33mcommit e9fd050aa109fc594605bf390adf2f6160a12bb9[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Sat Jun 14 22:22:50 2025 +0300
+
+    sing up wprks with uploading image+funding date
+
+[33mcommit b1e9b04137e1d706afebe1bac53920af61e3131b[m
+Author: farahshahin <s12324274@stu.najah.edu>
+Date:   Sat Jun 14 21:29:46 2025 +0300
+
+    edite
+
+[33mcommit 29f1e41944bf0220ee2ac3512a8128ed23e2b722[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Sat Jun 14 21:00:15 2025 +0300
+
+    mm
+
+[33mcommit 8949d21bf6da2029d68f395b6d3150cca7cede0e[m[33m ([m[1;32mmain[m[33m)[m
+Merge: 4e438fa acc7d95
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 21:51:36 2025 +0300
+
+    Merge pull request #39 from kareem-halaweh/kareem
+    
+    fixing
+
+[33mcommit acc7d95dba759e9a1a3973ef94b21ba1b0abe399[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 21:50:41 2025 +0300
+
+    fixing
+
+[33mcommit 4e438fa4e729c977e84bb85afdd5a3d772c22255[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 19:20:23 2025 +0300
+
+    remove a conflect
+
+[33mcommit a6efd173ccb65f483e98678130e63c3029b71321[m
+Merge: 448f911 893b152
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 17:42:36 2025 +0300
+
+    Merge branch 'main' of https://github.com/kareem-halaweh/JobPortal
+
+[33mcommit 448f9118f3c4fb4d0b96c45707ec73a2ab2e2197[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 17:41:21 2025 +0300
+
+    m
+
+[33mcommit 893b152e0e5ac0eda154ad925fce4716a8b838dd[m
+Merge: 2527887 480b80e
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 17:38:02 2025 +0300
+
+    Merge pull request #38 from kareem-halaweh/basmala
+    
+    Basmala
+
+[33mcommit 480b80edd5ba4d204ee9ce71c4dd72e5a1cfa539[m
+Merge: 57b7a46 2527887
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 17:37:52 2025 +0300
+
+    Merge branch 'main' into basmala
+
+[33mcommit 57b7a46908bf77912eab40ecd86be3ad301e00f3[m[33m ([m[1;31morigin/mainv2[m[33m, [m[1;31morigin/basmala[m[33m, [m[1;32mmainv2[m[33m)[m
+Merge: 80848ad 27c2235
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Fri Jun 13 02:52:27 2025 +0300
+
+    basmala and lana first working version
+
+[33mcommit 80848adc65e13145e36e1a5e073f1be7a7432de8[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Fri Jun 13 01:26:30 2025 +0300
+
+    basmala and lana
+
+[33mcommit 2527887c48205e899f5935405d0fd1b292658b79[m[33m ([m[1;31morigin/test[m[33m)[m
+Merge: 6097341 4776999
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 00:24:13 2025 +0300
+
+    Merge pull request #36 from kareem-halaweh/kareem
+    
+    fixing the fetch data problem
+
+[33mcommit 47769993da3bf3032229ae21ce7f80b5c1fac96d[m[33m ([m[1;31morigin/kareem[m[33m)[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Fri Jun 13 00:21:26 2025 +0300
+
+    fixing the fetch data problem
+
+[33mcommit 27c22351f8eefa00a151ae473a41ac2da15ea609[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Wed Jun 11 00:46:58 2025 +0300
+
+    Restore missing create-account.component.ts from main
+
+[33mcommit 60973416296d0e1bc2a418f78fca217e06883710[m
+Merge: 1907913 f1cabd6
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 19:24:54 2025 +0300
+
+    Merge pull request #35 from kareem-halaweh/kareem
+    
+    ml
+
+[33mcommit f1cabd6ac9042a4bb9f939b726deb7f4203062b5[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 19:24:16 2025 +0300
+
+    ml
+
+[33mcommit 19079131ffb46e199d96cb33896aea19a7665697[m
+Merge: 8b6cc51 74b0530
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 16:35:07 2025 +0300
+
+    Merge pull request #34 from kareem-halaweh/kareem
+    
+    m
+
+[33mcommit 74b05304c286f177746e41db687339505f75cd20[m
+Merge: 28ba23a 8b6cc51
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 16:34:58 2025 +0300
+
+    Merge branch 'main' into kareem
+
+[33mcommit 28ba23a1230fb1c84876fe65f22b0925fdc69854[m
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 16:31:30 2025 +0300
+
+    m
+
+[33mcommit 8b6cc514229e12d07a19037ef6fc658faeefab87[m
+Merge: a5d1912 8c761ca
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 16:24:01 2025 +0300
+
+    Merge pull request #33 from kareem-halaweh/basmala
+    
+    Basmala
+
+[33mcommit 8c761ca28c89a29605e392bb40e38b6e50c24c69[m
+Merge: 984a1ff a5d1912
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Tue Jun 10 13:02:56 2025 +0300
+
+    Resolved merge conflicts
+
+[33mcommit 984a1ff72f331622b17ae190519fb880696abc2c[m
+Author: Basmala <basmala3bed@gmail.com>
+Date:   Tue Jun 10 12:35:09 2025 +0300
+
+    Ignore IDE files
+
+[33mcommit a5d1912d880627f65e98595bbe026c8b61e3558d[m
+Merge: 7c3ec2a aa6601f
+Author: kareem-halaweh <s12327129@stu.najah.edu>
+Date:   Tue Jun 10 09:48:49 2025 +0300
+
+    Merge pull request #32 from kareem-halaweh/fara
