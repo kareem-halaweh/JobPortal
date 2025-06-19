@@ -69,7 +69,7 @@ export const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
 
- 
+
 
 
 
@@ -102,8 +102,10 @@ export const routes: Routes = [
       {path: 'create' , component: CreateJobComponent},
       { path: 'Notifications', component: EmployerNotificationsComponent },
       { path: 'employer-jobs', component: EmployerJobsComponent },
-      
-      
+      {path: 'create-job', component: CreateJobComponent},
+      {path: 'jobs/:id' , component: CardDetailsComponent},
+
+
     ]
   },
   {

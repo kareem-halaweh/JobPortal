@@ -1,13 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { NgIf, NgForOf, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-seeker-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, FormsModule],
+  imports: [ReactiveFormsModule, NgIf, NgForOf, NgClass, FormsModule, RouterLink],
   templateUrl: './seeker-profile.component.html',
   styleUrls: ['./seeker-profile.component.css']
 })
