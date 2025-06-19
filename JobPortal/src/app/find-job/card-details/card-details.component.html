@@ -6,7 +6,7 @@
       <p class="text-muted small mb-0">{{ job.location }}</p>
     </div>
     <div class="col-md-4 text-end d-flex justify-content-end align-items-start">
-      <button class="btn btn-outline-secondary me-2" *ngIf="!isEditMode && userRole === 3"  (click)="toggleEdit()">Edit</button>
+      <button class="btn btn-outline-secondary me-2" *ngIf="!isEditMode"  (click)="toggleEdit()">Edit</button>
       <button class="btn btn-outline-secondary me-2">Report</button>
       <button class="btn btn-outline-secondary me-2">Save</button>
       <button class="btn btn-success" (click)="handleApplyClick()" [attr.data-bs-toggle]="userRole == 2 ? 'modal' : null" [attr.data-bs-target]="userRole == 2 ? '#applyModal' : null">Apply</button>
