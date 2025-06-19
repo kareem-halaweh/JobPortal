@@ -22,8 +22,8 @@ export class CardDetailsComponent implements OnInit {
   isLoading: boolean = false;
   error: string | null = null;
 
-  isEditMode: boolean = false;  
-  editableJob: Job | null = null; 
+  isEditMode: boolean = false;
+  editableJob: Job | null = null;
 
   userRole : number | null = null;
 
@@ -41,13 +41,13 @@ export class CardDetailsComponent implements OnInit {
 
   handleApplyClick(): void {
     if (this.userRole !== 2) {
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/login']);
     }
   }
 
   handleApplyClick2(): void {
     if (this.userRole !== 2) {
-      this.router.navigate(['/unauthorized']); 
+      this.router.navigate(['/login']);
     }
   }
 
@@ -57,7 +57,7 @@ export class CardDetailsComponent implements OnInit {
     if (jobId) {
       this.isLoading = true;
       this.error = null;
-      
+
       this.jobService.getJobById(Number(jobId)).subscribe({
         next: (job) => {
           this.job = job;
@@ -79,7 +79,7 @@ export class CardDetailsComponent implements OnInit {
     this.isEditMode = !this.isEditMode;
 
     if (this.isEditMode) {
-      
+
       this.editableJob = { ...this.job };
     } else {
       this.editableJob = null;
@@ -95,7 +95,7 @@ export class CardDetailsComponent implements OnInit {
       next: () => {
         alert('Job updated successfully!');
         this.isEditMode = false;
-        this.loadJob(); 
+        this.loadJob();
       },
       error: (error) => {
         console.error('Error updating job:', error);

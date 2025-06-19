@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Job, jojo } from '../models/job.model';
+import * as http from 'node:http';
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
@@ -21,20 +22,13 @@ export class JobService {
     return throwError(() => new Error(errorMessage));
   }
 
-  getJobs(filters?: any): Observable<Job[]> {
-    const cleanedFilters: any = {};
-  
-    if (filters) {
-      for (const key in filters) {
-        if (filters[key] && filters[key].trim() !== '') {
-          cleanedFilters[key] = filters[key];
-        }
-      }
-    }
-  
-    return this.http.get<Job[]>('http://localhost:8000/api/jobs', { params: cleanedFilters });
-  }
+  getJobs(): Observable<Job[]> {
 
+    return this.http.get<Job[]>(`http://localhost:8000/api/jobs`).pipe(
+
+    catchError(this.handleError)
+  );
+  }
   createJob(newJob:jojo): Observable<jojo> {
     return this.http.post<jojo>(`http://localhost:8000/api/jobs`, newJob).pipe(
       catchError(this.handleError)
@@ -59,6 +53,6 @@ export class JobService {
     );
   }
 
- 
-  
+
+
 }
