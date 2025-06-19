@@ -1,21 +1,22 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FiltersAdminJobsComponent } from './filters-admin-jobs/filters-admin-jobs.component';
-import { NgForOf } from '@angular/common';
-import { CardsAdminJobsComponent } from './cards-admin-jobs/cards-admin-jobs.component';
 import { Job } from '../../models/job.model';
 import { JobService } from '../../services/jobs.service';
-import { SearchBarJobsComponent } from '../../search-bar-jobs/search-bar-jobs.component';
+import {SearchBarJobsComponent} from '../../search-bar-jobs/search-bar-jobs.component';
+import {CardsAdminJobsComponent} from './cards-admin-jobs/cards-admin-jobs.component';
+import {NgForOf} from '@angular/common';
+import {FiltersAdminJobsComponent} from './filters-admin-jobs/filters-admin-jobs.component';
 
 @Component({
   selector: 'app-admin-jobs',
-  standalone: true,
-  imports: [
-    FiltersAdminJobsComponent,
-    NgForOf,
-    CardsAdminJobsComponent,
-    SearchBarJobsComponent
-  ],
   templateUrl: './admin-jobs.component.html',
+  imports: [
+    SearchBarJobsComponent,
+
+    CardsAdminJobsComponent,
+    NgForOf,
+    FiltersAdminJobsComponent
+  ],
   styleUrls: ['./admin-jobs.component.css']
 })
 export class AdminJobsComponent implements OnInit {
@@ -24,8 +25,8 @@ export class AdminJobsComponent implements OnInit {
 
   filter: string = 'all';
   sortMethod: string = '';
-  sortLabel: string = 'sort By';
   selectedLocation: string = '';
+  searchTerm: string = '';
 
   constructor(private jobService: JobService) {}
 
@@ -37,7 +38,6 @@ export class AdminJobsComponent implements OnInit {
     this.jobService.getJobs().subscribe({
       next: (jobs) => {
         this.jobs = jobs;
-        this.displayedJob = [...this.jobs];
         this.Filters();
       },
       error: (err) => {
@@ -55,21 +55,38 @@ export class AdminJobsComponent implements OnInit {
 
     if (this.selectedLocation) {
       apps = apps.filter(job =>
-        job.location.toLowerCase() === this.selectedLocation.toLowerCase()
+        (job.user?.location || job.location || '').toLowerCase() === this.selectedLocation.toLowerCase()
       );
     }
 
-    switch (this.sortMethod) {
-      case 'newest':
-        apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        break;
-      case 'oldest':
-        apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        break;
+    if (this.searchTerm) {
+      const search = this.searchTerm.toLowerCase();
+      apps = apps.filter(job => {
+        const title = (job.title || '').toLowerCase();
+        const location = (job.user?.location || job.location || '').toLowerCase();
+        return title.includes(search) || location.includes(search);
+      });
     }
 
-    this.displayedJob = [...apps];
+    if (this.sortMethod === 'newest') {
+      apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (this.sortMethod === 'oldest') {
+      apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    }
+
+    this.displayedJob = apps;
   }
+
+  filterByLocation(location: string) {
+    this.selectedLocation = location;
+    this.Filters();
+  }
+
+  onSearchChanged(term: string) {
+    this.searchTerm = term;
+    this.Filters();
+  }
+
 
   Changestatus(filter: string) {
     this.filter = filter;
@@ -78,13 +95,21 @@ export class AdminJobsComponent implements OnInit {
 
   SortChange(method: string) {
     this.sortMethod = method;
-    this.sortLabel = method === 'newest' ? 'newest' : 'oldest';
     this.Filters();
+  }
+  onDeleteJob(id: number) {
+    if (confirm('Are you sure you want to delete this job?')) {
+      this.jobService.deleteJob(id).subscribe({
+        next: () => {
+          this.jobs = this.jobs.filter(job => job.id !== id);
+          this.Filters();
+        },
+        error: (err) => {
+          console.error('Failed to delete job:', err);
+        }
+      });
+    }
   }
 
-  filterByLocation(location: string) {
-    this.selectedLocation = location;
-    this.Filters();
-  }
 }
 

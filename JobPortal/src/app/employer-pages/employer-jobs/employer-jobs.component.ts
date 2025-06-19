@@ -24,19 +24,19 @@ export class EmployerJobsComponent implements OnInit {
 
   filter: string = 'all';
   sortMethod: string = '';
-  sortLabel: string = 'sort By';
   selectedLocation: string = '';
+  searchTerm: string = '';
 
-  constructor(private appService: JobService) {}
+  constructor(private jobService: JobService) {}
 
   ngOnInit() {
     this.loadJobs();
   }
 
   loadJobs() {
-    this.appService.getJobs().subscribe({
-      next: (data) => {
-        this.jobs = data;
+    this.jobService.getJobs().subscribe({
+      next: (jobs) => {
+        this.jobs = jobs;
         this.Filters();
       },
       error: (err) => {
@@ -54,21 +54,38 @@ export class EmployerJobsComponent implements OnInit {
 
     if (this.selectedLocation) {
       apps = apps.filter(job =>
-        job.location.toLowerCase() === this.selectedLocation.toLowerCase()
+        (job.user?.location || job.location || '').toLowerCase() === this.selectedLocation.toLowerCase()
       );
     }
 
-    switch (this.sortMethod) {
-      case 'newest':
-        apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        break;
-      case 'oldest':
-        apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        break;
+    if (this.searchTerm) {
+      const search = this.searchTerm.toLowerCase();
+      apps = apps.filter(job => {
+        const title = (job.title || '').toLowerCase();
+        const location = (job.user?.location || job.location || '').toLowerCase();
+        return title.includes(search) || location.includes(search);
+      });
     }
 
-    this.displayedJob = [...apps];
+    if (this.sortMethod === 'newest') {
+      apps.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (this.sortMethod === 'oldest') {
+      apps.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    }
+
+    this.displayedJob = apps;
   }
+
+  filterByLocation(location: string) {
+    this.selectedLocation = location;
+    this.Filters();
+  }
+
+  onSearchChanged(term: string) {
+    this.searchTerm = term;
+    this.Filters();
+  }
+
 
   Changestatus(filter: string) {
     this.filter = filter;
@@ -77,14 +94,9 @@ export class EmployerJobsComponent implements OnInit {
 
   SortChange(method: string) {
     this.sortMethod = method;
-    this.sortLabel = method === 'newest' ? 'newest' : 'oldest';
     this.Filters();
   }
 
-  filterByLocation(location: string) {
-    this.selectedLocation = location;
-    this.Filters();
-  }
 }
 
 

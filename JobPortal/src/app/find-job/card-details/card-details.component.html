@@ -9,7 +9,7 @@
       <button class="btn btn-outline-secondary me-2" *ngIf="!isEditMode && userRole === 3"  (click)="toggleEdit()">Edit</button>
       <button class="btn btn-outline-secondary me-2">Report</button>
       <button class="btn btn-outline-secondary me-2">Save</button>
-      <button class="btn btn-success" (click)="handleApplyClick2()" [attr.data-bs-toggle]="userRole == 2 ? 'modal' : null" [attr.data-bs-target]="userRole == 2 ? '#applyModal' : null">Apply</button>
+      <button class="btn btn-success" (click)="handleApplyClick()" [attr.data-bs-toggle]="userRole == 2 ? 'modal' : null" [attr.data-bs-target]="userRole == 2 ? '#applyModal' : null">Apply</button>
     </div>
   </div>
 
@@ -28,20 +28,20 @@
             <div>
               <h6 class="mb-0">{{ job.employment_type }}</h6>
               <p class="text-muted small mb-0">Employment Type</p>
-              <div *ngIf="isEditMode">
-                <div class="mb-3 w-100">
-                  <label for="employmentType" class="form-label">Employment Type</label>
-                  <select class="form-control" id="employmentType" name="employmentType"
-                          [(ngModel)]="editableJob!.employment_type" required>
-                    <option value="Full-time">Full-time</option>
-                    <option value="Part-time">Part-time</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Temporary">Temporary</option>
-                  </select>
-                </div>
-              </div>
             </div>
 
+
+            <div *ngIf="isEditMode">
+              <div class="mb-3 w-100">
+               <label for="employmentType" class="form-label">Employment Type</label>
+                <select class="form-control" id="employmentType" name="employmentType"
+                        [(ngModel)]="editableJob!.employment_type" required>
+                  <option value="full time">full time</option>
+                  <option value="part time">part time</option>
+
+                </select>
+              </div>
+            </div>
 
 
           </div>

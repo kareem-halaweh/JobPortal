@@ -9,13 +9,14 @@ interface TopJob {
 
 @Component({
   selector: 'app-chart-admin-report-monthly',
+  standalone: true,
   imports: [ChartComponent, NgForOf],
   templateUrl: './chart-admin-report-monthly.component.html'
 })
 export class ChartAdminReportMonthlyComponent implements OnInit {
   @Input() applications!: any;
-  @Input() jobSeekers!: any;
   @Input() topJobs!: any;
+  @Input() dailyJobsData!: number[];
 
   jobsBar: any = {
     series: [],
@@ -29,13 +30,6 @@ export class ChartAdminReportMonthlyComponent implements OnInit {
   };
 
   applicationsDonut: any = {
-    series: [],
-    labels: [],
-    colors: [],
-    tooltip: { enabled: true }
-  };
-
-  jobSeekersDonut: any = {
     series: [],
     labels: [],
     colors: [],
@@ -72,28 +66,16 @@ export class ChartAdminReportMonthlyComponent implements OnInit {
       this.applicationsDonut.colors = ['#1B2A41', '#ffc107', '#e5e7eb'];
     }
 
-    if (this.jobSeekers) {
-      this.jobSeekersDonut.series = [
-        this.jobSeekers.employed,
-        this.jobSeekers.not_employed
-      ];
-      this.jobSeekersDonut.labels = ['Employed', 'Unemployed'];
-      this.jobSeekersDonut.colors = ['#ffc107', '#e5e7eb'];
-    }
-
     this.jobsBar.series = [
-      { name: 'Jobs Posted', data: this.generateDailyJobsData(this.daysInMonth) }
+      { name: 'Jobs Posted', data: this.dailyJobsData ?? [] }
     ];
   }
 
   getDaysInMonth(month: number, year: number): number {
     return new Date(year, month, 0).getDate();
   }
-
-  generateDailyJobsData(days: number): number[] {
-    return Array.from({ length: days }, () => Math.floor(Math.random() * 10));
-  }
 }
+
 
 
 

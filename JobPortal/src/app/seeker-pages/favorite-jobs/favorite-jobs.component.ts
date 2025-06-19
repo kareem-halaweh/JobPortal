@@ -22,13 +22,19 @@ export class FavoriteJobsComponent implements OnInit {
 
   constructor(private savejobsService: savejobsService) {}
 
-  ngOnInit() {
-    const token = 'user-auth-token';
-    this.savejobsService.getsavedJob(token).subscribe(jobs => {
-      this.savedJobs = jobs;
-      this.Filters();
+  ngOnInit(): void {
+    this.savejobsService.getSavedJob().subscribe({
+      next: (jobs) => {
+        this.savedJobs = jobs;
+        this.Filters();
+      },
+      error: (err) => {
+        console.error('Failed to fetch saved jobs:', err);
+      }
     });
   }
+
+
 
   Changestatus(filter: string) {
     this.filter = filter;
@@ -43,12 +49,6 @@ export class FavoriteJobsComponent implements OnInit {
     this.filteredJobs = apps;
   }
 
-  removeJob(jobId: number): void {
-    const index = this.savedJobs.findIndex(job => job.id === jobId);
-    if (index !== -1) {
-      this.savedJobs.splice(index, 1);
-      this.Filters();
-    }
-  }
+
 }
 

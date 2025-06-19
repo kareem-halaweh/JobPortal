@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Job, jojo } from '../models/job.model';
-import * as http from 'node:http';
 
-@Injectable({ providedIn: 'root' })
+import {Injectable} from '@angular/core';
+
+
+@Injectable({ 'providedIn': 'root' })
 export class JobService {
 
 
@@ -22,9 +23,11 @@ export class JobService {
     return throwError(() => new Error(errorMessage));
   }
 
+
   getJobs(): Observable<Job[]> {
 
     return this.http.get<Job[]>(`http://localhost:8000/api/jobs`).pipe(
+
 
     catchError(this.handleError)
   );

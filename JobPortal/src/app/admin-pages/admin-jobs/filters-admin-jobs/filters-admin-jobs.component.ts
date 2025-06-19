@@ -10,23 +10,21 @@ import {SortDropdownComponent} from '../../../sort-dropdown/sort-dropdown.compon
     SortDropdownComponent
   ],
   templateUrl: './filters-admin-jobs.component.html',
-  standalone: true,
   styleUrl: './filters-admin-jobs.component.css'
 })
 export class FiltersAdminJobsComponent {
   @Input() currentFilter: string = 'all';
-
   @Output() filterChanged = new EventEmitter<string>();
-  @Output ()sortChanged = new EventEmitter<string>();
-  sortLabel: string = 'Sort By';
+  @Output()  SortChange = new EventEmitter<string>();
+  selectedSort: string = 'ALL';
 
-  SortChange(option: string) {
-    this.sortLabel = option === 'newest' ? 'Newest' : 'Oldest';
-    this.sortChanged.emit(option);
-  }
 
   setFilter(filter: string) {
-    this.filterChanged.emit(filter.toLowerCase());
+    this.filterChanged.emit(filter);
+  }
+  sortBy(method: string) {
+    this.selectedSort = method;
+    this.SortChange.emit(method);
   }
 
 

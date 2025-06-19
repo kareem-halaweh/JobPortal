@@ -1,65 +1,59 @@
-import {Component, OnInit} from '@angular/core';
-
-import {FiltersReportedJobsAdminComponent} from './filters-reported-jobs-admin/filters-reported-jobs-admin.component';
-import {TableReportedJobsAdminComponent} from './table-reported-jobs-admin/table-reported-jobs-admin.component';
-import {PaginationComponent} from '../../pagination/pagination.component';
-import {reportedJob} from '../../models/reportedjobs.model';
-import {reportejobsService} from '../../services/reportedjobs.service';
-
-
+import { Component, OnInit } from '@angular/core';
+import { FiltersReportedJobsAdminComponent } from './filters-reported-jobs-admin/filters-reported-jobs-admin.component';
+import { TableReportedJobsAdminComponent } from './table-reported-jobs-admin/table-reported-jobs-admin.component';
+import { PaginationComponent } from '../../pagination/pagination.component';
+import { reportedJob } from '../../models/reportedjobs.model';
+import { reportejobsService } from '../../services/reportedjobs.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-reported-jobs-admin',
   imports: [
-
     FiltersReportedJobsAdminComponent,
     TableReportedJobsAdminComponent,
-    PaginationComponent
-
+    PaginationComponent,
+    NgIf
   ],
   templateUrl: './reported-jobs-admin.component.html',
-  styleUrl: './reported-jobs-admin.component.css'
+  styleUrls: ['./reported-jobs-admin.component.css']
 })
-export class ReportedJobsAdminComponent implements OnInit  {
+export class ReportedJobsAdminComponent implements OnInit {
   reportedJobs: reportedJob[] = [];
   sortedReportedJobs: reportedJob[] = [];
   paginatedreportedjobs: reportedJob[] = [];
-
   sortMethod: string = 'newest';
   sortLabel: string = 'Newest';
-
   currentPage: number = 1;
-  rowsPerPage: number = 7;
+  rowsPerPage: number = 10;
+  successMessage: string = '';
 
   constructor(private reportJobsService: reportejobsService) {}
 
   ngOnInit(): void {
-    this.loadReportedJobs();
+    this.loadReports();
   }
-  successMessage: string = '';
-  loadReportedJobs(): void {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No token found');
-      return;
-    }
 
-    this.reportJobsService.getAllReports(token, this.sortMethod).subscribe({
-      next: (data: reportedJob[]) => {
-        this.reportedJobs = data;
+  loadReports() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    this.reportJobsService.getAllReports(token).subscribe({
+      next: (reports) => {
+        this.reportedJobs = reports;
         this.applySorting();
       },
-      error: error => {
-        console.error('Failed to fetch reported jobs:', error);
+      error: (err) => {
+        console.error('Error fetching reports', err);
       }
     });
   }
+
   Approve(event: { userId: number; jobId: number }) {
     const token = localStorage.getItem('token') || '';
     this.reportJobsService.approveReport(event.userId, event.jobId, token).subscribe({
       next: () => {
         this.successMessage = 'Report approved successfully!';
-        this.loadReportedJobs();
+        this.loadReports();
         this.clearMessageAfterTimeout();
       },
       error: (err) => {
@@ -70,10 +64,10 @@ export class ReportedJobsAdminComponent implements OnInit  {
 
   Reject(event: { userId: number; jobId: number }) {
     const token = localStorage.getItem('token') || '';
-    this.reportJobsService.rejectReport(event.jobId, token).subscribe({
+    this.reportJobsService.rejectReport(event.userId, event.jobId, token).subscribe({
       next: () => {
         this.successMessage = 'Report rejected successfully!';
-        this.loadReportedJobs();
+        this.loadReports();
         this.clearMessageAfterTimeout();
       },
       error: (err) => {
@@ -85,7 +79,7 @@ export class ReportedJobsAdminComponent implements OnInit  {
   clearMessageAfterTimeout() {
     setTimeout(() => {
       this.successMessage = '';
-    }, 404);
+    }, 4000);
   }
 
   SortChange(method: string): void {
@@ -104,7 +98,6 @@ export class ReportedJobsAdminComponent implements OnInit  {
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       );
     }
-
     this.currentPage = 1;
     this.updatePaginatedJobs();
   }
@@ -121,8 +114,9 @@ export class ReportedJobsAdminComponent implements OnInit  {
   }
 
   totalPages(): number[] {
-    return Array(Math.ceil(this.reportedJobs.length / this.rowsPerPage)).fill(0).map((_, i) => i + 1);
+    return Array(Math.ceil(this.reportedJobs.length / this.rowsPerPage))
+      .fill(0)
+      .map((_, i) => i + 1);
   }
-
-
 }
+

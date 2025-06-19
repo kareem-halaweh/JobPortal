@@ -1,8 +1,8 @@
 <div class="container">
   <app-search-bar-jobs
-  (locationChanged)="filterByLocation($event)">
-
-</app-search-bar-jobs>
+    (locationChanged)="filterByLocation($event)"
+    (searchChanged)="onSearchChanged($event)">
+  </app-search-bar-jobs>
   <app-filter-employer-jobs
     (sortChanged)=" SortChange($event)"
     [currentFilter]="filter"

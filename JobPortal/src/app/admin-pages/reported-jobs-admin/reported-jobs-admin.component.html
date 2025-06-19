@@ -3,18 +3,27 @@
   </app-filters-reported-jobs-admin>
 
   <app-table-reported-jobs-admin
+    *ngIf="paginatedreportedjobs.length > 0"
     [displayedreportedjobs]="paginatedreportedjobs"
     (approve)="Approve($event)"
     (reject)="Reject($event)">
   </app-table-reported-jobs-admin>
 
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center" *ngIf="paginatedreportedjobs.length > 0">
     <app-pagination
       [currentPage]="currentPage"
       [totalPages]="totalPages()"
       (pageChange)="PageChange($event)">
     </app-pagination>
   </div>
-</div>
 
+  <div *ngIf="paginatedreportedjobs.length === 0" class="text-center mt-3">
+    <p>Loading reports or no reports available.</p>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+</div>
 

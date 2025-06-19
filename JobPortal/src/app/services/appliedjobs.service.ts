@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JobAppliedService {
-  private apiUrl = 'http://localhost/new-laravel/web2-Data/DataSite/public/api';
-
+  private apiUrl =
+    'http://localhost:8000/api';
   constructor(private http: HttpClient) {}
 
   getJobApplied(userId: number): Observable<JobApplied[]> {
