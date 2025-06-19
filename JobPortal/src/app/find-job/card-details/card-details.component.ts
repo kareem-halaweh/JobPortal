@@ -41,7 +41,7 @@ export class CardDetailsComponent implements OnInit {
 
 
 
-  handleApplyClick2(): void {
+  handleApplyClick(): void {
     if (this.userRole !== 2) {
       this.router.navigate(['/unauthorized']); 
     }

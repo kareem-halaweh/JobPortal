@@ -1,67 +1,142 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Job, jobAPP } from '../../models/job.model';
 import { CommonModule } from '@angular/common';
-import { HeaderEmployerComponent } from '../headers/header-employer/header.component';
-import { JobService } from '../services/jobs.service';
-import { Job, jojo } from '../models/job.model';
-import { AuthService } from '../services/auth.service';
-
-
-interface JobData {
-  title: string;
-  company: string;
-  location: string;
-  description: string;
-  responsibilities: string;
-  skills: string;
-  salary: number;
-  benefits: string;
-  employmentType: string;
-  category: string;
-  contactEmail: string;
-  companyLogo: string;
-}
+import { ActivatedRoute } from '@angular/router';
+import { JobService } from '../../services/jobs.service';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-create-job',
-  templateUrl: './create-job.component.html',
-  styleUrls: ['./create-job.component.css'],
+  selector: 'app-card-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderEmployerComponent]
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './card-details.component.html',
+  styleUrl: './card-details.component.css'
 })
-export class CreateJobComponent {
+export class CardDetailsComponent implements OnInit {
+  job: Job | null = null;
+  selectedFile: File | null = null;
+  coverLetter: string = '';
+  isLoading: boolean = false;
+  error: string | null = null;
 
-  constructor(private jobService: JobService,private authService: AuthService) {}
+  isEditMode: boolean = false;  // <-- NEW
+  editableJob: Job | null = null; // <-- NEW
 
-  jobData:jojo = {
+  constructor(
+    private route: ActivatedRoute,
+    private jobService: JobService,
+    private authService:AuthService
+  ) {}
 
-  
-    title: '',
-   salary:'',
-   category: '',
-   employment_type: '',
-   description: '',
-   skills:'',
-   about: '',
-   user_id:1 ,
-   date:new Date().toISOString().slice(0, 19).replace('T', ' '),
+  ngOnInit(): void {
+    this.loadJob();
+  }
 
+  loadJob(): void {
+    const jobId = this.route.snapshot.paramMap.get('id');
+    if (jobId) {
+      this.isLoading = true;
+      this.error = null;
 
+      this.jobService.getJobById(Number(jobId)).subscribe({
+        next: (job) => {
+          this.job = job;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error loading job:', error);
+          this.error = 'Failed to load job details. Please try again.';
+          this.isLoading = false;
+        }
+      });
+    }
+  }
+
+  // Edit mode toggling
+  toggleEdit(): void {
+    if (!this.job) return;
+
+    this.isEditMode = !this.isEditMode;
+
+    if (this.isEditMode) {
+      // Clone job data to editable copy
+      this.editableJob = { ...this.job };
+    } else {
+      this.editableJob = null;
+    }
+  }
+
+  saveChanges(): void {
+    if (!this.editableJob) return;
+
+    this.isLoading = true;
+
+    this.jobService.updateJob(this.editableJob.id, this.editableJob).subscribe({
+      next: () => {
+        alert('Job updated successfully!');
+        this.isEditMode = false;
+        this.loadJob(); // reload updated data
+      },
+      error: (error) => {
+        console.error('Error updating job:', error);
+        alert('Failed to update job.');
+        this.isLoading = false;
+      }
+    });
+  }
+
+  // Keep your existing file upload logic:
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      this.selectedFile = file;
+    } else {
+      alert('Please upload a valid PDF file.');
+    }
+  }
+
+submitApplication() {
+  if (!this.selectedFile || !this.coverLetter.trim()) {
+    alert('Please upload a PDF and enter a cover letter.');
+    return;
+  }
+
+  if (!this.job) {
+    alert('Job not loaded.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64Resume = reader.result as string;
+
+    const application: jobAPP = {
+      job_id: this.job!.id.toString(),
+    //  user_id: this.authService.getUserId(),
+      user_id: 3,
+      status: 'pending',
+      applied_date: new Date(),
+      resume: base64Resume,
+      cover_letter: this.coverLetter.trim()
+    };
+    console.log(application);
+
+    this.jobService.apply(application).subscribe({
+      next: (response) => {
+        alert('Application submitted successfully!');
+        this.selectedFile = null;
+        this.coverLetter = '';
+      },
+      error: (err) => {
+        console.error('Error submitting application:', err);
+        alert('Failed to submit application.');
+      }
+    });
   };
 
-  onSubmit() {
+  reader.readAsDataURL(this.selectedFile);
+}
 
-   
-    this.jobData.user_id = this.authService.getUserId() ?? 1;
-    console.log('Form submitted:', this.jobData);
-   
-    this.jobService.createJob(this.jobData ).subscribe(
-      response => {
-        // Handle success
-      },
-      error => {
-        // Handle error
-      }
-    );
-  }
 }

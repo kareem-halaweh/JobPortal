@@ -14,13 +14,13 @@
     <p class="mt-2">Loading jobs...</p>
   </div>
 
-  <!-- Error State -->
+  
   <div class="alert alert-danger m-3" *ngIf="error">
     {{ error }}
     <button class="btn btn-link" (click)="loadJobs()">Try Again</button>
   </div>
 
-  <!-- Jobs List -->
+  
   <div class="jobs-container" *ngIf="!isLoading && !error">
     <div *ngIf="filteredJobsList.length === 0" class="text-center py-5">
       <p class="text-muted">No jobs found matching your search criteria.</p>
@@ -34,7 +34,7 @@
     </app-card>
   </div>
 
-  <!-- Edit Modal -->
+  
   <div class="modal fade" [class.show]="isEditing" [style.display]="isEditing ? 'block' : 'none'">
     <div class="modal-dialog">
       <div class="modal-content">

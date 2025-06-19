@@ -1,9 +1,9 @@
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Job, jojo } from '../models/job.model';
-import {Injectable} from '@angular/core';
+import { Job, jojo, jobAPP } from '../models/job.model';
 
-@Injectable({ 'providedIn': 'root' })
+@Injectable({ providedIn: 'root' })
 export class JobService {
 
 
@@ -21,18 +21,15 @@ export class JobService {
     return throwError(() => new Error(errorMessage));
   }
 
-  getJobs(filters?: any): Observable<Job[]> {
-    const cleanedFilters: any = {};
-
-    if (filters) {
-      for (const key in filters) {
-        if (filters[key] && filters[key].trim() !== '') {
-          cleanedFilters[key] = filters[key];
-        }
-      }
-    }
-
-    return this.http.get<Job[]>('http://localhost:8000/api/jobs', { params: cleanedFilters });
+  getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(`http://localhost:8000/api/jobs`).pipe(
+      catchError(this.handleError)
+    );
+  }
+    apply(application:jobAPP): Observable<jobAPP> {
+    return this.http.post<jobAPP>(`http://localhost:8000/api/applications`, application).pipe(
+      catchError(this.handleError)
+    );
   }
 
   createJob(newJob:jojo): Observable<jojo> {
@@ -59,6 +56,8 @@ export class JobService {
     );
   }
 
-
+  searchJobs(filters: any): Observable<Job[]> {
+    return this.http.get<Job[]>('http://localhost:8000/api/jobs/search', { params: filters });
+  }
 
 }

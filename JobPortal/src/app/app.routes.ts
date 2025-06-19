@@ -99,9 +99,11 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'Profile', component: EmployerProfileComponent },
-      {path: 'create' , component: CreateJobComponent},
+      { path: 'create' , component: CreateJobComponent },
       { path: 'Notifications', component: EmployerNotificationsComponent },
       { path: 'employer-jobs', component: EmployerJobsComponent },
+      {path: 'create-job', component: CreateJobComponent},
+      {path: 'jobs/:id' , component: CardDetailsComponent},
       
       
     ]
