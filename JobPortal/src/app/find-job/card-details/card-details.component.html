@@ -30,9 +30,10 @@
               <p class="text-muted small mb-0">Employment Type</p>
             </div>
 
+
             <div *ngIf="isEditMode">
               <div class="mb-3 w-100">
-                <label for="employmentType" class="form-label">Employment Type</label>
+               <label for="employmentType" class="form-label">Employment Type</label>
                 <select class="form-control" id="employmentType" name="employmentType"
                         [(ngModel)]="editableJob!.employment_type" required>
                   <option value="full time">full time</option>
@@ -41,6 +42,7 @@
                 </select>
               </div>
             </div>
+
 
           </div>
 

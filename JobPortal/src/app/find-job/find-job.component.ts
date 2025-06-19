@@ -31,27 +31,29 @@ export class FindJobComponent implements OnInit {
   loadJobs() {
     this.isLoading = true;
     this.error = null;
-    
+
     this.jobService.getJobs().subscribe({
-      next: (jobs: Job[]) => {
-        this.jobs = jobs;
+      next: (response: any) => {
+        console.log(response);
+        this.jobs = response.data;
         this.filteredJobsList = this.jobs;
-        this.isLoading = false;
+        this.isLoading = false;  // <--- stop loading here
       },
-      error: (error) => {
-        console.error('Error loading jobs:', error);
-        this.error = 'Failed to load jobs. Please try again.';
-        this.isLoading = false;
+      error: (err) => {
+        console.error(err);
+        this.error = 'Failed to load jobs';
+        this.isLoading = false;  // <--- also stop loading on error
       }
     });
   }
 
+
   onSearchChanged(filters: any) {
-    // Remove empty filter values before sending
+   /* // Remove empty filter values before sending
     const cleanFilters = Object.fromEntries(
       Object.entries(filters).filter(([_, v]) => v != null && v !== '')
     );
-  
+
     this.isLoading = true;
     this.jobService.getJobs(cleanFilters).subscribe({
       next: (jobs) => {
@@ -62,10 +64,10 @@ export class FindJobComponent implements OnInit {
         console.error('Search failed', err);
         this.isLoading = false;
       }
-    });
+    });*/
   }
-  
-  
+
+
 
   onEditJob(job: Job) {
     this.selectedJob = { ...job };
