@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Job } from '../../models/job.model';
+import { Job, jobAPP } from '../../models/job.model';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { JobService } from '../../services/jobs.service';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-details',
@@ -22,38 +21,25 @@ export class CardDetailsComponent implements OnInit {
   isLoading: boolean = false;
   error: string | null = null;
 
-  isEditMode: boolean = false;  
-  editableJob: Job | null = null; 
-
-  userRole : number | null = null;
+  isEditMode: boolean = false;  // <-- NEW
+  editableJob: Job | null = null; // <-- NEW
 
   constructor(
     private route: ActivatedRoute,
     private jobService: JobService,
-    public authService : AuthService,
-    private router: Router
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
     this.loadJob();
-    this.userRole = this.authService.getRole();
   }
-
-
-
-  handleApplyClick(): void {
-    if (this.userRole !== 2) {
-      this.router.navigate(['/unauthorized']); 
-    }
-  }
-
 
   loadJob(): void {
     const jobId = this.route.snapshot.paramMap.get('id');
     if (jobId) {
       this.isLoading = true;
       this.error = null;
-      
+
       this.jobService.getJobById(Number(jobId)).subscribe({
         next: (job) => {
           this.job = job;
@@ -68,14 +54,14 @@ export class CardDetailsComponent implements OnInit {
     }
   }
 
-
+  // Edit mode toggling
   toggleEdit(): void {
     if (!this.job) return;
 
     this.isEditMode = !this.isEditMode;
 
     if (this.isEditMode) {
-      
+      // Clone job data to editable copy
       this.editableJob = { ...this.job };
     } else {
       this.editableJob = null;
@@ -91,7 +77,7 @@ export class CardDetailsComponent implements OnInit {
       next: () => {
         alert('Job updated successfully!');
         this.isEditMode = false;
-        this.loadJob(); 
+        this.loadJob(); // reload updated data
       },
       error: (error) => {
         console.error('Error updating job:', error);
@@ -101,7 +87,7 @@ export class CardDetailsComponent implements OnInit {
     });
   }
 
-
+  // Keep your existing file upload logic:
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file && file.type === 'application/pdf') {
@@ -111,19 +97,46 @@ export class CardDetailsComponent implements OnInit {
     }
   }
 
-  submitApplication() {
-    if (!this.selectedFile || !this.coverLetter.trim()) {
-      alert('Please upload a PDF and enter a cover letter.');
-      return;
-    }
-
-    console.log('Resume:', this.selectedFile);
-    console.log('Cover Letter:', this.coverLetter);
-
-    alert('Application submitted successfully!');
-    this.selectedFile = null;
-    this.coverLetter = '';
+submitApplication() {
+  if (!this.selectedFile || !this.coverLetter.trim()) {
+    alert('Please upload a PDF and enter a cover letter.');
+    return;
   }
 
+  if (!this.job) {
+    alert('Job not loaded.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64Resume = reader.result as string;
+
+    const application: jobAPP = {
+      job_id: this.job!.id.toString(),
+    //  user_id: this.authService.getUserId(),
+      user_id: 3,
+      status: 'pending',
+      applied_date: new Date(),
+      resume: base64Resume,
+      cover_letter: this.coverLetter.trim()
+    };
+    console.log(application);
+
+    this.jobService.apply(application).subscribe({
+      next: (response) => {
+        alert('Application submitted successfully!');
+        this.selectedFile = null;
+        this.coverLetter = '';
+      },
+      error: (err) => {
+        console.error('Error submitting application:', err);
+        alert('Failed to submit application.');
+      }
+    });
+  };
+
+  reader.readAsDataURL(this.selectedFile);
+}
 
 }
